@@ -1,0 +1,9 @@
+{
+  "name": "2026 日本大跳島遠征互動手冊",
+  "short_name": "日本大跳島",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fbf7eb",
+  "theme_color": "#102f57",
+  "lang": "zh-Hant"
+}

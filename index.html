@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#102f57" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="日本大跳島" />
+    <title>2026 日本大跳島遠征互動手冊</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="topbar" aria-label="主要導覽">
+        <a class="brand" href="#overview" aria-label="回到總覽">
+          <span class="brand-mark">✦</span>
+          <span>2026 日本大跳島遠征</span>
+        </a>
+        <div class="nav-actions">
+          <button class="icon-btn" id="printBtn" type="button" title="列印手冊" aria-label="列印手冊">⎙</button>
+          <button class="icon-btn" id="resetBtn" type="button" title="重設互動狀態" aria-label="重設互動狀態">↺</button>
+        </div>
+      </nav>
+
+      <div class="hero-grid">
+        <section class="hero-copy" id="overview">
+          <p class="eyebrow">北海道 × 東京 × 宮古島</p>
+          <h1>慢節奏雙人旅行作戰台</h1>
+          <p class="hero-lede">
+            主線固定，支線彈性。把住宿、交通、活動、礦物店、咖啡與待辦集中成可搜尋、可篩選、可勾選的互動清單。
+          </p>
+          <div class="hero-actions" role="group" aria-label="快速切換">
+            <button class="primary-action" data-jump="itinerary" type="button">查看每日行程</button>
+            <button class="secondary-action" data-jump="tasks" type="button">處理待辦</button>
+          </div>
+        </section>
+
+        <aside class="route-panel" aria-label="路線摘要">
+          <div class="route-map" id="routeMap"></div>
+          <div class="route-stats" id="routeStats"></div>
+        </aside>
+      </div>
+    </header>
+
+    <main>
+      <section class="control-strip" aria-label="搜尋與篩選">
+        <label class="search-box">
+          <span>搜尋</span>
+          <input id="searchInput" type="search" placeholder="輸入地名、店名、活動或日期" autocomplete="off" />
+        </label>
+        <div class="segmented" role="tablist" aria-label="地區篩選" id="regionTabs"></div>
+        <label class="select-box">
+          <span>類別</span>
+          <select id="categoryFilter">
+            <option value="all">全部</option>
+            <option value="main">主線</option>
+            <option value="branch">支線</option>
+            <option value="hotel">住宿</option>
+            <option value="transport">交通</option>
+            <option value="shop">礦物與咖啡</option>
+            <option value="task">待辦</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="dashboard" aria-label="旅行概覽">
+        <article class="metric-block">
+          <span class="metric-label">旅行天數</span>
+          <strong id="daysCount">0</strong>
+          <span>6/10 至 6/27</span>
+        </article>
+        <article class="metric-block">
+          <span class="metric-label">已知住宿</span>
+          <strong id="knownHotelCost">NT$0</strong>
+          <span>洞爺湖、宮古島待補</span>
+        </article>
+        <article class="metric-block">
+          <span class="metric-label">目前完成</span>
+          <strong id="progressPercent">0%</strong>
+          <span id="progressText">0 / 0 項</span>
+        </article>
+        <article class="metric-block">
+          <span class="metric-label">待處理</span>
+          <strong id="openTasks">0</strong>
+          <span>票券、補記與確認</span>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel wide" id="itinerary">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">01</p>
+              <h2>每日行程</h2>
+            </div>
+            <div class="panel-tools">
+              <button class="chip active" data-view="timeline" type="button">時間軸</button>
+              <button class="chip" data-view="cards" type="button">卡片</button>
+            </div>
+          </div>
+          <div id="itineraryList" class="timeline"></div>
+        </article>
+
+        <article class="panel" id="bookingPanel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">02</p>
+              <h2>住宿與交通</h2>
+            </div>
+          </div>
+          <div id="bookingList" class="stack-list"></div>
+        </article>
+
+        <article class="panel" id="tasks">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">03</p>
+              <h2>待處理清單</h2>
+            </div>
+          </div>
+          <div id="taskList" class="check-list"></div>
+        </article>
+
+        <article class="panel wide" id="shops">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">04</p>
+              <h2>礦物收藏與咖啡選店</h2>
+            </div>
+          </div>
+          <div id="shopGrid" class="shop-grid"></div>
+        </article>
+
+        <article class="panel manual-panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">05</p>
+              <h2>原手冊索引</h2>
+            </div>
+          </div>
+          <div id="manualGallery" class="manual-gallery"></div>
+        </article>
+
+        <article class="panel link-panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">06</p>
+              <h2>快速連結</h2>
+            </div>
+          </div>
+          <div id="linkList" class="link-list"></div>
+        </article>
+      </section>
+    </main>
+
+    <dialog id="detailDialog">
+      <button class="dialog-close" type="button" aria-label="關閉">×</button>
+      <div id="dialogContent"></div>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
