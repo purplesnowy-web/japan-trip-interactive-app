@@ -1,6 +1,13 @@
 const STORAGE_KEY = "jp-island-trip-2026-v2-state";
 
 const mapUrl = (query) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+const directionsUrl = (points) => {
+  const named = points.map((point) => point.query || point.label);
+  const [origin, ...rest] = named;
+  const destination = rest.pop() || origin;
+  const waypoints = rest.join("|");
+  return `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}${waypoints ? `&waypoints=${encodeURIComponent(waypoints)}` : ""}`;
+};
 
 const route = [
   { city: "台北", note: "6/10 出發", icon: "TPE" },
@@ -105,6 +112,176 @@ const tasks = [
   { id: "task-waterproof", region: "miyako", type: "task", title: "裝備確認", detail: "浮潛鞋、防曬、防水手機袋、乾濕分離袋、清水與海邊走路準備。" },
   { id: "task-souvenir", region: "miyako", type: "task", title: "6/27 行李與伴手禮保護", detail: "整理行李、保護易碎購物、分裝伴手禮。" },
 ];
+
+const dayMaps = {
+  d0610: {
+    area: "札幌中心",
+    note: "狸小路住宿、大通公園祭典在同一個市中心活動圈。",
+    points: [
+      { label: "Granbell Hotel", query: "Granbell Hotel Tanuki Sapporo", x: 34, y: 66, kind: "hotel" },
+      { label: "大通公園", query: "Odori Park Sapporo", x: 50, y: 45, kind: "activity" },
+      { label: "YOSAKOI", query: "YOSAKOI Soran Festival Odori Park Sapporo", x: 62, y: 38, kind: "activity" },
+    ],
+  },
+  d0611: {
+    area: "小樽運河",
+    note: "以運河與舊倉庫群為核心，適合步行慢逛。",
+    points: [
+      { label: "小樽站", query: "Otaru Station", x: 28, y: 62, kind: "transport" },
+      { label: "小樽運河", query: "Otaru Canal", x: 58, y: 46, kind: "activity" },
+      { label: "舊倉庫群", query: "Otaru Canal Warehouse", x: 70, y: 36, kind: "activity" },
+    ],
+  },
+  d0612: {
+    area: "札幌東北側",
+    note: "莫埃來沼公園離市中心較遠，建議把它當成單一主線。",
+    points: [
+      { label: "札幌中心", query: "Sapporo Station", x: 28, y: 70, kind: "transport" },
+      { label: "莫埃來沼公園", query: "Moerenuma Park", x: 70, y: 30, kind: "activity" },
+    ],
+  },
+  d0613: {
+    area: "札幌市中心",
+    note: "電視塔、狸小路、咖啡點都集中，適合邊逛邊補給。",
+    points: [
+      { label: "札幌電視塔", query: "Sapporo TV Tower", x: 62, y: 40, kind: "activity" },
+      { label: "石ころマーケット", query: "さっぽろ石ころマーケット", x: 66, y: 36, kind: "shop" },
+      { label: "狸小路", query: "Tanukikoji Shopping Street Sapporo", x: 42, y: 62, kind: "shop" },
+      { label: "森彦", query: "Cafe Morihiko Sapporo", x: 25, y: 45, kind: "coffee" },
+    ],
+  },
+  d0614: {
+    area: "札幌到洞爺湖",
+    note: "這天是移動日，取車後往洞爺湖住宿。",
+    points: [
+      { label: "ORIX 札幌", query: "ORIX Rent a Car Sapporo Station", x: 22, y: 42, kind: "transport" },
+      { label: "洞爺湖", query: "Lake Toya", x: 64, y: 50, kind: "activity" },
+      { label: "Cocoa Resort", query: "Cocoa Resort Toyako", x: 75, y: 58, kind: "hotel" },
+    ],
+  },
+  d0615: {
+    area: "洞爺湖",
+    note: "住宿與湖邊活動集中，保留婚禮與休息節奏。",
+    points: [
+      { label: "Cocoa Resort", query: "Cocoa Resort Toyako", x: 44, y: 62, kind: "hotel" },
+      { label: "洞爺湖畔", query: "Lake Toya", x: 58, y: 38, kind: "activity" },
+    ],
+  },
+  d0616: {
+    area: "洞爺湖到札幌",
+    note: "回札幌還車後，再接薄野住宿與中島公園支線。",
+    points: [
+      { label: "Cocoa Resort", query: "Cocoa Resort Toyako", x: 25, y: 58, kind: "hotel" },
+      { label: "ORIX 還車", query: "ORIX Rent a Car Sapporo Station", x: 66, y: 42, kind: "transport" },
+      { label: "薄野飯店", query: "Ship Garden Susukino Hotel Sapporo", x: 76, y: 58, kind: "hotel" },
+    ],
+  },
+  d0617: {
+    area: "上野",
+    note: "抵達東京後以飯店與阿美橫丁輕量散步為主。",
+    points: [
+      { label: "HND", query: "Haneda Airport", x: 24, y: 72, kind: "transport" },
+      { label: "上野寶石飯店", query: "Hotel Sardonyx Ueno", x: 65, y: 40, kind: "hotel" },
+      { label: "阿美橫丁", query: "Ameya-Yokocho Ueno", x: 74, y: 48, kind: "activity" },
+    ],
+  },
+  d0618: {
+    area: "東京中心到西側",
+    note: "皇居、東京站、神保町集中；原宿表參道是彈性延伸。",
+    points: [
+      { label: "皇居東御苑", query: "皇居東御苑", x: 54, y: 42, kind: "activity" },
+      { label: "神保町", query: "三省堂書店 神田神保町本店", x: 48, y: 28, kind: "activity" },
+      { label: "東京站", query: "Tokyo Station", x: 64, y: 52, kind: "transport" },
+      { label: "Cat Street", query: "Cat Street Harajuku", x: 24, y: 62, kind: "branch" },
+    ],
+  },
+  d0619: {
+    area: "御徒町",
+    note: "礦物店彼此距離近，適合集中巡禮。",
+    points: [
+      { label: "Jewelry Marche", query: "御徒町 ジュエリーマルシェ", x: 48, y: 44, kind: "mineral" },
+      { label: "Crystal World", query: "Crystal World Okachimachi", x: 62, y: 38, kind: "mineral" },
+      { label: "Nirvana Stone", query: "Nirvana Stone Okachimachi", x: 58, y: 58, kind: "mineral" },
+    ],
+  },
+  d0620: {
+    area: "蒲田 PiO",
+    note: "ミネラルマーケット是固定主線，這天不要分散太多。",
+    points: [
+      { label: "上野飯店", query: "Hotel Sardonyx Ueno", x: 35, y: 34, kind: "hotel" },
+      { label: "大田區產業 PiO", query: "大田区産業プラザ PiO", x: 66, y: 65, kind: "mineral" },
+    ],
+  },
+  d0621: {
+    area: "御徒町、日本橋、上野",
+    note: "回場與市集之間距離可控，晚上要提早收。",
+    points: [
+      { label: "御徒町", query: "Okachimachi Station", x: 40, y: 34, kind: "mineral" },
+      { label: "日本橋", query: "OLD NEW MARKET 日本橋", x: 62, y: 58, kind: "market" },
+      { label: "上野飯店", query: "Hotel Sardonyx Ueno", x: 36, y: 48, kind: "hotel" },
+    ],
+  },
+  d0622: {
+    area: "東京、沖繩、宮古島",
+    note: "這天是長距離移動日，重點是航班銜接與飯店接駁。",
+    points: [
+      { label: "HND", query: "Haneda Airport", x: 22, y: 36, kind: "transport" },
+      { label: "OKA", query: "Naha Airport", x: 52, y: 55, kind: "transport" },
+      { label: "MMY", query: "Miyako Airport", x: 76, y: 62, kind: "transport" },
+      { label: "Santa Barbara", query: "Hotel Santa Barbara Miyakojima Resort", x: 84, y: 46, kind: "hotel" },
+    ],
+  },
+  d0623: {
+    area: "宮古島東南線",
+    note: "潛水、市區小店與咖啡集中在南側與市區。",
+    points: [
+      { label: "KKDay 潛水", query: "Miyakojima diving", x: 32, y: 58, kind: "activity" },
+      { label: "サマー太陽", query: "サマー太陽 宮古島", x: 50, y: 48, kind: "food" },
+      { label: "Ningin Coffee", query: "Ningin Coffee Miyakojima", x: 62, y: 38, kind: "coffee" },
+      { label: "MAXVALU", query: "MAXVALU Miyako Minami", x: 70, y: 62, kind: "shop" },
+    ],
+  },
+  d0624: {
+    area: "宮古島北海岸",
+    note: "北海岸一條線順走，海景與甜點放同一天。",
+    points: [
+      { label: "Kujira Diner", query: "Kujira Diner Miyakojima", x: 35, y: 65, kind: "food" },
+      { label: "海中公園", query: "宮古島海中公園", x: 52, y: 36, kind: "activity" },
+      { label: "西平安名崎", query: "西平安名崎 宮古島", x: 66, y: 24, kind: "activity" },
+      { label: "Ninufa", query: "Gelato Cafe Ninufa Miyakojima", x: 78, y: 44, kind: "food" },
+      { label: "砂山海灘", query: "Sunayama Beach Miyakojima", x: 48, y: 54, kind: "beach" },
+    ],
+  },
+  d0625: {
+    area: "伊良部、下地島",
+    note: "橋、海景午餐、17END 是一組拍照動線。",
+    points: [
+      { label: "牧山展望台", query: "牧山展望台 伊良部大橋", x: 36, y: 45, kind: "activity" },
+      { label: "Blue Turtle", query: "Blue Turtle Miyakojima", x: 54, y: 56, kind: "food" },
+      { label: "國仲商店", query: "Kuninaka Shoten Miyakojima", x: 62, y: 42, kind: "shop" },
+      { label: "17END", query: "17END Miyakojima", x: 78, y: 24, kind: "beach" },
+    ],
+  },
+  d0626: {
+    area: "宮古島市區補貨",
+    note: "自由日以補貨、甜點、餐廳與藥妝為主。",
+    points: [
+      { label: "Kujira Diner", query: "Kujira Diner Miyakojima", x: 34, y: 42, kind: "food" },
+      { label: "Painagama", query: "PAINAGAMA BLUE BOOTH", x: 44, y: 58, kind: "food" },
+      { label: "Niima Soba", query: "にいまそば 宮古島", x: 58, y: 44, kind: "food" },
+      { label: "MAXVALU", query: "MAXVALU Miyako Minami", x: 72, y: 62, kind: "shop" },
+      { label: "藥妝", query: "ドラッグストアモリ 宮古島店", x: 80, y: 48, kind: "shop" },
+    ],
+  },
+  d0627: {
+    area: "下地島機場",
+    note: "最後一天以退房、整理與前往機場為主。",
+    points: [
+      { label: "Santa Barbara", query: "Hotel Santa Barbara Miyakojima Resort", x: 35, y: 60, kind: "hotel" },
+      { label: "下地島機場", query: "Shimojishima Airport", x: 74, y: 36, kind: "transport" },
+    ],
+  },
+};
 
 const manuals = [
   { title: "01 Master Overview", src: "assets/page-1.jpg" },
@@ -297,6 +474,41 @@ function renderIllustration(kind = "spark") {
   return `<div class="sketch">${drawings[kind] || drawings.market}</div>`;
 }
 
+function renderDayMap(day) {
+  const map = dayMaps[day.id];
+  if (!map) return "";
+  const path = map.points.map((point) => `${point.x},${point.y}`).join(" ");
+  return `
+    <section class="day-map" aria-label="${day.date} ${map.area}活動位置示意">
+      <div class="day-map-head">
+        <div>
+          <strong>${map.area}</strong>
+          <span>${map.note}</span>
+        </div>
+        <a class="small-link map" href="${directionsUrl(map.points)}" target="_blank" rel="noreferrer">開啟當日地圖</a>
+      </div>
+      <div class="mini-map">
+        <svg class="mini-map-line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <polyline points="${path}" />
+        </svg>
+        ${map.points.map((point, index) => `
+          <a class="map-pin ${point.kind}" href="${mapUrl(point.query || point.label)}" target="_blank" rel="noreferrer" style="left:${point.x}%; top:${point.y}%;" aria-label="開啟 ${point.label} Google Maps">
+            <span>${index + 1}</span>
+          </a>
+        `).join("")}
+      </div>
+      <ol class="map-list">
+        ${map.points.map((point, index) => `
+          <li>
+            <span class="map-number">${index + 1}</span>
+            <a href="${mapUrl(point.query || point.label)}" target="_blank" rel="noreferrer">${point.label}</a>
+          </li>
+        `).join("")}
+      </ol>
+    </section>
+  `;
+}
+
 function renderRoute() {
   els.routeMap.innerHTML = route.map((stop) => `
     <div class="route-step">
@@ -339,6 +551,7 @@ function renderItinerary() {
             <span class="tag">${typeLabels[day.type]}</span>
           </div>
           <div class="shop-actions">${renderLinkButtons(day.links)}</div>
+          ${renderDayMap(day)}
         </div>
         <button class="status-pill ${status}" type="button" data-status-for="${day.id}">${statusLabels[status]}</button>
       </article>
