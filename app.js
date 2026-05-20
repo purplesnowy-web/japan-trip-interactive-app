@@ -12,29 +12,29 @@ const route = [
 ];
 
 const itinerary = [
-  { id: "d0610", date: "6/10", weekday: "三", region: "hokkaido", type: "main", icon: "飛", title: "台北到札幌", detail: "入住札幌格蘭貝爾飯店狸小路，晚上 YOSAKOI 索朗祭，大通公園周邊慢逛。", status: "confirmed" },
-  { id: "d0611", date: "6/11", weekday: "四", region: "hokkaido", type: "main", icon: "倉", title: "小樽運河慢散步", detail: "北運河、舊倉庫群、城市散步，重點放在節奏與照片。", status: "confirmed" },
-  { id: "d0612", date: "6/12", weekday: "五", region: "hokkaido", type: "branch", icon: "公", title: "莫埃來沼公園", detail: "莫埃來沼公園與城市留白，午後可視體力回市區補咖啡。", status: "confirmed" },
-  { id: "d0613", date: "6/13", weekday: "六", region: "hokkaido", type: "shop", icon: "咖", title: "狸小路補給與咖啡散步", detail: "さっぽろ石ころマーケット、札幌咖啡散步與市區補給。", status: "confirmed" },
-  { id: "d0614", date: "6/14", weekday: "日", region: "hokkaido", type: "transport", icon: "車", title: "札幌前往洞爺湖", detail: "11:00 ORIX 取車，KSS 小型車，前往洞爺湖住宿與婚禮主線。", status: "pending" },
-  { id: "d0615", date: "6/15", weekday: "一", region: "hokkaido", type: "main", icon: "湖", title: "洞爺湖婚禮主線", detail: "婚禮主線與湖邊留白，不排過密，保留拍照與休息。", status: "confirmed" },
-  { id: "d0616", date: "6/16", weekday: "二", region: "hokkaido", type: "transport", icon: "還", title: "洞爺湖回札幌", detail: "18:00 還車，入住船舶花園薄野飯店，可接札幌祭或中島公園屋台。", status: "confirmed" },
-  { id: "d0617", date: "6/17", weekday: "三", region: "tokyo", type: "transport", icon: "飛", title: "札幌到東京", detail: "ANA NH62 CTS → HND，入住上野寶石飯店，阿美橫丁輕量散步。", status: "confirmed" },
-  { id: "d0618", date: "6/18", weekday: "四", region: "tokyo", type: "main", icon: "城", title: "皇居、神保町、東京站", detail: "皇居東御苑解謎、三省堂活動、東京車站與京橋支線，原宿或表參道視體力決定。", status: "confirmed" },
-  { id: "d0619", date: "6/19", weekday: "五", region: "tokyo", type: "shop", icon: "晶", title: "御徒町礦物巡禮", detail: "Jewelry Marche 巡禮、クリスタル・ワールド、ニルヴァーナストーン。", status: "confirmed" },
-  { id: "d0620", date: "6/20", weekday: "六", region: "tokyo", type: "shop", icon: "展", title: "ミネラルマーケット2026", detail: "大田區產業プラザ PiO 固定主線，優先度最高。", status: "confirmed" },
-  { id: "d0621", date: "6/21", weekday: "日", region: "tokyo", type: "branch", icon: "市", title: "日本橋、上野與回場", detail: "Jewelry Marche 回場、OLD NEW MARKET 日本橋、上野髮型名店支線。晚上收車，隔天 04:20 起床。", status: "confirmed" },
-  { id: "d0622", date: "6/22", weekday: "一", region: "miyako", type: "transport", icon: "飛", title: "東京、沖繩到宮古島", detail: "上野出發，JAL JL903 HND → OKA 07:20-10:00，ANA NH1727 OKA → MMY 14:10-15:05，入住 Hotel Santa Barbara。", status: "confirmed" },
-  { id: "d0623", date: "6/23", weekday: "二", region: "miyako", type: "main", icon: "潛", title: "東南線順路日", detail: "KKDay 潛水建議上午場，午餐サマー太陽或 A&W，下午宮古神社、市區小店、Blue Seal、MAXVALU，15:30-17:00 Ningin Coffee。", status: "pending" },
-  { id: "d0624", date: "6/24", weekday: "三", region: "miyako", type: "main", icon: "海", title: "北海岸一日", detail: "Kujira Diner 早餐、海中公園、西平安名崎、雪鹽工廠、池間大橋、Gelato Cafe Ninufa、HARRY'S Shrimp Truck、砂山海灘。", status: "pending" },
-  { id: "d0625", date: "6/25", weekday: "四", region: "miyako", type: "main", icon: "橋", title: "伊良部與 17END 拍照日", detail: "牧山展望台、伊良部大橋、海之驛、Blue Turtle 午餐、1 LAB Hello VACAY、國仲商店、なかゆくい商店、Shinbiji、17END，晚上 HULAR。", status: "pending" },
-  { id: "d0626", date: "6/26", weekday: "五", region: "miyako", type: "branch", icon: "補", title: "自由日、補貨與伴手禮", detail: "Kujira Diner 早餐，白天自由安排與補貨，PAINAGAMA BLUE BOOTH、Niima Soba、久松製麵所、SUNDAYS、小さな幸せ Sakuri、MAXVALU、藥妝與店吉商港。", status: "pending" },
-  { id: "d0627", date: "6/27", weekday: "六", region: "miyako", type: "transport", icon: "返", title: "宮古島返回台北", detail: "11:00 前往下地島機場，星宇 JX891 SHI → TPE 14:00-14:10，整理行李、保護易碎購物、分裝伴手禮。", status: "confirmed" },
+  { id: "d0610", date: "6/10", weekday: "三", region: "hokkaido", type: "main", icon: "飛", art: "plane", title: "台北到札幌", detail: "入住札幌格蘭貝爾飯店狸小路，晚上 YOSAKOI 索朗祭，大通公園周邊慢逛。", status: "confirmed", links: { map: mapUrl("Odori Park Sapporo"), site: "https://www.yosakoi-soran.jp/" } },
+  { id: "d0611", date: "6/11", weekday: "四", region: "hokkaido", type: "main", icon: "倉", art: "canal", title: "小樽運河慢散步", detail: "北運河、舊倉庫群、城市散步，重點放在節奏與照片。", status: "confirmed", links: { map: mapUrl("Otaru Canal") } },
+  { id: "d0612", date: "6/12", weekday: "五", region: "hokkaido", type: "branch", icon: "公", art: "park", title: "莫埃來沼公園", detail: "莫埃來沼公園與城市留白，午後可視體力回市區補咖啡。", status: "confirmed", links: { map: mapUrl("Moerenuma Park"), site: "https://moerenumapark.jp/" } },
+  { id: "d0613", date: "6/13", weekday: "六", region: "hokkaido", type: "shop", icon: "咖", art: "coffee", title: "狸小路補給與咖啡散步", detail: "さっぽろ石ころマーケット、札幌咖啡散步與市區補給。", status: "confirmed", links: { map: mapUrl("Sapporo TV Tower"), site: "https://www.1456m.com/" } },
+  { id: "d0614", date: "6/14", weekday: "日", region: "hokkaido", type: "transport", icon: "車", art: "car", title: "札幌前往洞爺湖", detail: "11:00 ORIX 取車，KSS 小型車，前往 Cocoa Resort 洞爺湖住宿與婚禮主線。", status: "pending", links: { map: mapUrl("Cocoa Resort Toyako"), site: "https://cocoaresort.jp/" } },
+  { id: "d0615", date: "6/15", weekday: "一", region: "hokkaido", type: "main", icon: "湖", art: "lake", title: "洞爺湖婚禮主線", detail: "Cocoa Resort 與婚禮主線，湖邊留白，不排過密，保留拍照與休息。", status: "confirmed", links: { map: mapUrl("Cocoa Resort Toyako"), site: "https://cocoaresort.jp/" } },
+  { id: "d0616", date: "6/16", weekday: "二", region: "hokkaido", type: "transport", icon: "還", art: "car", title: "洞爺湖回札幌", detail: "18:00 還車，入住船舶花園薄野飯店，可接札幌祭或中島公園屋台。", status: "confirmed", links: { map: mapUrl("Ship Garden Susukino Hotel Sapporo") } },
+  { id: "d0617", date: "6/17", weekday: "三", region: "tokyo", type: "transport", icon: "飛", art: "plane", title: "札幌到東京", detail: "ANA NH62 CTS → HND，入住上野寶石飯店，阿美橫丁輕量散步。", status: "confirmed", links: { map: mapUrl("Hotel Sardonyx Ueno"), site: "https://hotel-sardonyx.jp/ueno/" } },
+  { id: "d0618", date: "6/18", weekday: "四", region: "tokyo", type: "main", icon: "城", art: "castle", title: "皇居、神保町、東京站", detail: "皇居東御苑解謎、三省堂活動、東京車站與京橋支線，原宿或表參道視體力決定。", status: "confirmed", links: { map: mapUrl("皇居東御苑"), site: "https://www.kunaicho.go.jp/jp/visit/event/nazotoki/" } },
+  { id: "d0619", date: "6/19", weekday: "五", region: "tokyo", type: "shop", icon: "晶", art: "mineral", title: "御徒町礦物巡禮", detail: "Jewelry Marche 巡禮、クリスタル・ワールド、ニルヴァーナストーン。", status: "confirmed", links: { map: mapUrl("御徒町 ジュエリーマルシェ"), site: "https://www.jewelry-marche.com/" } },
+  { id: "d0620", date: "6/20", weekday: "六", region: "tokyo", type: "shop", icon: "展", art: "mineral", title: "ミネラルマーケット2026", detail: "大田區產業プラザ PiO 固定主線，優先度最高。", status: "confirmed", links: { map: mapUrl("大田区産業プラザ PiO"), site: "https://mineralmarket.jp/" } },
+  { id: "d0621", date: "6/21", weekday: "日", region: "tokyo", type: "branch", icon: "市", art: "market", title: "日本橋、上野與回場", detail: "Jewelry Marche 回場、OLD NEW MARKET 日本橋、上野髮型名店支線。晚上收車，隔天 04:20 起床。", status: "confirmed", links: { map: mapUrl("OLD NEW MARKET 日本橋"), site: "https://www.oldnewmarket.com/" } },
+  { id: "d0622", date: "6/22", weekday: "一", region: "miyako", type: "transport", icon: "飛", art: "plane", title: "東京、沖繩到宮古島", detail: "上野出發，JAL JL903 HND → OKA 07:20-10:00，ANA NH1727 OKA → MMY 14:10-15:05，入住 Hotel Santa Barbara。", status: "confirmed", links: { map: mapUrl("Hotel Santa Barbara Miyakojima Resort"), site: "https://santabarbara-miyakojima.com/" } },
+  { id: "d0623", date: "6/23", weekday: "二", region: "miyako", type: "main", icon: "潛", art: "snorkel", title: "東南線順路日", detail: "KKDay 潛水建議上午場，午餐サマー太陽或 A&W，下午宮古神社、市區小店、Blue Seal、MAXVALU，15:30-17:00 Ningin Coffee。", status: "pending", links: { map: mapUrl("Ningin Coffee Miyakojima"), site: "https://www.kkday.com/zh-tw/product/551971" } },
+  { id: "d0624", date: "6/24", weekday: "三", region: "miyako", type: "main", icon: "海", art: "sea", title: "北海岸一日", detail: "Kujira Diner 早餐、海中公園、西平安名崎、雪鹽工廠、池間大橋、Gelato Cafe Ninufa、HARRY'S Shrimp Truck、砂山海灘。", status: "pending", links: { map: mapUrl("Sunayama Beach Miyakojima"), sns: "https://www.instagram.com/gelato_cafe_ninufa/" } },
+  { id: "d0625", date: "6/25", weekday: "四", region: "miyako", type: "main", icon: "橋", art: "bridge", title: "伊良部與 17END 拍照日", detail: "牧山展望台、伊良部大橋、海之驛、Blue Turtle 午餐、1 LAB Hello VACAY、國仲商店、なかゆくい商店、Shinbiji、17END，晚上 HULAR。", status: "pending", links: { map: mapUrl("17END Miyakojima") } },
+  { id: "d0626", date: "6/26", weekday: "五", region: "miyako", type: "branch", icon: "補", art: "shopping", title: "自由日、補貨與伴手禮", detail: "Kujira Diner 早餐，白天自由安排與補貨，PAINAGAMA BLUE BOOTH、Niima Soba、久松製麵所、SUNDAYS、小さな幸せ Sakuri、MAXVALU、藥妝與店吉商港。", status: "pending", links: { map: mapUrl("MAXVALU Miyako Minami"), sns: "https://www.instagram.com/painagama_bluebooth/" } },
+  { id: "d0627", date: "6/27", weekday: "六", region: "miyako", type: "transport", icon: "返", art: "luggage", title: "宮古島返回台北", detail: "11:00 前往下地島機場，星宇 JX891 SHI → TPE 14:00-14:10，整理行李、保護易碎購物、分裝伴手禮。", status: "confirmed", links: { map: mapUrl("Shimojishima Airport") } },
 ];
 
 const bookings = [
   { id: "h1", category: "hotel", region: "hokkaido", icon: "宿", date: "6/10-6/14", title: "札幌格蘭貝爾飯店狸小路", meta: "Granbell Hotel Tanuki, Sapporo · 已訂 · NT$15,784.89", status: "confirmed", links: { map: mapUrl("Granbell Hotel Tanuki Sapporo"), site: "https://granbellhotel.jp/sapporo-tanukikoji/" } },
-  { id: "h2", category: "hotel", region: "hokkaido", icon: "宿", date: "6/14-6/16", title: "洞爺湖住宿", meta: "婚禮方協助安排 · 已確認 · 費用待補", status: "confirmed", links: { map: mapUrl("Toyako hotel") } },
+  { id: "h2", category: "hotel", region: "hokkaido", icon: "宿", date: "6/14-6/16", title: "Cocoa Resort 洞爺湖", meta: "洞爺湖住宿 · 已確認 · 費用待補", status: "confirmed", links: { map: mapUrl("Cocoa Resort Toyako"), site: "https://cocoaresort.jp/" } },
   { id: "h3", category: "hotel", region: "hokkaido", icon: "宿", date: "6/16-6/17", title: "船舶花園薄野飯店", meta: "已訂 · NT$4,252", status: "confirmed", links: { map: mapUrl("Ship Garden Susukino Hotel Sapporo") } },
   { id: "h4", category: "hotel", region: "tokyo", icon: "宿", date: "6/17-6/22", title: "上野寶石飯店", meta: "Hotel Sardonyx Ueno · 已訂 · NT$16,344", status: "confirmed", links: { map: mapUrl("Hotel Sardonyx Ueno"), site: "https://hotel-sardonyx.jp/ueno/" } },
   { id: "h5", category: "hotel", region: "miyako", icon: "宿", date: "6/22-6/27", title: "Hotel Santa Barbara Miyakojima Resort", meta: "公司行程住宿 · 已確認 · 費用待補", status: "confirmed", links: { map: mapUrl("Hotel Santa Barbara Miyakojima Resort"), site: "https://santabarbara-miyakojima.com/" } },
@@ -51,6 +51,7 @@ const places = [
   { id: "p02", region: "hokkaido", type: "activity", title: "小樽運河", detail: "6/11 小樽慢散步主線。", tags: ["散步", "小樽"], links: { map: mapUrl("Otaru Canal") } },
   { id: "p03", region: "hokkaido", type: "activity", title: "莫埃來沼公園", detail: "6/12 城市留白與公園線。", tags: ["公園", "札幌"], links: { map: mapUrl("Moerenuma Park"), site: "https://moerenumapark.jp/" } },
   { id: "p04", region: "hokkaido", type: "activity", title: "さっぽろ石ころマーケット", detail: "6/13 礦物活動，札幌電視塔 2F。", tags: ["礦物", "活動"], links: { map: mapUrl("Sapporo TV Tower"), site: "https://www.1456m.com/" } },
+  { id: "p04b", region: "hokkaido", type: "shop", title: "Cocoa Resort 洞爺湖", detail: "6/14-6/16 洞爺湖住宿，婚禮主線與湖邊留白的基地。", tags: ["住宿", "洞爺湖"], links: { map: mapUrl("Cocoa Resort Toyako"), site: "https://cocoaresort.jp/" } },
   { id: "p05", region: "hokkaido", type: "shop", title: "PHILOCOFFEA 札幌", detail: "粕谷哲 4:6 沖煮法，北海道邊線。", tags: ["咖啡", "札幌"], links: { map: mapUrl("PHILOCOFFEA Sapporo") } },
   { id: "p06", region: "hokkaido", type: "shop", title: "Seed Coffee Roasters", detail: "札幌龜頭，精品咖啡。", tags: ["咖啡", "札幌"], links: { map: mapUrl("Seed Coffee Roasters Sapporo") } },
   { id: "p07", region: "hokkaido", type: "shop", title: "Cafe Morihiko 森彦", detail: "古民家咖啡，札幌咖啡文化地標。", tags: ["咖啡", "地標"], links: { map: mapUrl("Cafe Morihiko Sapporo") } },
@@ -211,6 +212,91 @@ function renderLinkButtons(links = {}) {
     .join("");
 }
 
+function renderIllustration(kind = "spark") {
+  const drawings = {
+    mineral: `
+      <svg viewBox="0 0 120 96" aria-hidden="true">
+        <path class="wash cyan" d="M22 72 39 28l18 44Z" />
+        <path class="wash pink" d="M48 76 72 18l26 58Z" />
+        <path d="M22 72 39 28l18 44ZM48 76 72 18l26 58ZM39 28l9 48M72 18l-5 58M72 18l13 58" />
+        <path class="spark" d="M24 18h14M31 11v14M94 23h10M99 18v10" />
+      </svg>`,
+    coffee: `
+      <svg viewBox="0 0 120 96" aria-hidden="true">
+        <path class="wash pink" d="M24 48h58v12a24 24 0 0 1-24 24H48a24 24 0 0 1-24-24Z" />
+        <path d="M24 48h58v12a24 24 0 0 1-24 24H48a24 24 0 0 1-24-24ZM82 54h10c10 0 10 17 0 17h-9" />
+        <path class="steam" d="M40 35c-6-7 8-9 1-18M58 34c-6-7 8-9 1-18M72 35c-6-7 8-9 1-18" />
+      </svg>`,
+    plane: `
+      <svg viewBox="0 0 120 96" aria-hidden="true">
+        <path class="wash cyan" d="M14 55 104 24 72 63l-3 22-18-16-23 9Z" />
+        <path d="M14 55 104 24 72 63l-3 22-18-16-23 9Z M51 69l53-45" />
+        <path class="spark" d="M22 25h12M28 19v12M91 70h12M97 64v12" />
+      </svg>`,
+    lake: `
+      <svg viewBox="0 0 120 96" aria-hidden="true">
+        <path class="wash cyan" d="M18 70c18-12 30 8 48-4 15-10 25-4 36 4v16H18Z" />
+        <path d="M18 70c18-12 30 8 48-4 15-10 25-4 36 4M27 54l18-27 17 27M54 54l20-34 25 43" />
+        <path class="spark" d="M20 82c14-6 25 5 39 0 13-5 25-5 41 1" />
+      </svg>`,
+    sea: `
+      <svg viewBox="0 0 120 96" aria-hidden="true">
+        <circle class="wash pink" cx="82" cy="28" r="14" />
+        <path d="M17 64c11-9 22-9 33 0s22 9 33 0 22-9 33 0M16 78c11-9 22-9 33 0s22 9 33 0 22-9 33 0" />
+        <path class="wash cyan" d="M20 66c10-8 21-8 31 0s20 8 30 0 21-8 31 0v23H20Z" />
+      </svg>`,
+    bridge: `
+      <svg viewBox="0 0 120 96" aria-hidden="true">
+        <path class="wash cyan" d="M15 70c18-20 72-20 90 0v15H15Z" />
+        <path d="M15 70c18-20 72-20 90 0M24 70V55M40 63V46M60 58V36M80 63V46M96 70V55M20 78h90" />
+      </svg>`,
+    castle: `
+      <svg viewBox="0 0 120 96" aria-hidden="true">
+        <path class="wash pink" d="M30 76V42l30-22 30 22v34Z" />
+        <path d="M30 76V42l30-22 30 22v34ZM42 76V55h36v21M46 40h28M52 30h16M34 52h16M70 52h16" />
+      </svg>`,
+    market: `
+      <svg viewBox="0 0 120 96" aria-hidden="true">
+        <path class="wash pink" d="M24 38h72l-8 22H32Z" />
+        <path d="M24 38h72l-8 22H32ZM33 60v26M87 60v26M39 30h42M45 30l8-12h20l8 12" />
+        <path class="spark" d="M42 72h37" />
+      </svg>`,
+    snorkel: `
+      <svg viewBox="0 0 120 96" aria-hidden="true">
+        <path class="wash cyan" d="M24 58c16-14 28 10 44-4s27-6 39 5v28H24Z" />
+        <path d="M35 34c8-12 28-12 36 0v18H35ZM71 43h15c10 0 10-21 1-21h-6M31 64c17-10 27 8 43-3 14-9 24-5 35 2" />
+      </svg>`,
+    car: `
+      <svg viewBox="0 0 120 96" aria-hidden="true">
+        <path class="wash cyan" d="M22 60h12l12-20h34l13 20h9v20H22Z" />
+        <path d="M22 60h12l12-20h34l13 20h9v20H22ZM43 60h41M38 80a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM87 80a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z" />
+      </svg>`,
+    shopping: `
+      <svg viewBox="0 0 120 96" aria-hidden="true">
+        <path class="wash pink" d="M33 35h54l-5 52H38Z" />
+        <path d="M33 35h54l-5 52H38ZM46 35c0-23 28-23 28 0M45 56h30M45 70h20" />
+      </svg>`,
+    luggage: `
+      <svg viewBox="0 0 120 96" aria-hidden="true">
+        <path class="wash cyan" d="M38 30h44v58H38Z" />
+        <path d="M38 30h44v58H38ZM50 30V18h20v12M48 43h24M48 58h24M48 73h24M32 88h56" />
+      </svg>`,
+    park: `
+      <svg viewBox="0 0 120 96" aria-hidden="true">
+        <path class="wash cyan" d="M36 81h52L62 25Z" />
+        <path d="M62 25v56M36 81h52L62 25ZM30 83h74" />
+        <path class="spark" d="M24 36c10-14 22-14 32 0M68 42c10-14 22-14 32 0" />
+      </svg>`,
+    canal: `
+      <svg viewBox="0 0 120 96" aria-hidden="true">
+        <path class="wash cyan" d="M15 68h90v20H15Z" />
+        <path d="M18 66h84M22 80c15-7 25 6 40 0s25-7 42 0M28 58V32h22v26M70 58V28h22v30M25 32h28M67 28h28" />
+      </svg>`,
+  };
+
+  return `<div class="sketch">${drawings[kind] || drawings.market}</div>`;
+}
+
 function renderRoute() {
   els.routeMap.innerHTML = route.map((stop) => `
     <div class="route-step">
@@ -244,7 +330,7 @@ function renderItinerary() {
     return `
       <article class="day-row${hidden}" data-detail-kind="itinerary" data-id="${day.id}">
         <div class="date-block">${day.date}<span>星期${day.weekday}</span></div>
-        <div class="day-icon">${day.icon}</div>
+        ${renderIllustration(day.art)}
         <div class="day-main">
           <h3>${day.title}</h3>
           <p>${day.detail}</p>
@@ -252,6 +338,7 @@ function renderItinerary() {
             <span class="tag">${regionLabels[day.region]}</span>
             <span class="tag">${typeLabels[day.type]}</span>
           </div>
+          <div class="shop-actions">${renderLinkButtons(day.links)}</div>
         </div>
         <button class="status-pill ${status}" type="button" data-status-for="${day.id}">${statusLabels[status]}</button>
       </article>
@@ -301,6 +388,7 @@ function renderPlaces() {
     const accent = index % 3 === 0 ? "var(--sky)" : index % 3 === 1 ? "var(--sage-soft)" : "var(--rose)";
     return `
       <article class="shop-card${hidden}" style="--accent: ${accent}">
+        ${renderIllustration(place.tags.includes("礦物") ? "mineral" : place.tags.includes("咖啡") ? "coffee" : place.tags.includes("海灘") || place.tags.includes("海景") ? "sea" : place.tags.includes("拍照") ? "bridge" : place.type === "activity" ? "market" : "shopping")}
         <div>
           <p class="panel-kicker">${regionLabels[place.region]} · ${typeLabels[place.type]}</p>
           <h3>${place.title}</h3>
@@ -398,6 +486,7 @@ function openDetail(kind, id) {
     <div class="dialog-body">
       <p class="panel-kicker">${regionLabels[item.region]} · ${item.date || ""}</p>
       <h2>${item.title}</h2>
+      ${renderIllustration(item.art || item.icon)}
       <p>${item.detail || item.meta || ""}</p>
       <div class="tag-row">
         <span class="tag">${statusLabels[currentStatus(item)]}</span>
@@ -457,7 +546,7 @@ function bindEvents() {
     }
 
     const detail = event.target.closest("[data-detail-kind]");
-    if (detail && !event.target.closest("button")) {
+    if (detail && !event.target.closest("button, a")) {
       openDetail(detail.dataset.detailKind, detail.dataset.id);
       return;
     }

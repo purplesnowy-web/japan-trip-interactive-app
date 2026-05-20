@@ -193,8 +193,7 @@ main {
 }
 
 .control-strip {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 20;
   display: grid;
   grid-template-columns: minmax(220px, 1fr) minmax(320px, 1.4fr) 180px;
@@ -288,7 +287,7 @@ input, select {
 .timeline { display: grid; gap: 12px; }
 .day-row {
   display: grid;
-  grid-template-columns: 108px 42px 1fr auto;
+  grid-template-columns: 108px 96px 1fr auto;
   gap: 16px;
   align-items: center;
   padding: 14px;
@@ -310,6 +309,56 @@ input, select {
   color: var(--night);
   background: var(--cyan);
   font-weight: 700;
+}
+
+.sketch {
+  align-self: center;
+  width: 92px;
+  min-width: 92px;
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radius);
+  border: 1px solid rgba(53, 32, 125, 0.22);
+  background:
+    radial-gradient(circle at 20% 18%, rgba(255, 79, 188, 0.24), transparent 34%),
+    radial-gradient(circle at 78% 76%, rgba(53, 243, 228, 0.24), transparent 38%),
+    rgba(255, 248, 233, 0.74);
+  padding: 8px;
+}
+
+.sketch svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.sketch path,
+.sketch circle {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.sketch .wash {
+  stroke: none;
+  opacity: 0.58;
+}
+
+.sketch .wash.cyan {
+  fill: var(--cyan);
+}
+
+.sketch .wash.pink {
+  fill: var(--pink);
+}
+
+.sketch .spark,
+.sketch .steam {
+  stroke: var(--pink);
+  stroke-width: 3;
 }
 .day-main h3, .booking-main h3, .shop-card h3 {
   margin-bottom: 5px;
@@ -379,11 +428,19 @@ input, select {
 }
 .shop-card {
   display: grid;
+  grid-template-rows: auto 1fr auto auto;
   min-height: 230px;
   padding: 16px;
   border: 1px solid rgba(53, 32, 125, 0.26);
   border-radius: var(--radius);
   background: linear-gradient(180deg, rgba(255, 248, 233, 0.92), rgba(255, 248, 233, 0.78)), var(--accent, var(--sky));
+}
+.shop-card .sketch {
+  width: 100%;
+  min-width: 0;
+  max-width: 150px;
+  justify-self: end;
+  margin-bottom: 10px;
 }
 .shop-card .tag-row { margin-top: auto; }
 .tag {
@@ -484,7 +541,9 @@ dialog::backdrop { background: rgba(9, 5, 47, 0.62); }
   .hero { min-height: auto; padding-bottom: 42px; }
   .topbar, .panel-head { flex-direction: column; align-items: start; }
   .segmented, .route-stats, .cards-view { grid-template-columns: 1fr; }
+  .control-strip { position: static; z-index: auto; }
   .day-row, .booking-card, .task-item, .link-item { grid-template-columns: 1fr; align-items: start; }
+  .day-row .sketch { width: min(100%, 150px); }
   .status-pill, .inline-actions { justify-self: start; justify-content: flex-start; }
 }
 
