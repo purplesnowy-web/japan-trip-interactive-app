@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-title" content="日本大跳島" />
     <title>2026 日本大跳島遠征互動手冊</title>
     <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles-v2.css" />
   </head>
   <body>
     <header class="hero">
@@ -28,7 +28,7 @@
           <p class="eyebrow">北海道 × 東京 × 宮古島</p>
           <h1>慢節奏雙人旅行作戰台</h1>
           <p class="hero-lede">
-            主線固定，支線彈性。把住宿、交通、活動、礦物店、咖啡與待辦集中成可搜尋、可篩選、可勾選的互動清單。
+            主線固定，支線彈性。把住宿、交通、活動、餐廳、咖啡、礦物店、Google Maps、官網與 SNS 集中成可搜尋、可篩選、可勾選的互動清單。
           </p>
           <div class="hero-actions" role="group" aria-label="快速切換">
             <button class="primary-action" data-jump="itinerary" type="button">查看每日行程</button>
@@ -58,7 +58,8 @@
             <option value="branch">支線</option>
             <option value="hotel">住宿</option>
             <option value="transport">交通</option>
-            <option value="shop">礦物與咖啡</option>
+            <option value="shop">地點餐廳</option>
+            <option value="activity">活動</option>
             <option value="task">待辦</option>
           </select>
         </label>
@@ -73,7 +74,7 @@
         <article class="metric-block">
           <span class="metric-label">已知住宿</span>
           <strong id="knownHotelCost">NT$0</strong>
-          <span>洞爺湖、宮古島待補</span>
+          <span>含札幌、東京已知費用</span>
         </article>
         <article class="metric-block">
           <span class="metric-label">目前完成</span>
@@ -126,7 +127,7 @@
           <div class="panel-head">
             <div>
               <p class="panel-kicker">04</p>
-              <h2>礦物收藏與咖啡選店</h2>
+              <h2>地點、餐廳與活動連結</h2>
             </div>
           </div>
           <div id="shopGrid" class="shop-grid"></div>
