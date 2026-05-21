@@ -337,6 +337,8 @@ const els = {
   progressPercent: document.querySelector("#progressPercent"),
   progressText: document.querySelector("#progressText"),
   openTasks: document.querySelector("#openTasks"),
+  todayPanel: document.querySelector("#todayPanel"),
+  designNotes: document.querySelector("#designNotes"),
   dialog: document.querySelector("#detailDialog"),
   dialogContent: document.querySelector("#dialogContent"),
 };
@@ -653,6 +655,79 @@ function renderMetrics() {
   els.openTasks.textContent = totalTasks - doneTasks;
 }
 
+function tripDate(day) {
+  const [, month, date] = day.id.match(/^d(\d{2})(\d{2})$/) || [];
+  return new Date(2026, Number(month) - 1, Number(date));
+}
+
+function renderTodayPanel() {
+  if (!els.todayPanel) return;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const firstDay = tripDate(itinerary[0]);
+  const lastDay = tripDate(itinerary[itinerary.length - 1]);
+  let mode = "before";
+  let selected = itinerary[0];
+
+  if (today > lastDay) {
+    mode = "after";
+    selected = itinerary[itinerary.length - 1];
+  } else if (today >= firstDay) {
+    mode = "during";
+    selected = itinerary.find((day) => tripDate(day).getTime() === today.getTime()) || itinerary[0];
+  }
+
+  const selectedMap = dayMaps[selected.id];
+  const daysDiff = Math.round((tripDate(selected) - today) / 86400000);
+  const title =
+    mode === "before"
+      ? `距離出發還有 ${Math.max(daysDiff, 0)} 天`
+      : mode === "after"
+        ? "旅程已完成，現在適合整理回憶"
+        : "今天的行程焦點";
+
+  els.todayPanel.innerHTML = `
+    <div class="today-card">
+      ${renderIllustration(selected.art)}
+      <div class="today-copy">
+        <p class="panel-kicker">${title}</p>
+        <h3>${selected.date} 星期${selected.weekday} · ${selected.title}</h3>
+        <p>${selected.detail}</p>
+        <div class="tag-row">
+          <span class="tag">${regionLabels[selected.region]}</span>
+          <span class="tag">${typeLabels[selected.type]}</span>
+          ${selectedMap ? `<span class="tag">${selectedMap.area}</span>` : ""}
+        </div>
+        <div class="shop-actions">
+          ${renderLinkButtons(selected.links)}
+          ${selectedMap ? `<a class="small-link map" href="${directionsUrl(selectedMap.points)}" target="_blank" rel="noreferrer">當日動線</a>` : ""}
+          <button class="small-link button-link" type="button" data-jump="itinerary">看完整每日行程</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderDesignNotes() {
+  if (!els.designNotes) return;
+  const notes = [
+    ["先總覽", "像金融 dashboard 一樣，先看天數、費用、完成率與待辦，降低資訊壓力。"],
+    ["再行動", "今日模式只放下一步與當日地圖，避免旅途中被完整資料淹沒。"],
+    ["最後查明細", "每日行程、住宿交通、地點連結分區，是把資料庫變成可操作工具。"],
+  ];
+  els.designNotes.innerHTML = `
+    <div class="lesson-list">
+      ${notes.map(([title, text], index) => `
+        <article class="lesson-card">
+          <span class="lesson-number">${index + 1}</span>
+          <strong>${title}</strong>
+          <p>${text}</p>
+        </article>
+      `).join("")}
+    </div>
+  `;
+}
+
 function renderAll() {
   renderTabs();
   renderItinerary();
@@ -661,6 +736,8 @@ function renderAll() {
   renderPlaces();
   renderLinks();
   renderMetrics();
+  renderTodayPanel();
+  renderDesignNotes();
   markEmptyPanels();
 }
 
