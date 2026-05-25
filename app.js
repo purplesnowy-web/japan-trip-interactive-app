@@ -1,6 +1,7 @@
 const STORAGE_KEY = "jp-island-trip-2026-v2-state";
 
 const mapUrl = (query) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+const searchUrl = (query) => `https://www.google.com/search?q=${encodeURIComponent(query)}`;
 const directionsUrl = (points) => {
   const named = points.map((point) => point.query || point.label);
   const [origin, ...rest] = named;
@@ -21,7 +22,7 @@ const route = [
 const itinerary = [
   { id: "d0610", date: "6/10", weekday: "三", region: "hokkaido", type: "main", icon: "飛", art: "plane", title: "台北到札幌", detail: "入住札幌格蘭貝爾飯店狸小路，晚上 YOSAKOI 索朗祭，大通公園周邊慢逛。", status: "confirmed", links: { map: mapUrl("Odori Park Sapporo"), site: "https://www.yosakoi-soran.jp/" } },
   { id: "d0611", date: "6/11", weekday: "四", region: "hokkaido", type: "main", icon: "倉", art: "canal", title: "小樽運河慢散步", detail: "北運河、舊倉庫群、城市散步，重點放在節奏與照片。", status: "confirmed", links: { map: mapUrl("Otaru Canal") } },
-  { id: "d0612", date: "6/12", weekday: "五", region: "hokkaido", type: "branch", icon: "公", art: "park", title: "莫埃來沼公園", detail: "莫埃來沼公園與城市留白，午後可視體力回市區補咖啡。", status: "confirmed", links: { map: mapUrl("Moerenuma Park"), site: "https://moerenumapark.jp/" } },
+  { id: "d0612", date: "6/12", weekday: "五", region: "hokkaido", type: "branch", icon: "公", art: "park", title: "莫埃來沼公園", detail: "莫埃來沼公園與城市留白，午後可視體力回市區補咖啡。", status: "flexible", links: { map: mapUrl("Moerenuma Park"), site: "https://moerenumapark.jp/" } },
   { id: "d0613", date: "6/13", weekday: "六", region: "hokkaido", type: "shop", icon: "咖", art: "coffee", title: "狸小路補給與咖啡散步", detail: "さっぽろ石ころマーケット、札幌咖啡散步與市區補給。", status: "confirmed", links: { map: mapUrl("Sapporo TV Tower"), site: "https://www.1456m.com/" } },
   { id: "d0614", date: "6/14", weekday: "日", region: "hokkaido", type: "transport", icon: "車", art: "car", title: "札幌前往洞爺湖", detail: "11:00 ORIX 取車，KSS 小型車，前往 Cocoa Resort 洞爺湖住宿與婚禮主線。", status: "pending", links: { map: mapUrl("Cocoa Resort Toyako"), site: "https://cocoaresort.jp/" } },
   { id: "d0615", date: "6/15", weekday: "一", region: "hokkaido", type: "main", icon: "湖", art: "lake", title: "洞爺湖婚禮主線", detail: "Cocoa Resort 與婚禮主線，湖邊留白，不排過密，保留拍照與休息。", status: "confirmed", links: { map: mapUrl("Cocoa Resort Toyako"), site: "https://cocoaresort.jp/" } },
@@ -33,9 +34,9 @@ const itinerary = [
   { id: "d0621", date: "6/21", weekday: "日", region: "tokyo", type: "branch", icon: "市", art: "market", title: "日本橋、上野與回場", detail: "Jewelry Marche 回場、OLD NEW MARKET 日本橋、上野髮型名店支線。晚上收車，隔天 04:20 起床。", status: "confirmed", links: { map: mapUrl("OLD NEW MARKET 日本橋"), site: "https://www.oldnewmarket.com/" } },
   { id: "d0622", date: "6/22", weekday: "一", region: "miyako", type: "transport", icon: "飛", art: "plane", title: "東京、沖繩到宮古島", detail: "上野出發，JAL JL903 HND → OKA 07:20-10:00，ANA NH1727 OKA → MMY 14:10-15:05，入住 Hotel Santa Barbara。", status: "confirmed", links: { map: mapUrl("Hotel Santa Barbara Miyakojima Resort"), site: "https://santabarbara-miyakojima.com/" } },
   { id: "d0623", date: "6/23", weekday: "二", region: "miyako", type: "main", icon: "潛", art: "snorkel", title: "東南線順路日", detail: "KKDay 潛水建議上午場，午餐サマー太陽或 A&W，下午宮古神社、市區小店、Blue Seal、MAXVALU，15:30-17:00 Ningin Coffee。", status: "pending", links: { map: mapUrl("Ningin Coffee Miyakojima"), site: "https://www.kkday.com/zh-tw/product/551971" } },
-  { id: "d0624", date: "6/24", weekday: "三", region: "miyako", type: "main", icon: "海", art: "sea", title: "北海岸一日", detail: "Kujira Diner 早餐、海中公園、西平安名崎、雪鹽工廠、池間大橋、Gelato Cafe Ninufa、HARRY'S Shrimp Truck、砂山海灘。", status: "pending", links: { map: mapUrl("Sunayama Beach Miyakojima"), sns: "https://www.instagram.com/gelato_cafe_ninufa/" } },
-  { id: "d0625", date: "6/25", weekday: "四", region: "miyako", type: "main", icon: "橋", art: "bridge", title: "伊良部與 17END 拍照日", detail: "牧山展望台、伊良部大橋、海之驛、Blue Turtle 午餐、1 LAB Hello VACAY、國仲商店、なかゆくい商店、Shinbiji、17END，晚上 HULAR。", status: "pending", links: { map: mapUrl("17END Miyakojima") } },
-  { id: "d0626", date: "6/26", weekday: "五", region: "miyako", type: "branch", icon: "補", art: "shopping", title: "自由日、補貨與伴手禮", detail: "Kujira Diner 早餐，白天自由安排與補貨，PAINAGAMA BLUE BOOTH、Niima Soba、久松製麵所、SUNDAYS、小さな幸せ Sakuri、MAXVALU、藥妝與店吉商港。", status: "pending", links: { map: mapUrl("MAXVALU Miyako Minami"), sns: "https://www.instagram.com/painagama_bluebooth/" } },
+  { id: "d0624", date: "6/24", weekday: "三", region: "miyako", type: "main", icon: "海", art: "sea", title: "北海岸一日", detail: "Kujira Diner 早餐、海中公園、西平安名崎、雪鹽工廠、池間大橋、Gelato Cafe Ninufa、HARRY'S Shrimp Truck、砂山海灘。", status: "flexible", links: { map: mapUrl("Sunayama Beach Miyakojima"), sns: "https://www.instagram.com/gelato_cafe_ninufa/" } },
+  { id: "d0625", date: "6/25", weekday: "四", region: "miyako", type: "main", icon: "橋", art: "bridge", title: "伊良部與 17END 拍照日", detail: "牧山展望台、伊良部大橋、海之驛、Blue Turtle 午餐、1 LAB Hello VACAY、國仲商店、なかゆくい商店、Shinbiji、17END，晚上 HULAR。", status: "flexible", links: { map: mapUrl("17END Miyakojima") } },
+  { id: "d0626", date: "6/26", weekday: "五", region: "miyako", type: "branch", icon: "補", art: "shopping", title: "自由日、補貨與伴手禮", detail: "Kujira Diner 早餐，白天自由安排與補貨，PAINAGAMA BLUE BOOTH、Niima Soba、久松製麵所、SUNDAYS、小さな幸せ Sakuri、MAXVALU、藥妝與店吉商港。", status: "flexible", links: { map: mapUrl("MAXVALU Miyako Minami"), sns: "https://www.instagram.com/painagama_bluebooth/" } },
   { id: "d0627", date: "6/27", weekday: "六", region: "miyako", type: "transport", icon: "返", art: "luggage", title: "宮古島返回台北", detail: "11:00 前往下地島機場，星宇 JX891 SHI → TPE 14:00-14:10，整理行李、保護易碎購物、分裝伴手禮。", status: "confirmed", links: { map: mapUrl("Shimojishima Airport") } },
 ];
 
@@ -59,10 +60,10 @@ const places = [
   { id: "p03", region: "hokkaido", type: "activity", title: "莫埃來沼公園", detail: "6/12 城市留白與公園線。", tags: ["公園", "札幌"], links: { map: mapUrl("Moerenuma Park"), site: "https://moerenumapark.jp/" } },
   { id: "p04", region: "hokkaido", type: "activity", title: "さっぽろ石ころマーケット", detail: "6/13 礦物活動，札幌電視塔 2F。", tags: ["礦物", "活動"], links: { map: mapUrl("Sapporo TV Tower"), site: "https://www.1456m.com/" } },
   { id: "p04b", region: "hokkaido", type: "shop", title: "Cocoa Resort 洞爺湖", detail: "6/14-6/16 洞爺湖住宿，婚禮主線與湖邊留白的基地。", tags: ["住宿", "洞爺湖"], links: { map: mapUrl("Cocoa Resort Toyako"), site: "https://cocoaresort.jp/" } },
-  { id: "p05", region: "hokkaido", type: "shop", title: "PHILOCOFFEA 札幌", detail: "粕谷哲 4:6 沖煮法，北海道邊線。", tags: ["咖啡", "札幌"], links: { map: mapUrl("PHILOCOFFEA Sapporo") } },
-  { id: "p06", region: "hokkaido", type: "shop", title: "Seed Coffee Roasters", detail: "札幌龜頭，精品咖啡。", tags: ["咖啡", "札幌"], links: { map: mapUrl("Seed Coffee Roasters Sapporo") } },
-  { id: "p07", region: "hokkaido", type: "shop", title: "Cafe Morihiko 森彦", detail: "古民家咖啡，札幌咖啡文化地標。", tags: ["咖啡", "地標"], links: { map: mapUrl("Cafe Morihiko Sapporo") } },
-  { id: "p08", region: "hokkaido", type: "shop", title: "Baristart Coffee", detail: "北海道牛奶拿鐵代表。", tags: ["咖啡", "拿鐵"], links: { map: mapUrl("Baristart Coffee Sapporo") } },
+  { id: "p05", region: "hokkaido", type: "shop", title: "Brew it by NODE", detail: "札幌市中心精品咖啡，取代不在北海道的 PHILOCOFFEA 札幌項目。", tags: ["咖啡", "札幌"], links: { map: mapUrl("Brew it by NODE Sapporo"), site: "https://typica.coffee/ja/locations/brew-it-by-node/", sns: "https://www.instagram.com/node_brewit/" } },
+  { id: "p06", region: "hokkaido", type: "shop", title: "Seed Coffee Roasters", detail: "札幌咖啡備案，官方資訊待二次確認。", tags: ["咖啡", "札幌"], links: { map: mapUrl("Seed Coffee Roasters Sapporo"), web: searchUrl("Seed Coffee Roasters Sapporo official Instagram") } },
+  { id: "p07", region: "hokkaido", type: "shop", title: "Cafe Morihiko 森彦", detail: "古民家咖啡，札幌咖啡文化地標。", tags: ["咖啡", "地標"], links: { map: mapUrl("Cafe Morihiko Sapporo"), site: "https://www.morihico.com/", sns: "https://www.instagram.com/morihico.official/" } },
+  { id: "p08", region: "hokkaido", type: "shop", title: "Baristart Coffee", detail: "北海道牛奶拿鐵代表。", tags: ["咖啡", "拿鐵"], links: { map: mapUrl("Baristart Coffee Sapporo"), site: "https://www.baristartcoffee.com/", sns: "https://www.instagram.com/baristartcoffee/" } },
   { id: "p09", region: "tokyo", type: "activity", title: "皇居東御苑實境解謎", detail: "6/18 主線活動。", tags: ["解謎", "皇居"], links: { map: mapUrl("皇居東御苑"), site: "https://www.kunaicho.go.jp/jp/visit/event/nazotoki/" } },
   { id: "p10", region: "tokyo", type: "activity", title: "ミネルホリック！Vol.7", detail: "三省堂書店 神田神保町本店活動。", tags: ["活動", "神保町"], links: { map: mapUrl("三省堂書店 神田神保町本店"), site: "https://jinbocho.books-sanseido.co.jp/events/10221" } },
   { id: "p11", region: "tokyo", type: "shop", title: "Jewelry Marche", detail: "6/19、6/21 御徒町礦物巡禮與回場。", tags: ["礦物", "御徒町"], links: { map: mapUrl("御徒町 ジュエリーマルシェ"), site: "https://www.jewelry-marche.com/" } },
@@ -296,8 +297,10 @@ const manuals = [
 const statusLabels = {
   confirmed: "已確認",
   done: "已完成",
-  pending: "待確認",
+  pending: "待訂",
   todo: "待處理",
+  backup: "備案",
+  flexible: "當天視體力",
 };
 
 const regionLabels = {
@@ -379,15 +382,21 @@ function money(value) {
   return new Intl.NumberFormat("zh-TW", { style: "currency", currency: "TWD", maximumFractionDigits: 0 }).format(value);
 }
 
-function renderLinkButtons(links = {}) {
+function renderLinkButtons(links = {}, title = "") {
+  const enriched = { ...links };
+  if (title && !enriched.site && !enriched.sns && !enriched.web) {
+    enriched.web = searchUrl(`${title} official website Instagram`);
+  }
+
   const specs = [
     ["map", "Google Maps"],
     ["site", "官網"],
     ["sns", "SNS"],
+    ["web", "官網/IG搜尋"],
   ];
   return specs
-    .filter(([key]) => links[key])
-    .map(([key, label]) => `<a class="small-link ${key}" href="${links[key]}" target="_blank" rel="noreferrer">${label}</a>`)
+    .filter(([key]) => enriched[key])
+    .map(([key, label]) => `<a class="small-link ${key}" href="${enriched[key]}" target="_blank" rel="noreferrer">${label}</a>`)
     .join("");
 }
 
@@ -552,7 +561,7 @@ function renderItinerary() {
             <span class="tag">${regionLabels[day.region]}</span>
             <span class="tag">${typeLabels[day.type]}</span>
           </div>
-          <div class="shop-actions">${renderLinkButtons(day.links)}</div>
+          <div class="shop-actions">${renderLinkButtons(day.links, day.title)}</div>
           ${renderDayMap(day)}
         </div>
         <button class="status-pill ${status}" type="button" data-status-for="${day.id}">${statusLabels[status]}</button>
@@ -572,7 +581,7 @@ function renderBookings() {
           <div class="booking-meta">${booking.date}</div>
           <h3>${booking.title}</h3>
           <p>${booking.meta}</p>
-          <div class="shop-actions">${renderLinkButtons(booking.links)}</div>
+          <div class="shop-actions">${renderLinkButtons(booking.links, booking.title)}</div>
         </div>
         <button class="status-pill ${status}" type="button" data-status-for="${booking.id}">${statusLabels[status]}</button>
       </article>
@@ -610,7 +619,7 @@ function renderPlaces() {
           <p>${place.detail}</p>
         </div>
         <div class="tag-row">${place.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
-        <div class="shop-actions">${renderLinkButtons(place.links)}</div>
+        <div class="shop-actions">${renderLinkButtons(place.links, place.title)}</div>
       </article>
     `;
   }).join("");
@@ -625,7 +634,7 @@ function renderLinks() {
     return `
       <div class="link-item${hidden}">
         <span><strong>${item.title}</strong><br><small>${regionLabels[item.region]} · ${item.tags?.join("、") || typeLabels[item.category]}</small></span>
-        <span class="inline-actions">${renderLinkButtons(item.links)}</span>
+        <span class="inline-actions">${renderLinkButtons(item.links, item.title)}</span>
       </div>
     `;
   }).join("");
@@ -660,6 +669,21 @@ function tripDate(day) {
   return new Date(2026, Number(month) - 1, Number(date));
 }
 
+const dayModeNotes = {
+  d0622: {
+    title: "早班機日重點",
+    items: ["04:20 起床", "05:00 出門", "JL903 HND→OKA 07:20-10:00", "NH1727 OKA→MMY 14:10-15:05", "抵達後聯絡飯店接駁"],
+  },
+  d0614: {
+    title: "移動與住宿確認",
+    items: ["11:00 ORIX 取車", "確認 KSS 小型車與保險", "前往 Cocoa Resort 洞爺湖", "保留婚禮前休息時間"],
+  },
+  d0627: {
+    title: "返程日重點",
+    items: ["整理行李與易碎品", "11:00 前往下地島機場", "JX891 SHI→TPE 14:00-14:10", "伴手禮分裝"],
+  },
+};
+
 function renderTodayPanel() {
   if (!els.todayPanel) return;
   const today = new Date();
@@ -678,6 +702,7 @@ function renderTodayPanel() {
   }
 
   const selectedMap = dayMaps[selected.id];
+  const dayMode = dayModeNotes[selected.id];
   const daysDiff = Math.round((tripDate(selected) - today) / 86400000);
   const title =
     mode === "before"
@@ -696,10 +721,19 @@ function renderTodayPanel() {
         <div class="tag-row">
           <span class="tag">${regionLabels[selected.region]}</span>
           <span class="tag">${typeLabels[selected.type]}</span>
+          <span class="tag status-tag ${currentStatus(selected)}">${statusLabels[currentStatus(selected)]}</span>
           ${selectedMap ? `<span class="tag">${selectedMap.area}</span>` : ""}
         </div>
+        ${dayMode ? `
+          <div class="day-mode-box">
+            <strong>${dayMode.title}</strong>
+            <ul>
+              ${dayMode.items.map((item) => `<li>${item}</li>`).join("")}
+            </ul>
+          </div>
+        ` : ""}
         <div class="shop-actions">
-          ${renderLinkButtons(selected.links)}
+          ${renderLinkButtons(selected.links, selected.title)}
           ${selectedMap ? `<a class="small-link map" href="${directionsUrl(selectedMap.points)}" target="_blank" rel="noreferrer">當日動線</a>` : ""}
           <button class="small-link button-link" type="button" data-jump="itinerary">看完整每日行程</button>
         </div>
@@ -713,6 +747,7 @@ function renderDesignNotes() {
   const notes = [
     ["先總覽", "像金融 dashboard 一樣，先看天數、費用、完成率與待辦，降低資訊壓力。"],
     ["再行動", "今日模式只放下一步與當日地圖，避免旅途中被完整資料淹沒。"],
+    ["分清狀態", "已確認、待訂、備案、當天視體力分開標示，讓鐵軌與彈性選項一眼可分。"],
     ["最後查明細", "每日行程、住宿交通、地點連結分區，是把資料庫變成可操作工具。"],
   ];
   els.designNotes.innerHTML = `
@@ -759,7 +794,7 @@ function emptyState() {
 }
 
 function cycleStatus(id) {
-  const order = ["confirmed", "pending", "todo", "done"];
+  const order = ["confirmed", "pending", "backup", "flexible", "todo", "done"];
   const source = [...itinerary, ...bookings].find((item) => item.id === id);
   const now = currentStatus(source);
   const next = order[(order.indexOf(now) + 1) % order.length];
@@ -782,7 +817,7 @@ function openDetail(kind, id) {
         <span class="tag">${statusLabels[currentStatus(item)]}</span>
         ${item.category ? `<span class="tag">${typeLabels[item.category]}</span>` : ""}
       </div>
-      <div class="shop-actions">${renderLinkButtons(item.links)}</div>
+      <div class="shop-actions">${renderLinkButtons(item.links, item.title)}</div>
     </div>
   `;
   els.dialog.showModal();

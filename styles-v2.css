@@ -301,6 +301,25 @@ input, select {
   line-height: 1.65;
 }
 
+.day-mode-box {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid rgba(53, 32, 125, 0.2);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.48);
+}
+
+.day-mode-box ul {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.day-mode-box li {
+  line-height: 1.45;
+}
+
 .button-link {
   color: var(--ink);
 }
@@ -598,6 +617,14 @@ input, select {
 }
 .status-pill.pending { color: #5a2c18; background: #ffe0b3; }
 .status-pill.todo { color: #5d1745; background: #ffd3ea; }
+.status-pill.backup { color: #443a16; background: #f4e8b8; }
+.status-pill.flexible { color: #174b4e; background: #c9f1ec; }
+
+.status-tag.confirmed { background: #c8f4d9; }
+.status-tag.pending { background: #ffe0b3; }
+.status-tag.todo { background: #ffd3ea; }
+.status-tag.backup { background: #f4e8b8; }
+.status-tag.flexible { background: #c9f1ec; }
 
 .cards-view { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .cards-view .day-row { grid-template-columns: 1fr; align-items: start; }
@@ -682,6 +709,7 @@ input, select {
 }
 .small-link.map { color: var(--paper); background: var(--ink); border-color: var(--ink); }
 .small-link.sns { color: #fff; background: #8a3c82; border-color: #8a3c82; }
+.small-link.web { color: #fff; background: #4a875d; border-color: #4a875d; }
 
 .manual-gallery {
   display: grid;
