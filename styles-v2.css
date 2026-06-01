@@ -1,16 +1,16 @@
 :root {
-  --ink: #160f56;
-  --night: #09052f;
-  --cyan: #35f3e4;
-  --pink: #ff4fbc;
-  --paper: #fff4d8;
-  --paper-soft: #fff8e9;
-  --line: #35207d;
-  --gold: #f2b84f;
-  --sage: #64c99b;
-  --rose: #ffd3ea;
-  --sky: #d9fbff;
-  --shadow: 0 18px 50px rgba(22, 15, 86, 0.16);
+  --ink: #1f332f;
+  --night: #14221f;
+  --cyan: #8fb8ae;
+  --pink: #b9614e;
+  --paper: #f3eee2;
+  --paper-soft: #fbf8f0;
+  --line: #52665f;
+  --gold: #a68c58;
+  --sage: #91aa95;
+  --rose: #e2c0b6;
+  --sky: #dce8e3;
+  --shadow: 0 18px 46px rgba(31, 51, 47, 0.12);
   --radius: 8px;
   font-family: "Times New Roman", "Noto Serif TC", "Songti TC", serif;
 }
@@ -19,11 +19,11 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  color: #261c48;
+  color: #2e423e;
   background:
-    linear-gradient(180deg, rgba(255, 244, 216, 0.94), rgba(255, 248, 233, 0.96)),
-    repeating-linear-gradient(0deg, rgba(53, 243, 228, 0.12) 0 1px, transparent 1px 28px),
-    repeating-linear-gradient(90deg, rgba(255, 79, 188, 0.1) 0 1px, transparent 1px 28px);
+    linear-gradient(180deg, rgba(243, 238, 226, 0.96), rgba(251, 248, 240, 0.98)),
+    repeating-linear-gradient(0deg, rgba(82, 102, 95, 0.06) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(90deg, rgba(185, 97, 78, 0.05) 0 1px, transparent 1px 32px);
 }
 
 button, input, select { font: inherit; }
@@ -35,7 +35,7 @@ h1, h2, h3, p { margin-top: 0; }
   padding: 24px clamp(18px, 4vw, 64px) 56px;
   color: var(--paper);
   background:
-    linear-gradient(90deg, rgba(9, 5, 47, 0.88), rgba(22, 15, 86, 0.48), rgba(9, 5, 47, 0.9)),
+    linear-gradient(90deg, rgba(20, 34, 31, 0.92), rgba(31, 51, 47, 0.58), rgba(20, 34, 31, 0.9)),
     url("assets/page-1.jpg") center top / cover;
   border-bottom: 8px solid var(--pink);
 }
@@ -48,7 +48,7 @@ h1, h2, h3, p { margin-top: 0; }
   max-width: 1240px;
   margin: 0 auto 54px;
   padding-bottom: 18px;
-  border-bottom: 1px solid rgba(53, 243, 228, 0.55);
+  border-bottom: 1px solid rgba(143, 184, 174, 0.55);
 }
 
 .brand {
@@ -68,7 +68,7 @@ h1, h2, h3, p { margin-top: 0; }
   border-radius: 50%;
   color: var(--cyan);
   border: 1px solid var(--cyan);
-  background: rgba(9, 5, 47, 0.55);
+  background: rgba(20, 34, 31, 0.55);
 }
 
 .nav-actions, .hero-actions, .panel-tools, .shop-actions, .inline-actions, .tag-row {
@@ -81,9 +81,9 @@ h1, h2, h3, p { margin-top: 0; }
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  border: 1px solid rgba(53, 243, 228, 0.7);
+  border: 1px solid rgba(143, 184, 174, 0.7);
   color: var(--paper);
-  background: rgba(9, 5, 47, 0.6);
+  background: rgba(20, 34, 31, 0.6);
 }
 
 .hero-grid {
@@ -137,11 +137,11 @@ h2 {
 
 .secondary-action {
   color: var(--paper);
-  background: rgba(9, 5, 47, 0.62);
+  background: rgba(20, 34, 31, 0.62);
 }
 
 .route-panel, .panel, .metric-block, .control-strip {
-  border: 1px solid rgba(53, 243, 228, 0.36);
+  border: 1px solid rgba(82, 102, 95, 0.32);
   background: rgba(255, 248, 233, 0.92);
   box-shadow: var(--shadow);
   backdrop-filter: blur(8px);
@@ -183,7 +183,7 @@ h2 {
 .route-stat {
   padding: 12px;
   border-radius: var(--radius);
-  background: #efe4ff;
+  background: #e4ebe4;
 }
 
 main {
@@ -270,12 +270,7 @@ input, select {
   margin-bottom: 18px;
 }
 
-.focus-panel {
-  background:
-    linear-gradient(135deg, rgba(255, 79, 188, 0.12), transparent 34%),
-    linear-gradient(315deg, rgba(53, 243, 228, 0.16), transparent 42%),
-    rgba(255, 248, 233, 0.94);
-}
+.focus-panel { background: rgba(251, 248, 240, 0.95); }
 
 .today-card {
   display: grid;
@@ -318,6 +313,15 @@ input, select {
 
 .day-mode-box li {
   line-height: 1.45;
+}
+
+.day-mode-warning {
+  margin: 10px 0 0;
+  padding: 9px 10px;
+  border-left: 3px solid var(--pink);
+  color: #674235;
+  background: rgba(226, 192, 182, 0.42);
+  line-height: 1.5;
 }
 
 .button-link {
@@ -463,14 +467,34 @@ input, select {
 }
 .day-main p, .booking-main p, .shop-card p { margin-bottom: 0; line-height: 1.6; }
 
+.activity-media {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin: 10px 0 12px;
+}
+
+.activity-media.split {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.activity-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  object-fit: cover;
+  border: 1px solid rgba(82, 102, 95, 0.24);
+}
+
 .day-map {
   margin-top: 14px;
   border: 1px solid rgba(53, 32, 125, 0.22);
   border-radius: var(--radius);
   background:
-    linear-gradient(135deg, rgba(255, 79, 188, 0.12), transparent 28%),
-    linear-gradient(315deg, rgba(53, 243, 228, 0.16), transparent 32%),
-    rgba(255, 248, 233, 0.78);
+    linear-gradient(135deg, rgba(185, 97, 78, 0.1), transparent 28%),
+    linear-gradient(315deg, rgba(143, 184, 174, 0.15), transparent 32%),
+    rgba(251, 248, 240, 0.82);
   overflow: hidden;
 }
 
@@ -502,8 +526,8 @@ input, select {
   border-radius: var(--radius);
   border: 1px solid rgba(53, 32, 125, 0.18);
   background:
-    radial-gradient(circle at 24% 36%, rgba(255, 79, 188, 0.16), transparent 16%),
-    radial-gradient(circle at 72% 56%, rgba(53, 243, 228, 0.2), transparent 18%),
+    radial-gradient(circle at 24% 36%, rgba(185, 97, 78, 0.12), transparent 16%),
+    radial-gradient(circle at 72% 56%, rgba(143, 184, 174, 0.18), transparent 18%),
     repeating-linear-gradient(0deg, rgba(53, 32, 125, 0.08) 0 1px, transparent 1px 24px),
     repeating-linear-gradient(90deg, rgba(53, 32, 125, 0.08) 0 1px, transparent 1px 24px),
     #fffaf0;
@@ -556,14 +580,14 @@ input, select {
   font-size: 13px;
 }
 
-.map-pin.hotel { background: #4f5fb8; }
-.map-pin.transport { background: #177b8b; }
+.map-pin.hotel { background: #56705f; }
+.map-pin.transport { background: #4d7b7b; }
 .map-pin.activity,
 .map-pin.market,
-.map-pin.branch { background: #8a3c82; }
+.map-pin.branch { background: #9a5d51; }
 .map-pin.food,
-.map-pin.coffee { background: #b45a2f; }
-.map-pin.mineral { background: #4331a7; }
+.map-pin.coffee { background: #a36f3f; }
+.map-pin.mineral { background: #596c8a; }
 .map-pin.shop { background: #4a875d; }
 .map-pin.beach { background: #128c98; }
 

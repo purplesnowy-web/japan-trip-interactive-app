@@ -20,11 +20,11 @@ const route = [
 ];
 
 const itinerary = [
-  { id: "d0610", date: "6/10", weekday: "三", region: "hokkaido", type: "main", icon: "飛", art: "plane", title: "台北到札幌", detail: "入住札幌格蘭貝爾飯店狸小路，晚上 YOSAKOI 索朗祭，大通公園周邊慢逛。", status: "confirmed", links: { map: mapUrl("Odori Park Sapporo"), site: "https://www.yosakoi-soran.jp/" } },
+  { id: "d0610", date: "6/10", weekday: "三", region: "hokkaido", type: "main", icon: "飛", art: "plane", title: "台北到札幌", detail: "新千歲機場國際線 84 號巴士站搭札幌都心行空港連絡巴士，南3条すすきの下車後步行或短程計程車入住札幌格蘭貝爾飯店狸小路。晚上視體力慢逛 YOSAKOI 索朗祭。", image: "assets/activity-airport-bus.png", status: "confirmed", links: { map: mapUrl("Granbell Hotel Tanuki Sapporo"), site: "https://www.yosakoi-soran.jp/" } },
   { id: "d0611", date: "6/11", weekday: "四", region: "hokkaido", type: "main", icon: "倉", art: "canal", title: "小樽運河慢散步", detail: "北運河、舊倉庫群、城市散步，重點放在節奏與照片。", status: "confirmed", links: { map: mapUrl("Otaru Canal") } },
-  { id: "d0612", date: "6/12", weekday: "五", region: "hokkaido", type: "branch", icon: "公", art: "park", title: "莫埃來沼公園", detail: "莫埃來沼公園與城市留白，午後可視體力回市區補咖啡。", status: "flexible", links: { map: mapUrl("Moerenuma Park"), site: "https://moerenumapark.jp/" } },
+  { id: "d0612", date: "6/12", weekday: "五", region: "hokkaido", type: "main", icon: "公", art: "park", title: "莫埃來沼公園、札幌啤酒博物館", detail: "上午在莫埃來沼公園留白，午後從公園西口搭ビ61丘珠線前往札幌啤酒博物館，再於 Sapporo Beer Garden 或 Ario 札幌一帶休息。", images: ["assets/activity-moerenuma.png", "assets/activity-sapporo-beer-museum.png"], status: "confirmed", links: { map: mapUrl("Moerenuma Park"), site: "https://moerenumapark.jp/" } },
   { id: "d0613", date: "6/13", weekday: "六", region: "hokkaido", type: "shop", icon: "咖", art: "coffee", title: "狸小路補給與咖啡散步", detail: "さっぽろ石ころマーケット、札幌咖啡散步與市區補給。", status: "confirmed", links: { map: mapUrl("Sapporo TV Tower"), site: "https://www.1456m.com/" } },
-  { id: "d0614", date: "6/14", weekday: "日", region: "hokkaido", type: "transport", icon: "車", art: "car", title: "札幌前往洞爺湖", detail: "11:00 ORIX 取車，KSS 小型車，前往 Cocoa Resort 洞爺湖住宿與婚禮主線。", status: "pending", links: { map: mapUrl("Cocoa Resort Toyako"), site: "https://cocoaresort.jp/" } },
+  { id: "d0614", date: "6/14", weekday: "日", region: "hokkaido", type: "transport", icon: "車", art: "car", title: "札幌前往洞爺湖", detail: "退房後直接帶行李前往 ORIX 札幌站前店，11:00 取 KSS 小型車後離開市中心，前往 Cocoa Resort 洞爺湖住宿與婚禮主線。", status: "pending", links: { map: mapUrl("ORIX Rent a Car Sapporo Station"), site: "https://cocoaresort.jp/" } },
   { id: "d0615", date: "6/15", weekday: "一", region: "hokkaido", type: "main", icon: "湖", art: "lake", title: "洞爺湖婚禮主線", detail: "Cocoa Resort 與婚禮主線，湖邊留白，不排過密，保留拍照與休息。", status: "confirmed", links: { map: mapUrl("Cocoa Resort Toyako"), site: "https://cocoaresort.jp/" } },
   { id: "d0616", date: "6/16", weekday: "二", region: "hokkaido", type: "transport", icon: "還", art: "car", title: "洞爺湖回札幌", detail: "18:00 還車，入住船舶花園薄野飯店，可接札幌祭或中島公園屋台。", status: "confirmed", links: { map: mapUrl("Ship Garden Susukino Hotel Sapporo") } },
   { id: "d0617", date: "6/17", weekday: "三", region: "tokyo", type: "transport", icon: "飛", art: "plane", title: "札幌到東京", detail: "ANA NH62 CTS → HND，入住上野寶石飯店，阿美橫丁輕量散步。", status: "confirmed", links: { map: mapUrl("Hotel Sardonyx Ueno"), site: "https://hotel-sardonyx.jp/ueno/" } },
@@ -57,7 +57,9 @@ const bookings = [
 const places = [
   { id: "p01", region: "hokkaido", type: "activity", title: "大通公園 YOSAKOI 索朗祭", detail: "6/10 晚上主線，札幌抵達後暖身。", tags: ["祭典", "札幌"], links: { map: mapUrl("Odori Park Sapporo"), site: "https://www.yosakoi-soran.jp/" } },
   { id: "p02", region: "hokkaido", type: "activity", title: "小樽運河", detail: "6/11 小樽慢散步主線。", tags: ["散步", "小樽"], links: { map: mapUrl("Otaru Canal") } },
-  { id: "p03", region: "hokkaido", type: "activity", title: "莫埃來沼公園", detail: "6/12 城市留白與公園線。", tags: ["公園", "札幌"], links: { map: mapUrl("Moerenuma Park"), site: "https://moerenumapark.jp/" } },
+  { id: "p03", region: "hokkaido", type: "activity", title: "莫埃來沼公園", detail: "6/12 上午主線，雕塑、地景與城市留白。", image: "assets/activity-moerenuma.png", tags: ["公園", "札幌"], links: { map: mapUrl("Moerenuma Park"), site: "https://moerenumapark.jp/" } },
+  { id: "p03b", region: "hokkaido", type: "activity", title: "札幌啤酒博物館", detail: "6/12 下午主線，14:40-16:15 參觀紅磚館舍與啤酒文化展示。", image: "assets/activity-sapporo-beer-museum.png", tags: ["博物館", "札幌"], links: { map: mapUrl("Sapporo Beer Museum"), site: "https://www.sapporobeer.jp/brewery/s_museum/" } },
+  { id: "p03c", region: "hokkaido", type: "shop", title: "Sapporo Beer Garden", detail: "6/12 下午休息或成吉思汗晚餐備案，可與 Ario 札幌一起安排。", image: "assets/activity-sapporo-beer-museum.png", tags: ["餐廳", "札幌"], links: { map: mapUrl("Sapporo Beer Garden"), site: "https://www.sapporo-bier-garten.jp/" } },
   { id: "p04", region: "hokkaido", type: "activity", title: "さっぽろ石ころマーケット", detail: "6/13 礦物活動，札幌電視塔 2F。", tags: ["礦物", "活動"], links: { map: mapUrl("Sapporo TV Tower"), site: "https://www.1456m.com/" } },
   { id: "p04b", region: "hokkaido", type: "shop", title: "Cocoa Resort 洞爺湖", detail: "6/14-6/16 洞爺湖住宿，婚禮主線與湖邊留白的基地。", tags: ["住宿", "洞爺湖"], links: { map: mapUrl("Cocoa Resort Toyako"), site: "https://cocoaresort.jp/" } },
   { id: "p05", region: "hokkaido", type: "shop", title: "Brew it by NODE", detail: "札幌市中心精品咖啡，取代不在北海道的 PHILOCOFFEA 札幌項目。", tags: ["咖啡", "札幌"], links: { map: mapUrl("Brew it by NODE Sapporo"), site: "https://typica.coffee/ja/locations/brew-it-by-node/", sns: "https://www.instagram.com/node_brewit/" } },
@@ -116,12 +118,13 @@ const tasks = [
 
 const dayMaps = {
   d0610: {
-    area: "札幌中心",
-    note: "狸小路住宿、大通公園祭典在同一個市中心活動圈。",
+    area: "新千歲機場到札幌中心",
+    note: "國際線 84 號巴士站上車，南3条すすきの下車後步行或短程計程車到飯店。",
     points: [
-      { label: "Granbell Hotel", query: "Granbell Hotel Tanuki Sapporo", x: 34, y: 66, kind: "hotel" },
-      { label: "大通公園", query: "Odori Park Sapporo", x: 50, y: 45, kind: "activity" },
-      { label: "YOSAKOI", query: "YOSAKOI Soran Festival Odori Park Sapporo", x: 62, y: 38, kind: "activity" },
+      { label: "新千歲機場國際線", query: "New Chitose Airport International Terminal", x: 16, y: 74, kind: "transport" },
+      { label: "南3条すすきの", query: "南3条すすきの バス停", x: 54, y: 54, kind: "transport" },
+      { label: "Granbell Hotel", query: "Granbell Hotel Tanuki Sapporo", x: 65, y: 46, kind: "hotel" },
+      { label: "大通公園 YOSAKOI", query: "YOSAKOI Soran Festival Odori Park Sapporo", x: 75, y: 30, kind: "activity" },
     ],
   },
   d0611: {
@@ -134,11 +137,14 @@ const dayMaps = {
     ],
   },
   d0612: {
-    area: "札幌東北側",
-    note: "莫埃來沼公園離市中心較遠，建議把它當成單一主線。",
+    area: "札幌東北側到苗穗",
+    note: "公園西口可搭ビ61丘珠線，往サッポロビール博物館方向直達，約 31 分鐘。",
     points: [
-      { label: "札幌中心", query: "Sapporo Station", x: 28, y: 70, kind: "transport" },
-      { label: "莫埃來沼公園", query: "Moerenuma Park", x: 70, y: 30, kind: "activity" },
+      { label: "莫埃來沼公園", query: "Moerenuma Park", x: 72, y: 24, kind: "activity" },
+      { label: "公園西口", query: "モエレ沼公園西口", x: 62, y: 38, kind: "transport" },
+      { label: "札幌啤酒博物館", query: "Sapporo Beer Museum", x: 38, y: 54, kind: "activity" },
+      { label: "Sapporo Beer Garden", query: "Sapporo Beer Garden", x: 32, y: 62, kind: "food" },
+      { label: "狸小路", query: "Tanukikoji Shopping Street Sapporo", x: 20, y: 78, kind: "shop" },
     ],
   },
   d0613: {
@@ -153,8 +159,9 @@ const dayMaps = {
   },
   d0614: {
     area: "札幌到洞爺湖",
-    note: "這天是移動日，取車後往洞爺湖住宿。",
+    note: "退房後帶行李直接到 ORIX 札幌站前店，取車後直接出市區，不折返狸小路。",
     points: [
+      { label: "Granbell Hotel", query: "Granbell Hotel Tanuki Sapporo", x: 16, y: 34, kind: "hotel" },
       { label: "ORIX 札幌", query: "ORIX Rent a Car Sapporo Station", x: 22, y: 42, kind: "transport" },
       { label: "洞爺湖", query: "Lake Toya", x: 64, y: 50, kind: "activity" },
       { label: "Cocoa Resort", query: "Cocoa Resort Toyako", x: 75, y: 58, kind: "hotel" },
@@ -520,6 +527,30 @@ function renderDayMap(day) {
   `;
 }
 
+function renderActivityMedia(item) {
+  const images = item.images || (item.image ? [item.image] : []);
+  if (!images.length) return "";
+  return `
+    <div class="activity-media ${images.length > 1 ? "split" : ""}">
+      ${images.map((src) => `<img src="${src}" alt="${item.title} 手繪活動插圖" loading="lazy" />`).join("")}
+    </div>
+  `;
+}
+
+function renderDayModeBox(day) {
+  const note = dayModeNotes[day.id];
+  if (!note) return "";
+  return `
+    <div class="day-mode-box">
+      <strong>${note.title}</strong>
+      <ul>
+        ${note.items.map((item) => `<li>${item}</li>`).join("")}
+      </ul>
+      ${note.warning ? `<p class="day-mode-warning">${note.warning}</p>` : ""}
+    </div>
+  `;
+}
+
 function renderRoute() {
   els.routeMap.innerHTML = route.map((stop) => `
     <div class="route-step">
@@ -556,12 +587,14 @@ function renderItinerary() {
         ${renderIllustration(day.art)}
         <div class="day-main">
           <h3>${day.title}</h3>
+          ${renderActivityMedia(day)}
           <p>${day.detail}</p>
           <div class="tag-row">
             <span class="tag">${regionLabels[day.region]}</span>
             <span class="tag">${typeLabels[day.type]}</span>
           </div>
           <div class="shop-actions">${renderLinkButtons(day.links, day.title)}</div>
+          ${renderDayModeBox(day)}
           ${renderDayMap(day)}
         </div>
         <button class="status-pill ${status}" type="button" data-status-for="${day.id}">${statusLabels[status]}</button>
@@ -612,6 +645,7 @@ function renderPlaces() {
     const accent = index % 3 === 0 ? "var(--sky)" : index % 3 === 1 ? "var(--sage-soft)" : "var(--rose)";
     return `
       <article class="shop-card${hidden}" style="--accent: ${accent}">
+        ${renderActivityMedia(place)}
         ${renderIllustration(place.tags.includes("礦物") ? "mineral" : place.tags.includes("咖啡") ? "coffee" : place.tags.includes("海灘") || place.tags.includes("海景") ? "sea" : place.tags.includes("拍照") ? "bridge" : place.type === "activity" ? "market" : "shopping")}
         <div>
           <p class="panel-kicker">${regionLabels[place.region]} · ${typeLabels[place.type]}</p>
@@ -670,13 +704,23 @@ function tripDate(day) {
 }
 
 const dayModeNotes = {
+  d0610: {
+    title: "新千歲機場到飯店",
+    items: ["國際線 84 號巴士站搭空港連絡巴士／札幌都心行", "南3条すすきの下車，步行或短程計程車到 GRANBELL HOTEL TANUKI, SAPPORO", "飯店地址：札幌市中央区南3条西8丁目10-1", "日文確認：札幌都心行きで、南3条すすきのに停まりますか？", "若現場巴士異常，改搭 JR 快速 Airport 到札幌站，再轉計程車"],
+    warning: "6/10 抵達日機場巴士仍可用；6/13-6/14 市中心巴士較容易受 YOSAKOI 管制影響。",
+  },
+  d0612: {
+    title: "6/12 札幌東北側行程",
+    items: ["10:00-13:30 莫埃來沼公園", "13:30-14:00 園內休息、準備離開", "14:00-14:40 公園西口搭ビ61丘珠線前往札幌啤酒博物館", "14:40-16:15 札幌啤酒博物館", "16:15-17:30 Sapporo Beer Garden／Ario 札幌一帶休息", "晚上回狸小路／薄野，或直接吃成吉思汗"],
+  },
   d0622: {
     title: "早班機日重點",
     items: ["04:20 起床", "05:00 出門", "JL903 HND→OKA 07:20-10:00", "NH1727 OKA→MMY 14:10-15:05", "抵達後聯絡飯店接駁"],
   },
   d0614: {
-    title: "移動與住宿確認",
-    items: ["11:00 ORIX 取車", "確認 KSS 小型車與保險", "前往 Cocoa Resort 洞爺湖", "保留婚禮前休息時間"],
+    title: "ORIX 取車與離開札幌",
+    items: ["09:30-10:00 飯店退房、整理行李", "10:00-10:20 帶行李直接從飯店前往 ORIX 札幌站前店", "10:20-10:40 抵達 ORIX，準備取車", "11:00 取車", "11:20-11:40 離開札幌市中心", "中午後往洞爺湖／HOTEL COCOA RESORT"],
+    warning: "不要取車後開回狸小路飯店拿行李，這會增加 YOSAKOI 管制風險。",
   },
   d0627: {
     title: "返程日重點",
@@ -702,7 +746,6 @@ function renderTodayPanel() {
   }
 
   const selectedMap = dayMaps[selected.id];
-  const dayMode = dayModeNotes[selected.id];
   const daysDiff = Math.round((tripDate(selected) - today) / 86400000);
   const title =
     mode === "before"
@@ -724,14 +767,7 @@ function renderTodayPanel() {
           <span class="tag status-tag ${currentStatus(selected)}">${statusLabels[currentStatus(selected)]}</span>
           ${selectedMap ? `<span class="tag">${selectedMap.area}</span>` : ""}
         </div>
-        ${dayMode ? `
-          <div class="day-mode-box">
-            <strong>${dayMode.title}</strong>
-            <ul>
-              ${dayMode.items.map((item) => `<li>${item}</li>`).join("")}
-            </ul>
-          </div>
-        ` : ""}
+        ${renderDayModeBox(selected)}
         <div class="shop-actions">
           ${renderLinkButtons(selected.links, selected.title)}
           ${selectedMap ? `<a class="small-link map" href="${directionsUrl(selectedMap.points)}" target="_blank" rel="noreferrer">當日動線</a>` : ""}
