@@ -21,23 +21,23 @@ const route = [
 
 const itinerary = [
   { id: "d0610", date: "6/10", weekday: "三", region: "hokkaido", type: "main", icon: "飛", art: "plane", title: "台北到札幌", detail: "新千歲機場國際線 84 號巴士站搭札幌都心行空港連絡巴士，南3条すすきの下車後步行或短程計程車入住札幌格蘭貝爾飯店狸小路。晚上視體力慢逛 YOSAKOI 索朗祭。", image: "assets/activity-airport-bus.png", status: "confirmed", links: { map: mapUrl("Granbell Hotel Tanuki Sapporo"), site: "https://www.yosakoi-soran.jp/" } },
-  { id: "d0611", date: "6/11", weekday: "四", region: "hokkaido", type: "main", icon: "倉", art: "canal", title: "小樽運河慢散步", detail: "北運河、舊倉庫群、城市散步，重點放在節奏與照片。", status: "confirmed", links: { map: mapUrl("Otaru Canal") } },
+  { id: "d0611", date: "6/11", weekday: "四", region: "hokkaido", type: "main", icon: "倉", art: "canal", title: "小樽運河慢散步", detail: "北運河、舊倉庫群、城市散步，重點放在節奏與照片。", image: "assets/activity-0611-otaru.png", status: "confirmed", links: { map: mapUrl("Otaru Canal") } },
   { id: "d0612", date: "6/12", weekday: "五", region: "hokkaido", type: "main", icon: "公", art: "park", title: "莫埃來沼公園、札幌啤酒博物館", detail: "上午在莫埃來沼公園留白，午後從公園西口搭ビ61丘珠線前往札幌啤酒博物館，再於 Sapporo Beer Garden 或 Ario 札幌一帶休息。", images: ["assets/activity-moerenuma.png", "assets/activity-sapporo-beer-museum.png"], status: "confirmed", links: { map: mapUrl("Moerenuma Park"), site: "https://moerenumapark.jp/" } },
-  { id: "d0613", date: "6/13", weekday: "六", region: "hokkaido", type: "shop", icon: "咖", art: "coffee", title: "狸小路補給與咖啡散步", detail: "さっぽろ石ころマーケット、札幌咖啡散步與市區補給。", status: "confirmed", links: { map: mapUrl("Sapporo TV Tower"), site: "https://www.1456m.com/" } },
-  { id: "d0614", date: "6/14", weekday: "日", region: "hokkaido", type: "transport", icon: "車", art: "car", title: "札幌前往洞爺湖", detail: "退房後直接帶行李前往 ORIX 札幌站前店，11:00 取 KSS 小型車後離開市中心，前往 Cocoa Resort 洞爺湖住宿與婚禮主線。", status: "pending", links: { map: mapUrl("ORIX Rent a Car Sapporo Station"), site: "https://cocoaresort.jp/" } },
-  { id: "d0615", date: "6/15", weekday: "一", region: "hokkaido", type: "main", icon: "湖", art: "lake", title: "洞爺湖婚禮主線", detail: "Cocoa Resort 與婚禮主線，湖邊留白，不排過密，保留拍照與休息。", status: "confirmed", links: { map: mapUrl("Cocoa Resort Toyako"), site: "https://cocoaresort.jp/" } },
-  { id: "d0616", date: "6/16", weekday: "二", region: "hokkaido", type: "transport", icon: "還", art: "car", title: "洞爺湖回札幌", detail: "18:00 還車，入住船舶花園薄野飯店，可接札幌祭或中島公園屋台。", status: "confirmed", links: { map: mapUrl("Ship Garden Susukino Hotel Sapporo") } },
-  { id: "d0617", date: "6/17", weekday: "三", region: "tokyo", type: "transport", icon: "飛", art: "plane", title: "札幌到東京", detail: "ANA NH62 CTS → HND，入住上野寶石飯店，阿美橫丁輕量散步。", status: "confirmed", links: { map: mapUrl("Hotel Sardonyx Ueno"), site: "https://hotel-sardonyx.jp/ueno/" } },
-  { id: "d0618", date: "6/18", weekday: "四", region: "tokyo", type: "main", icon: "城", art: "castle", title: "皇居、神保町、東京站", detail: "皇居東御苑解謎、三省堂活動、東京車站與京橋支線，原宿或表參道視體力決定。", status: "confirmed", links: { map: mapUrl("皇居東御苑"), site: "https://www.kunaicho.go.jp/jp/visit/event/nazotoki/" } },
-  { id: "d0619", date: "6/19", weekday: "五", region: "tokyo", type: "shop", icon: "晶", art: "mineral", title: "御徒町礦物巡禮", detail: "Jewelry Marche 巡禮、クリスタル・ワールド、ニルヴァーナストーン。", status: "confirmed", links: { map: mapUrl("御徒町 ジュエリーマルシェ"), site: "https://www.jewelry-marche.com/" } },
-  { id: "d0620", date: "6/20", weekday: "六", region: "tokyo", type: "shop", icon: "展", art: "mineral", title: "ミネラルマーケット2026", detail: "大田區產業プラザ PiO 固定主線，優先度最高。", status: "confirmed", links: { map: mapUrl("大田区産業プラザ PiO"), site: "https://mineralmarket.jp/" } },
-  { id: "d0621", date: "6/21", weekday: "日", region: "tokyo", type: "branch", icon: "市", art: "market", title: "日本橋、上野與回場", detail: "Jewelry Marche 回場、OLD NEW MARKET 日本橋、上野髮型名店支線。晚上收車，隔天 04:20 起床。", status: "confirmed", links: { map: mapUrl("OLD NEW MARKET 日本橋"), site: "https://www.oldnewmarket.com/" } },
-  { id: "d0622", date: "6/22", weekday: "一", region: "miyako", type: "transport", icon: "飛", art: "plane", title: "東京、沖繩到宮古島", detail: "上野出發，JAL JL903 HND → OKA 07:20-10:00，ANA NH1727 OKA → MMY 14:10-15:05，入住 Hotel Santa Barbara。", status: "confirmed", links: { map: mapUrl("Hotel Santa Barbara Miyakojima Resort"), site: "https://santabarbara-miyakojima.com/" } },
-  { id: "d0623", date: "6/23", weekday: "二", region: "miyako", type: "main", icon: "潛", art: "snorkel", title: "東南線順路日", detail: "KKDay 潛水建議上午場，午餐サマー太陽或 A&W，下午宮古神社、市區小店、Blue Seal、MAXVALU，15:30-17:00 Ningin Coffee。", status: "pending", links: { map: mapUrl("Ningin Coffee Miyakojima"), site: "https://www.kkday.com/zh-tw/product/551971" } },
-  { id: "d0624", date: "6/24", weekday: "三", region: "miyako", type: "main", icon: "海", art: "sea", title: "北海岸一日", detail: "Kujira Diner 早餐、海中公園、西平安名崎、雪鹽工廠、池間大橋、Gelato Cafe Ninufa、HARRY'S Shrimp Truck、砂山海灘。", status: "flexible", links: { map: mapUrl("Sunayama Beach Miyakojima"), sns: "https://www.instagram.com/gelato_cafe_ninufa/" } },
-  { id: "d0625", date: "6/25", weekday: "四", region: "miyako", type: "main", icon: "橋", art: "bridge", title: "伊良部與 17END 拍照日", detail: "牧山展望台、伊良部大橋、海之驛、Blue Turtle 午餐、1 LAB Hello VACAY、國仲商店、なかゆくい商店、Shinbiji、17END，晚上 HULAR。", status: "flexible", links: { map: mapUrl("17END Miyakojima") } },
-  { id: "d0626", date: "6/26", weekday: "五", region: "miyako", type: "branch", icon: "補", art: "shopping", title: "自由日、補貨與伴手禮", detail: "Kujira Diner 早餐，白天自由安排與補貨，PAINAGAMA BLUE BOOTH、Niima Soba、久松製麵所、SUNDAYS、小さな幸せ Sakuri、MAXVALU、藥妝與店吉商港。", status: "flexible", links: { map: mapUrl("MAXVALU Miyako Minami"), sns: "https://www.instagram.com/painagama_bluebooth/" } },
-  { id: "d0627", date: "6/27", weekday: "六", region: "miyako", type: "transport", icon: "返", art: "luggage", title: "宮古島返回台北", detail: "11:00 前往下地島機場，星宇 JX891 SHI → TPE 14:00-14:10，整理行李、保護易碎購物、分裝伴手禮。", status: "confirmed", links: { map: mapUrl("Shimojishima Airport") } },
+  { id: "d0613", date: "6/13", weekday: "六", region: "hokkaido", type: "shop", icon: "咖", art: "coffee", title: "狸小路補給與咖啡散步", detail: "さっぽろ石ころマーケット、札幌咖啡散步與市區補給。", image: "assets/activity-0613-sapporo-market-coffee.png", status: "confirmed", links: { map: mapUrl("Sapporo TV Tower"), site: "https://www.1456m.com/" } },
+  { id: "d0614", date: "6/14", weekday: "日", region: "hokkaido", type: "transport", icon: "車", art: "car", title: "札幌前往洞爺湖", detail: "退房後直接帶行李前往 ORIX 札幌站前店，11:00 取 KSS 小型車後離開市中心，前往 Cocoa Resort 洞爺湖住宿與婚禮主線。", image: "assets/activity-0614-toya-drive.png", status: "pending", links: { map: mapUrl("ORIX Rent a Car Sapporo Station"), site: "https://cocoaresort.jp/" } },
+  { id: "d0615", date: "6/15", weekday: "一", region: "hokkaido", type: "main", icon: "湖", art: "lake", title: "洞爺湖婚禮主線", detail: "Cocoa Resort 與婚禮主線，湖邊留白，不排過密，保留拍照與休息。", image: "assets/activity-0615-toya-wedding.png", status: "confirmed", links: { map: mapUrl("Cocoa Resort Toyako"), site: "https://cocoaresort.jp/" } },
+  { id: "d0616", date: "6/16", weekday: "二", region: "hokkaido", type: "transport", icon: "還", art: "car", title: "洞爺湖回札幌", detail: "18:00 還車，入住船舶花園薄野飯店，可接札幌祭或中島公園屋台。", image: "assets/activity-0616-return-sapporo.png", status: "confirmed", links: { map: mapUrl("Ship Garden Susukino Hotel Sapporo") } },
+  { id: "d0617", date: "6/17", weekday: "三", region: "tokyo", type: "transport", icon: "飛", art: "plane", title: "札幌到東京", detail: "ANA NH62 CTS → HND，入住上野寶石飯店，阿美橫丁輕量散步。", image: "assets/activity-0617-ueno-arrival.png", status: "confirmed", links: { map: mapUrl("Hotel Sardonyx Ueno"), site: "https://hotel-sardonyx.jp/ueno/" } },
+  { id: "d0618", date: "6/18", weekday: "四", region: "tokyo", type: "main", icon: "城", art: "castle", title: "皇居、神保町、東京站", detail: "皇居東御苑解謎、三省堂活動、東京車站與京橋支線，原宿或表參道視體力決定。", image: "assets/activity-0618-tokyo-culture.png", status: "confirmed", links: { map: mapUrl("皇居東御苑"), site: "https://www.kunaicho.go.jp/jp/visit/event/nazotoki/" } },
+  { id: "d0619", date: "6/19", weekday: "五", region: "tokyo", type: "shop", icon: "晶", art: "mineral", title: "御徒町礦物巡禮", detail: "Jewelry Marche 巡禮、クリスタル・ワールド、ニルヴァーナストーン。", image: "assets/activity-0619-okachimachi-minerals.png", status: "confirmed", links: { map: mapUrl("御徒町 ジュエリーマルシェ"), site: "https://www.jewelry-marche.com/" } },
+  { id: "d0620", date: "6/20", weekday: "六", region: "tokyo", type: "shop", icon: "展", art: "mineral", title: "ミネラルマーケット2026", detail: "大田區產業プラザ PiO 固定主線，優先度最高。", image: "assets/activity-0620-mineral-market.png", status: "confirmed", links: { map: mapUrl("大田区産業プラザ PiO"), site: "https://mineralmarket.jp/" } },
+  { id: "d0621", date: "6/21", weekday: "日", region: "tokyo", type: "branch", icon: "市", art: "market", title: "日本橋、上野與回場", detail: "Jewelry Marche 回場、OLD NEW MARKET 日本橋、上野髮型名店支線。晚上收車，隔天 04:20 起床。", image: "assets/activity-0621-nihonbashi-market.png", status: "confirmed", links: { map: mapUrl("OLD NEW MARKET 日本橋"), site: "https://www.oldnewmarket.com/" } },
+  { id: "d0622", date: "6/22", weekday: "一", region: "miyako", type: "transport", icon: "飛", art: "plane", title: "東京、沖繩到宮古島", detail: "上野出發，JAL JL903 HND → OKA 07:20-10:00，ANA NH1727 OKA → MMY 14:10-15:05，入住 Hotel Santa Barbara。", image: "assets/activity-0622-miyako-flight.png", status: "confirmed", links: { map: mapUrl("Hotel Santa Barbara Miyakojima Resort"), site: "https://santabarbara-miyakojima.com/" } },
+  { id: "d0623", date: "6/23", weekday: "二", region: "miyako", type: "main", icon: "潛", art: "snorkel", title: "東南線順路日", detail: "KKDay 潛水建議上午場，午餐サマー太陽或 A&W，下午宮古神社、市區小店、Blue Seal、MAXVALU，15:30-17:00 Ningin Coffee。", image: "assets/activity-0623-snorkel-town.png", status: "pending", links: { map: mapUrl("Ningin Coffee Miyakojima"), site: "https://www.kkday.com/zh-tw/product/551971" } },
+  { id: "d0624", date: "6/24", weekday: "三", region: "miyako", type: "main", icon: "海", art: "sea", title: "北海岸一日", detail: "Kujira Diner 早餐、海中公園、西平安名崎、雪鹽工廠、池間大橋、Gelato Cafe Ninufa、HARRY'S Shrimp Truck、砂山海灘。", image: "assets/activity-0624-north-coast.png", status: "flexible", links: { map: mapUrl("Sunayama Beach Miyakojima"), sns: "https://www.instagram.com/gelato_cafe_ninufa/" } },
+  { id: "d0625", date: "6/25", weekday: "四", region: "miyako", type: "main", icon: "橋", art: "bridge", title: "伊良部與 17END 拍照日", detail: "牧山展望台、伊良部大橋、海之驛、Blue Turtle 午餐、1 LAB Hello VACAY、國仲商店、なかゆくい商店、Shinbiji、17END，晚上 HULAR。", image: "assets/activity-0625-irabu-17end.png", status: "flexible", links: { map: mapUrl("17END Miyakojima") } },
+  { id: "d0626", date: "6/26", weekday: "五", region: "miyako", type: "branch", icon: "補", art: "shopping", title: "自由日、補貨與伴手禮", detail: "Kujira Diner 早餐，白天自由安排與補貨，PAINAGAMA BLUE BOOTH、Niima Soba、久松製麵所、SUNDAYS、小さな幸せ Sakuri、MAXVALU、藥妝與店吉商港。", image: "assets/activity-0626-miyako-shopping.png", status: "flexible", links: { map: mapUrl("MAXVALU Miyako Minami"), sns: "https://www.instagram.com/painagama_bluebooth/" } },
+  { id: "d0627", date: "6/27", weekday: "六", region: "miyako", type: "transport", icon: "返", art: "luggage", title: "宮古島返回台北", detail: "11:00 前往下地島機場，星宇 JX891 SHI → TPE 14:00-14:10，整理行李、保護易碎購物、分裝伴手禮。", image: "assets/activity-0627-shimojishima-departure.png", status: "confirmed", links: { map: mapUrl("Shimojishima Airport") } },
 ];
 
 const bookings = [
@@ -106,6 +106,25 @@ const places = [
   { id: "m28", region: "miyako", type: "shop", title: "Drugstore Mori 久貝店", detail: "藥妝補貨備案。", tags: ["藥妝"], links: { map: mapUrl("ドラッグストアモリ 久貝店") } },
   { id: "m29", region: "miyako", type: "shop", title: "店吉商港 宮古島店", detail: "6/26 補貨點。", tags: ["補貨"], links: { map: mapUrl("ドン・キホーテ 宮古島店") } },
 ];
+
+const placeImageGroups = [
+  ["assets/activity-0613-sapporo-market-coffee.png", ["p01", "p04", "p05", "p06", "p07", "p08"]],
+  ["assets/activity-0611-otaru.png", ["p02"]],
+  ["assets/activity-0615-toya-wedding.png", ["p04b"]],
+  ["assets/activity-0618-tokyo-culture.png", ["p09", "p10", "p16"]],
+  ["assets/activity-0619-okachimachi-minerals.png", ["p11", "p12", "p13", "p17", "p18"]],
+  ["assets/activity-0620-mineral-market.png", ["p14"]],
+  ["assets/activity-0621-nihonbashi-market.png", ["p15"]],
+  ["assets/activity-0622-miyako-flight.png", ["m01", "m02", "m03"]],
+  ["assets/activity-0623-snorkel-town.png", ["m04", "m05", "m06", "m07", "m08"]],
+  ["assets/activity-0624-north-coast.png", ["m09", "m10", "m11", "m12", "m13", "m14", "m15"]],
+  ["assets/activity-0625-irabu-17end.png", ["m16", "m17", "m18", "m19", "m20"]],
+  ["assets/activity-0626-miyako-shopping.png", ["m21", "m22", "m23", "m24", "m25", "m26", "m27", "m28", "m29"]],
+];
+
+const placeImages = Object.fromEntries(
+  placeImageGroups.flatMap(([image, ids]) => ids.map((id) => [id, image])),
+);
 
 const tasks = [
   { id: "task-early", region: "tokyo", type: "task", title: "6/21 晚上請收車，6/22 04:20 起床", detail: "東京到宮古島轉機日很早，前一晚不要排太滿。" },
@@ -645,7 +664,7 @@ function renderPlaces() {
     const accent = index % 3 === 0 ? "var(--sky)" : index % 3 === 1 ? "var(--sage-soft)" : "var(--rose)";
     return `
       <article class="shop-card${hidden}" style="--accent: ${accent}">
-        ${renderActivityMedia(place)}
+        ${renderActivityMedia({ ...place, image: place.image || placeImages[place.id] })}
         ${renderIllustration(place.tags.includes("礦物") ? "mineral" : place.tags.includes("咖啡") ? "coffee" : place.tags.includes("海灘") || place.tags.includes("海景") ? "sea" : place.tags.includes("拍照") ? "bridge" : place.type === "activity" ? "market" : "shopping")}
         <div>
           <p class="panel-kicker">${regionLabels[place.region]} · ${typeLabels[place.type]}</p>
@@ -727,6 +746,34 @@ const dayModeNotes = {
     items: ["整理行李與易碎品", "11:00 前往下地島機場", "JX891 SHI→TPE 14:00-14:10", "伴手禮分裝"],
   },
 };
+
+function applyTripUpdates(updates = window.TRIP_UPDATES) {
+  if (!updates) return;
+
+  Object.entries(updates.itinerary || {}).forEach(([id, patch]) => {
+    const day = itinerary.find((item) => item.id === id);
+    if (day) Object.assign(day, patch);
+  });
+
+  Object.entries(updates.bookings || {}).forEach(([id, patch]) => {
+    const booking = bookings.find((item) => item.id === id);
+    if (booking) Object.assign(booking, patch);
+  });
+
+  (updates.places || []).forEach((place) => {
+    const existing = places.find((item) => item.id === place.id);
+    if (existing) Object.assign(existing, place);
+    else places.push(place);
+  });
+
+  Object.entries(updates.dayMaps || {}).forEach(([id, patch]) => {
+    dayMaps[id] = { ...(dayMaps[id] || {}), ...patch };
+  });
+
+  Object.entries(updates.dayModeNotes || {}).forEach(([id, patch]) => {
+    dayModeNotes[id] = { ...(dayModeNotes[id] || {}), ...patch };
+  });
+}
 
 function renderTodayPanel() {
   if (!els.todayPanel) return;
@@ -941,6 +988,7 @@ function bindEvents() {
   });
 }
 
+applyTripUpdates();
 renderRoute();
 renderManuals();
 bindEvents();
