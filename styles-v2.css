@@ -487,6 +487,27 @@ input, select {
   border: 1px solid rgba(82, 102, 95, 0.24);
 }
 
+.activity-media.icon-only {
+  min-height: 112px;
+  place-items: center;
+  border: 1px solid rgba(82, 102, 95, 0.22);
+  border-radius: var(--radius);
+  background: rgba(255, 248, 233, 0.78);
+}
+
+.activity-media.icon-only span {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  color: var(--navy);
+  background: rgba(53, 243, 228, 0.18);
+  font-size: 34px;
+  font-family: var(--display);
+  border: 1px solid rgba(179, 147, 79, 0.42);
+}
+
 .day-map {
   margin-top: 14px;
   border: 1px solid rgba(53, 32, 125, 0.22);

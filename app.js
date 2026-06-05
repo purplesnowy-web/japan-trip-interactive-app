@@ -126,6 +126,8 @@ const placeImages = Object.fromEntries(
   placeImageGroups.flatMap(([image, ids]) => ids.map((id) => [id, image])),
 );
 
+const visualAssets = {};
+
 const tasks = [
   { id: "task-early", region: "tokyo", type: "task", title: "6/21 晚上請收車，6/22 04:20 起床", detail: "東京到宮古島轉機日很早，前一晚不要排太滿。" },
   { id: "task-hotel-shuttle", region: "miyako", type: "task", title: "提供 Hotel Santa Barbara 接駁資料", detail: "需提供入住日、預約姓名、航班資訊。" },
@@ -548,12 +550,29 @@ function renderDayMap(day) {
 
 function renderActivityMedia(item) {
   const images = item.images || (item.image ? [item.image] : []);
-  if (!images.length) return "";
+  if (!images.length && !item.visualIcon) return "";
+  if (!images.length && item.visualIcon) {
+    return `
+      <div class="activity-media icon-only" aria-label="${item.title} 代表圖示">
+        <span>${item.visualIcon}</span>
+      </div>
+    `;
+  }
   return `
     <div class="activity-media ${images.length > 1 ? "split" : ""}">
       ${images.map((src) => `<img src="${src}" alt="${item.title} 手繪活動插圖" loading="lazy" />`).join("")}
     </div>
   `;
+}
+
+function resolveVisualMedia(item) {
+  const asset = visualAssets[item.id] || {};
+  return {
+    ...item,
+    images: item.images || asset.images,
+    image: item.image || asset.image || (asset.icon ? "" : placeImages[item.id]),
+    visualIcon: asset.icon,
+  };
 }
 
 function renderDayModeBox(day) {
@@ -662,9 +681,10 @@ function renderPlaces() {
   els.shopGrid.innerHTML = places.map((place, index) => {
     const hidden = matches(place, place.type) ? "" : " hidden";
     const accent = index % 3 === 0 ? "var(--sky)" : index % 3 === 1 ? "var(--sage-soft)" : "var(--rose)";
+    const visualPlace = resolveVisualMedia(place);
     return `
       <article class="shop-card${hidden}" style="--accent: ${accent}">
-        ${renderActivityMedia({ ...place, image: place.image || placeImages[place.id] })}
+        ${renderActivityMedia(visualPlace)}
         ${renderIllustration(place.tags.includes("礦物") ? "mineral" : place.tags.includes("咖啡") ? "coffee" : place.tags.includes("海灘") || place.tags.includes("海景") ? "sea" : place.tags.includes("拍照") ? "bridge" : place.type === "activity" ? "market" : "shopping")}
         <div>
           <p class="panel-kicker">${regionLabels[place.region]} · ${typeLabels[place.type]}</p>
@@ -773,6 +793,8 @@ function applyTripUpdates(updates = window.TRIP_UPDATES) {
   Object.entries(updates.dayModeNotes || {}).forEach(([id, patch]) => {
     dayModeNotes[id] = { ...(dayModeNotes[id] || {}), ...patch };
   });
+
+  Object.assign(visualAssets, updates.visualAssets || {});
 }
 
 function renderTodayPanel() {
