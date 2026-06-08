@@ -2,55 +2,51 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#102f57" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#182521" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="日本大跳島" />
-    <title>2026 日本縱貫線互動手冊</title>
+    <meta name="apple-mobile-web-app-title" content="日本縱貫線" />
+    <meta name="description" content="2026 日本縱貫線 Travel Cockpit：每日行程、地圖、住宿交通、地點連結、待辦與雙人旅費記帳。" />
+    <title>2026 日本縱貫線 Travel Cockpit</title>
     <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="stylesheet" href="styles-v2.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="hero">
-      <nav class="topbar" aria-label="主要導覽">
-        <a class="brand" href="#overview" aria-label="回到總覽">
-          <span class="brand-mark">✦</span>
-          <span>2026 日本大跳島遠征</span>
+    <a class="skip-link" href="#today">跳到今日模式</a>
+
+    <header class="app-shell">
+      <nav class="top-nav" aria-label="主要導覽">
+        <a class="brand" href="#today" aria-label="回到今日模式">
+          <span class="brand-mark">縱</span>
+          <span>
+            <strong>日本縱貫線</strong>
+            <small>Travel Cockpit</small>
+          </span>
         </a>
-        <div class="nav-actions">
-          <button class="icon-btn" id="printBtn" type="button" title="列印手冊" aria-label="列印手冊">⎙</button>
-          <button class="icon-btn" id="resetBtn" type="button" title="重設互動狀態" aria-label="重設互動狀態">↺</button>
+        <div class="top-actions">
+          <button class="icon-button" id="printBtn" type="button" aria-label="列印">列印</button>
+          <button class="icon-button" id="resetBtn" type="button" aria-label="重設">重設</button>
         </div>
       </nav>
 
-      <div class="hero-grid">
-        <section class="hero-copy" id="overview">
-          <p class="eyebrow">北海道 × 東京 × 宮古島</p>
-          <h1>日本縱貫線</h1>
-          <p class="hero-lede">
-            主線固定，支線彈性。把住宿、交通、活動、餐廳、咖啡、礦物店、Google Maps、官網與 SNS 集中成可搜尋、可篩選、可勾選的互動清單。
-          </p>
-          <div class="hero-actions" role="group" aria-label="快速切換">
-            <button class="primary-action" data-jump="itinerary" type="button">查看每日行程</button>
-            <button class="secondary-action" data-jump="tasks" type="button">處理待辦</button>
-          </div>
-        </section>
-
-        <aside class="route-panel" aria-label="路線摘要">
-          <div class="route-map" id="routeMap"></div>
-          <div class="route-stats" id="routeStats"></div>
-        </aside>
-      </div>
+      <section class="hero-cockpit" id="today">
+        <div class="hero-copy">
+          <p class="kicker">北海道 → 東京 → 宮古島</p>
+          <h1>今天先看下一步。</h1>
+          <p>行程、地圖、預約、支出與待辦集中在同一個作戰台。旅途中不用翻手冊，直接知道現在該做什麼。</p>
+        </div>
+        <div id="todayCockpit" class="cockpit-card"></div>
+      </section>
     </header>
 
-    <main>
-      <section class="control-strip" aria-label="搜尋與篩選">
-        <label class="search-box">
+    <main class="main-grid">
+      <section class="toolbar" aria-label="搜尋與篩選">
+        <label class="field search-field">
           <span>搜尋</span>
-          <input id="searchInput" type="search" placeholder="輸入地名、店名、活動或日期" autocomplete="off" />
+          <input id="searchInput" type="search" placeholder="輸入日期、地點、店名、活動" autocomplete="off" />
         </label>
-        <div class="segmented" role="tablist" aria-label="地區篩選" id="regionTabs"></div>
-        <label class="select-box">
+        <div class="segment-row" id="regionTabs" role="tablist" aria-label="地區篩選"></div>
+        <label class="field compact-field">
           <span>類別</span>
           <select id="categoryFilter">
             <option value="all">全部</option>
@@ -66,187 +62,111 @@
         </label>
       </section>
 
-      <section class="dashboard" aria-label="旅行概覽">
-        <article class="metric-block">
-          <span class="metric-label">旅行天數</span>
+      <section class="metric-strip" aria-label="旅行狀態">
+        <article>
+          <span>旅行天數</span>
           <strong id="daysCount">0</strong>
-          <span>6/10 至 6/27</span>
+          <small>6/10-6/27</small>
         </article>
-        <article class="metric-block">
-          <span class="metric-label">已知住宿</span>
-          <strong id="knownHotelCost">NT$0</strong>
-          <span>含札幌、東京已知費用</span>
-        </article>
-        <article class="metric-block">
-          <span class="metric-label">目前完成</span>
+        <article>
+          <span>完成度</span>
           <strong id="progressPercent">0%</strong>
-          <span id="progressText">0 / 0 項</span>
+          <small id="progressText">0 / 0</small>
         </article>
-        <article class="metric-block">
-          <span class="metric-label">待處理</span>
-          <strong id="openTasks">0</strong>
-          <span>票券、補記與確認</span>
-        </article>
-        <article class="metric-block">
-          <span class="metric-label">旅費記帳</span>
+        <article>
+          <span>旅費</span>
           <strong id="expenseTotal">¥0</strong>
-          <span id="expenseBalance">尚未開始記帳</span>
+          <small id="expenseBalance">尚未記帳</small>
+        </article>
+        <article>
+          <span>待處理</span>
+          <strong id="openTasks">0</strong>
+          <small>票券與確認</small>
         </article>
       </section>
 
-      <section class="learning-strip" aria-label="今日模式與設計學習">
-        <article class="panel focus-panel" id="todayMode">
-          <div class="panel-head">
-            <div>
-              <p class="panel-kicker">NOW</p>
-              <h2>今日模式</h2>
-            </div>
+      <section class="section-panel" id="itinerary">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Timeline</p>
+            <h2>每日行程</h2>
           </div>
-          <div id="todayPanel"></div>
-        </article>
-
-        <article class="panel learning-panel">
-          <div class="panel-head">
-            <div>
-              <p class="panel-kicker">LEARN</p>
-              <h2>設計小教室</h2>
-            </div>
-          </div>
-          <div id="designNotes"></div>
-        </article>
+          <button class="text-button" type="button" data-jump="today">回今日</button>
+        </div>
+        <div id="itineraryList" class="day-card-grid"></div>
       </section>
 
-      <section class="content-grid">
-        <article class="panel wide" id="itinerary">
-          <div class="panel-head">
-            <div>
-              <p class="panel-kicker">01</p>
-              <h2>每日行程</h2>
-            </div>
-            <div class="panel-tools">
-              <button class="chip active" data-view="timeline" type="button">時間軸</button>
-              <button class="chip" data-view="cards" type="button">卡片</button>
-            </div>
+      <section class="section-panel split-panel" id="places">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Places</p>
+            <h2>地點、餐廳與活動</h2>
           </div>
-          <div id="itineraryList" class="timeline"></div>
-        </article>
+        </div>
+        <div id="placeGrid" class="place-grid"></div>
+      </section>
 
-        <article class="panel" id="bookingPanel">
-          <div class="panel-head">
-            <div>
-              <p class="panel-kicker">02</p>
-              <h2>住宿與交通</h2>
-            </div>
+      <section class="section-panel" id="expenses">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Ledger</p>
+            <h2>旅費記帳</h2>
           </div>
-          <div id="bookingList" class="stack-list"></div>
-        </article>
+          <button class="text-button" id="exportCsvBtn" type="button">匯出 CSV</button>
+        </div>
+        <form id="expenseForm" class="expense-form">
+          <label class="field"><span>日期</span><input id="expenseDate" type="text" inputmode="numeric" placeholder="6/14" /></label>
+          <label class="field wide-field"><span>項目</span><input id="expenseTitle" type="text" placeholder="咖啡、計程車、晚餐" /></label>
+          <label class="field"><span>分類</span><select id="expenseCategory"></select></label>
+          <label class="field"><span>金額</span><input id="expenseAmount" type="number" min="0" step="1" placeholder="0" /></label>
+          <label class="field"><span>幣別</span><select id="expenseCurrency"><option value="JPY">JPY 日幣</option><option value="TWD">TWD 台幣</option></select></label>
+          <label class="field"><span>付款人</span><select id="expensePayer"><option value="husband">老公</option><option value="wife">老婆</option><option value="pending">待補</option></select></label>
+          <label class="field wide-field"><span>備註</span><input id="expenseNote" type="text" placeholder="可留空" /></label>
+          <div class="expense-live" id="expenseLive">輸入金額後自動換算</div>
+          <button class="primary-button" type="submit">新增一筆</button>
+        </form>
+        <div id="expenseSummary" class="expense-summary"></div>
+        <div id="expenseList" class="expense-list"></div>
+      </section>
 
-        <article class="panel" id="tasks">
-          <div class="panel-head">
-            <div>
-              <p class="panel-kicker">03</p>
-              <h2>待處理清單</h2>
-            </div>
+      <section class="section-panel" id="tasks">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Checklist</p>
+            <h2>待辦與提醒</h2>
           </div>
-          <div id="taskList" class="check-list"></div>
-        </article>
+        </div>
+        <div id="taskList" class="task-list"></div>
+      </section>
 
-        <article class="panel wide expense-panel" id="expenses">
-          <div class="panel-head">
-            <div>
-              <p class="panel-kicker">04</p>
-              <h2>旅費記帳</h2>
-            </div>
+      <section class="section-panel" id="bookings">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Bookings</p>
+            <h2>住宿與交通</h2>
           </div>
-          <form id="expenseForm" class="expense-form">
-            <label>
-              <span>日期</span>
-              <input id="expenseDate" type="text" inputmode="numeric" placeholder="例：6/14" />
-            </label>
-            <label>
-              <span>項目</span>
-              <input id="expenseTitle" type="text" placeholder="例：咖啡、計程車、晚餐" />
-            </label>
-            <label>
-              <span>分類</span>
-              <select id="expenseCategory">
-                <option value="餐飲">餐飲</option>
-                <option value="交通">交通</option>
-                <option value="住宿">住宿</option>
-                <option value="活動">活動</option>
-                <option value="購物">購物</option>
-                <option value="咖啡">咖啡</option>
-                <option value="其他">其他</option>
-              </select>
-            </label>
-            <label>
-              <span>金額</span>
-              <input id="expenseAmount" type="number" min="0" step="1" placeholder="0" />
-            </label>
-            <label>
-              <span>幣別</span>
-              <select id="expenseCurrency">
-                <option value="JPY">JPY 日幣</option>
-                <option value="TWD">TWD 台幣</option>
-              </select>
-            </label>
-            <label>
-              <span>付款人</span>
-              <select id="expensePayer">
-                <option value="husband">老公</option>
-                <option value="wife">老婆</option>
-                <option value="pending">待補</option>
-              </select>
-            </label>
-            <label class="expense-note-field">
-              <span>備註</span>
-              <input id="expenseNote" type="text" placeholder="可留空" />
-            </label>
-            <div class="expense-live" id="expenseLive">輸入金額後自動換算</div>
-            <button class="primary-action expense-submit" type="submit">新增一筆</button>
-          </form>
-          <div id="expenseSummary" class="expense-summary"></div>
-          <div id="expenseList" class="expense-list"></div>
-        </article>
-
-        <article class="panel wide" id="shops">
-          <div class="panel-head">
-            <div>
-              <p class="panel-kicker">05</p>
-              <h2>地點、餐廳與活動連結</h2>
-            </div>
-          </div>
-          <div id="shopGrid" class="shop-grid"></div>
-        </article>
-
-        <article class="panel manual-panel">
-          <div class="panel-head">
-            <div>
-              <p class="panel-kicker">06</p>
-              <h2>原手冊索引</h2>
-            </div>
-          </div>
-          <div id="manualGallery" class="manual-gallery"></div>
-        </article>
-
-        <article class="panel link-panel">
-          <div class="panel-head">
-            <div>
-              <p class="panel-kicker">07</p>
-              <h2>快速連結</h2>
-            </div>
-          </div>
-          <div id="linkList" class="link-list"></div>
-        </article>
+        </div>
+        <div id="bookingList" class="booking-list"></div>
       </section>
     </main>
+
+    <nav class="bottom-nav" aria-label="手機導覽">
+      <a href="#today">今日</a>
+      <a href="#itinerary">行程</a>
+      <a href="#places">地點</a>
+      <a href="#expenses">記帳</a>
+      <a href="#tasks">待辦</a>
+    </nav>
 
     <dialog id="detailDialog">
       <button class="dialog-close" type="button" aria-label="關閉">×</button>
       <div id="dialogContent"></div>
     </dialog>
 
-    <script src="trip-updates.js"></script>
+    <script src="data/trip-data.js"></script>
+    <script src="data/trip-updates.js"></script>
+    <script src="data/visual-assets.js"></script>
+    <script src="data/expense-seeds.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

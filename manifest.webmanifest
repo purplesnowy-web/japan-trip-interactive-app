@@ -1,9 +1,9 @@
 {
-  "name": "2026 日本縱貫線互動手冊",
-  "short_name": "日本縱貫線",
+  "name": "2026 日本縱貫線 Travel Cockpit",
+  "short_name": "縱貫線",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#fbf7eb",
-  "theme_color": "#102f57",
+  "background_color": "#f6f0e4",
+  "theme_color": "#182521",
   "lang": "zh-Hant"
 }
