@@ -105,7 +105,7 @@ window.TRIP_UPDATES = {
       type: "shop",
       title: "定団渓 糰子備案",
       detail: "6/14 已有 13:00 秘密咖哩預約，定団渓改為附近甜點備案。若咖哩後仍想吃、時間與胃容量都允許，再短停。",
-      image: "assets/place-jodankei-dango.png",
+      image: "assets/place-jodankei-dango.jpg",
       tags: ["糰子", "定山溪", "備案"],
       links: {
         map: "https://www.google.com/maps/search/?api=1&query=%E5%AE%9A%E5%9B%A3%E6%B8%93%20%E5%AE%9A%E5%B1%B1%E6%B8%93",
@@ -130,7 +130,7 @@ window.TRIP_UPDATES = {
       type: "activity",
       title: "定山溪二見公園、二見吊橋",
       detail: "6/14 中途休息觀光。朱紅色吊橋與二見定山之道入口，適合 20-30 分鐘散步伸展。",
-      image: "assets/place-futami-bridge.png",
+      image: "assets/place-futami-bridge.jpg",
       tags: ["散步", "定山溪", "吊橋"],
       links: {
         map: "https://www.google.com/maps/search/?api=1&query=%E4%BA%8C%E8%A6%8B%E5%90%8A%E6%A9%8B%20%E5%AE%9A%E5%B1%B1%E6%B8%93",
@@ -143,7 +143,7 @@ window.TRIP_UPDATES = {
       type: "shop",
       title: "郷の駅ホッときもべつ",
       detail: "6/14 國道 230 中途補給點，可短停逛逛、洗手間與整理車上物品。",
-      image: "assets/place-hot-kimobetsu.png",
+      image: "assets/place-hot-kimobetsu.jpg",
       tags: ["道之驛", "補給", "短停"],
       links: {
         map: "https://maps.app.goo.gl/sxQcr4YFU5cVkbVHA?g_st=il",
@@ -155,7 +155,7 @@ window.TRIP_UPDATES = {
       type: "activity",
       title: "道の駅とうや湖 展望台",
       detail: "6/14 抵達洞爺湖前的展望停靠點。道之驛 4-10 月官方時間 8:30-17:00，可視抵達時間短停看景。",
-      image: "assets/place-toyako-viewpoint.png",
+      image: "assets/place-toyako-viewpoint.jpg",
       tags: ["道之驛", "展望台", "洞爺湖"],
       links: {
         map: "https://maps.app.goo.gl/6jnrmyLsDq4yoYZSA?g_st=il",
@@ -168,7 +168,7 @@ window.TRIP_UPDATES = {
       type: "activity",
       title: "白金ビークリニック本院",
       detail: "6/20 15:00 女友醫美預約，時間約 2.5 小時。從白金高輪站步行約 8 分鐘，療程後不安排趕路。",
-      image: "assets/place-shirokane-clinic.png",
+      image: "assets/place-shirokane-clinic.jpg",
       tags: ["預約", "南麻布", "醫美"],
       links: {
         map: "https://maps.app.goo.gl/ZDVAwKB6jj5ZfC8m7?g_st=ic",
@@ -181,7 +181,7 @@ window.TRIP_UPDATES = {
       type: "activity",
       title: "雑司ヶ谷 手創り市",
       detail: "6/21 10:00-11:30 上午市集支線。以手作器物、雜貨與小型攤位為主，逛完直接移動到日本橋 OLD NEW MARKET。",
-      image: "assets/place-zoshigaya-market.png",
+      image: "assets/place-zoshigaya-market.jpg",
       tags: ["市集", "手作", "支線"],
       links: {
         map: "https://www.google.com/maps/search/?api=1&query=%E9%9B%91%E5%8F%B8%E3%83%B6%E8%B0%B7%20%E6%89%8B%E5%89%B5%E3%82%8A%E5%B8%82",
@@ -293,4 +293,25 @@ window.TRIP_UPDATES = {
   ],
 
   visualAssets: {
-    p03: { image: "https://moerenumapark.jp/control-panel/wp-content/uploads/2014/05/img037_11.jpg", sourceType: "officialSite", sourceName: "Moerenuma Park 官網", sourceUrl: "https://moerenumapark.jp/english/" 
+    p03: { image: "https://moerenumapark.jp/control-panel/wp-content/uploads/2014/05/img037_11.jpg", sourceType: "officialSite", sourceName: "Moerenuma Park 官網", sourceUrl: "https://moerenumapark.jp/english/" },
+    p03b: { image: "https://www.sapporobeer.jp/brewery/s_museum/img/index-main_img01.jpg", sourceType: "officialSite", sourceName: "Sapporo Beer Museum 官網", sourceUrl: "https://www.sapporobeer.jp/brewery/s_museum/" },
+    p03c: { image: "https://www.sapporobeer.jp/brewery/s_museum/img/index_img01.jpg", sourceType: "officialSite", sourceName: "Sapporo Beer Museum 官網", sourceUrl: "https://www.sapporo-bier-garten.jp/" },
+    p04b: { image: "https://cdn.r-corona.jp/prd.jln.r-corona.jp/assets/site_files/xy8d03eb/921673/a51p_bw1540h144.jpg", sourceType: "officialSite", sourceName: "HOTEL COCOA RESORT 官網", sourceUrl: "https://cocoaresort.jp/" },
+    p07: { image: "https://www.morihico.com/wp/wp-content/themes/morihico_20210405/img/shop-bg2022.jpg", sourceType: "officialSite", sourceName: "MORIHICO. 官網", sourceUrl: "https://www.morihico.com/" },
+    p08: { image: "https://www.baristartcoffee.com/wp-content/uploads/2024/04/bac_web-banner_1080x300.jpeg", sourceType: "officialSite", sourceName: "BARISTART COFFEE 官網", sourceUrl: "https://www.baristartcoffee.com/" },
+    "hkd0614-secret-curry": { icon: "カ", sourceType: "icon", sourceName: "隱私保護", sourceNote: "秘密地點不顯示入口照片；只顯示公開集合點與預約提醒。" },
+    "hkd0614-jodankei-dango": { image: "assets/place-jodankei-dango.jpg", sourceType: "generated", sourceName: "ADE 手繪代表圖", sourceNote: "AI 手繪代表圖，依使用者 Google Maps 截圖與定山溪糰子備案情境生成。" },
+    "hkd0614-futami": { image: "assets/place-futami-bridge.jpg", sourceType: "generated", sourceName: "ADE 手繪代表圖", sourceNote: "AI 手繪代表圖，參考定山溪二見吊橋地標特徵生成。" },
+    "hkd0614-kimobetsu": { image: "assets/place-hot-kimobetsu.jpg", sourceType: "generated", sourceName: "ADE 手繪代表圖", sourceNote: "AI 手繪代表圖，依喜茂別補給站與羊蹄山路線印象生成。" },
+    "hkd0614-toyako-view": { image: "assets/place-toyako-viewpoint.jpg", sourceType: "generated", sourceName: "ADE 手繪代表圖", sourceNote: "AI 手繪代表圖，依洞爺湖展望台與道之驛情境生成。" },
+    p14b: { image: "assets/place-shirokane-clinic.jpg", sourceType: "generated", sourceName: "ADE 手繪代表圖", sourceNote: "AI 手繪代表圖，依官方診所資訊與預約情境生成。" },
+    p11: { image: "assets/place-jewelry-marche.jpg", sourceType: "generated", sourceName: "ADE 手繪代表圖", sourceNote: "AI 手繪代表圖，依 Jewelry Marche 寶石市集情境生成。" },
+    p14: { image: "assets/place-mineral-market.jpg", sourceType: "generated", sourceName: "ADE 手繪代表圖", sourceNote: "AI 手繪代表圖，依 Mineral Market 展場情境生成。" },
+    p15: { image: "assets/place-old-new-market.jpg", sourceType: "generated", sourceName: "ADE 手繪代表圖", sourceNote: "AI 手繪代表圖，依 OLD NEW MARKET 日本橋市集情境生成。" },
+    p19: { image: "assets/place-zoshigaya-market.jpg", sourceType: "generated", sourceName: "ADE 手繪代表圖", sourceNote: "AI 手繪代表圖，依雑司ヶ谷手創り市戶外手作市集情境生成。" },
+    m20: { image: "assets/place-17end.jpg", sourceType: "generated", sourceName: "ADE 手繪代表圖", sourceNote: "AI 手繪代表圖，依 17END 海景與拍照路線生成。" },
+    m17: { image: "assets/place-blue-turtle.jpg", sourceType: "generated", sourceName: "ADE 手繪代表圖", sourceNote: "AI 手繪代表圖，依 Blue Turtle 海景午餐情境生成。" },
+    m06: { image: "assets/place-ningin-coffee.jpg", sourceType: "generated", sourceName: "ADE 手繪代表圖", sourceNote: "AI 手繪代表圖，依 Ningin Coffee 宮古島咖啡情境生成。" },
+    m09: { image: "assets/place-kujira-diner.jpg", sourceType: "generated", sourceName: "ADE 手繪代表圖", sourceNote: "AI 手繪代表圖，依 Kujira Diner 早餐情境生成。" },
+  },
+};

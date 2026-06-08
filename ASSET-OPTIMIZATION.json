@@ -1,0 +1,27 @@
+{
+  "source": "japan-trip-interactive-app-v4-clean-upload",
+  "output": "japan-trip-interactive-app-v4-github-lite-upload",
+  "image_count": 40,
+  "mapping_sample": [
+    [
+      "assets/activity-0624-north-coast.png",
+      "assets/activity-0624-north-coast.jpg"
+    ],
+    [
+      "assets/place-shirokane-clinic.png",
+      "assets/place-shirokane-clinic.jpg"
+    ],
+    [
+      "assets/activity-0617-ueno-arrival.png",
+      "assets/activity-0617-ueno-arrival.jpg"
+    ],
+    [
+      "assets/activity-0611-otaru.png",
+      "assets/activity-0611-otaru.jpg"
+    ],
+    [
+      "assets/activity-sapporo-beer-museum.png",
+      "assets/activity-sapporo-beer-museum.jpg"
+    ]
+  ]
+}

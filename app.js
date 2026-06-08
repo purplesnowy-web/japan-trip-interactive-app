@@ -21,24 +21,24 @@ const route = [
 ];
 
 const itinerary = [
-  { id: "d0610", date: "6/10", weekday: "三", region: "hokkaido", type: "main", icon: "飛", art: "plane", title: "台北到札幌", detail: "新千歲機場國際線 84 號巴士站搭札幌都心行空港連絡巴士，南3条すすきの下車後步行或短程計程車入住札幌格蘭貝爾飯店狸小路。晚上視體力慢逛 YOSAKOI 索朗祭。", image: "assets/activity-airport-bus.png", status: "confirmed", links: { map: mapUrl("Granbell Hotel Tanuki Sapporo"), site: "https://www.yosakoi-soran.jp/" } },
-  { id: "d0611", date: "6/11", weekday: "四", region: "hokkaido", type: "main", icon: "倉", art: "canal", title: "小樽運河慢散步", detail: "北運河、舊倉庫群、城市散步，重點放在節奏與照片。", image: "assets/activity-0611-otaru.png", status: "confirmed", links: { map: mapUrl("Otaru Canal") } },
-  { id: "d0612", date: "6/12", weekday: "五", region: "hokkaido", type: "main", icon: "公", art: "park", title: "莫埃來沼公園、札幌啤酒博物館", detail: "上午在莫埃來沼公園留白，午後從公園西口搭ビ61丘珠線前往札幌啤酒博物館，再於 Sapporo Beer Garden 或 Ario 札幌一帶休息。", images: ["assets/activity-moerenuma.png", "assets/activity-sapporo-beer-museum.png"], status: "confirmed", links: { map: mapUrl("Moerenuma Park"), site: "https://moerenumapark.jp/" } },
-  { id: "d0613", date: "6/13", weekday: "六", region: "hokkaido", type: "shop", icon: "咖", art: "coffee", title: "狸小路補給與咖啡散步", detail: "さっぽろ石ころマーケット、札幌咖啡散步與市區補給。", image: "assets/activity-0613-sapporo-market-coffee.png", status: "confirmed", links: { map: mapUrl("Sapporo TV Tower"), site: "https://www.1456m.com/" } },
-  { id: "d0614", date: "6/14", weekday: "日", region: "hokkaido", type: "transport", icon: "車", art: "car", title: "札幌前往洞爺湖", detail: "退房後直接帶行李前往 ORIX 札幌站前店，11:00 取 KSS 小型車後離開市中心，前往 Cocoa Resort 洞爺湖住宿與婚禮主線。", image: "assets/activity-0614-toya-drive.png", status: "pending", links: { map: mapUrl("ORIX Rent a Car Sapporo Station"), site: "https://cocoaresort.jp/" } },
-  { id: "d0615", date: "6/15", weekday: "一", region: "hokkaido", type: "main", icon: "湖", art: "lake", title: "洞爺湖婚禮主線", detail: "Cocoa Resort 與婚禮主線，湖邊留白，不排過密，保留拍照與休息。", image: "assets/activity-0615-toya-wedding.png", status: "confirmed", links: { map: mapUrl("Cocoa Resort Toyako"), site: "https://cocoaresort.jp/" } },
-  { id: "d0616", date: "6/16", weekday: "二", region: "hokkaido", type: "transport", icon: "還", art: "car", title: "洞爺湖回札幌", detail: "18:00 還車，入住船舶花園薄野飯店，可接札幌祭或中島公園屋台。", image: "assets/activity-0616-return-sapporo.png", status: "confirmed", links: { map: mapUrl("Ship Garden Susukino Hotel Sapporo") } },
-  { id: "d0617", date: "6/17", weekday: "三", region: "tokyo", type: "transport", icon: "飛", art: "plane", title: "札幌到東京", detail: "ANA NH62 CTS → HND，入住上野寶石飯店，阿美橫丁輕量散步。", image: "assets/activity-0617-ueno-arrival.png", status: "confirmed", links: { map: mapUrl("Hotel Sardonyx Ueno"), site: "https://hotel-sardonyx.jp/ueno/" } },
-  { id: "d0618", date: "6/18", weekday: "四", region: "tokyo", type: "main", icon: "城", art: "castle", title: "皇居、神保町、東京站", detail: "皇居東御苑解謎、三省堂活動、東京車站與京橋支線，原宿或表參道視體力決定。", image: "assets/activity-0618-tokyo-culture.png", status: "confirmed", links: { map: mapUrl("皇居東御苑"), site: "https://www.kunaicho.go.jp/jp/visit/event/nazotoki/" } },
-  { id: "d0619", date: "6/19", weekday: "五", region: "tokyo", type: "shop", icon: "晶", art: "mineral", title: "御徒町礦物巡禮", detail: "Jewelry Marche 巡禮、クリスタル・ワールド、ニルヴァーナストーン。", image: "assets/activity-0619-okachimachi-minerals.png", status: "confirmed", links: { map: mapUrl("御徒町 ジュエリーマルシェ"), site: "https://www.jewelry-marche.com/" } },
-  { id: "d0620", date: "6/20", weekday: "六", region: "tokyo", type: "shop", icon: "展", art: "mineral", title: "ミネラルマーケット2026", detail: "大田區產業プラザ PiO 固定主線，優先度最高。", image: "assets/activity-0620-mineral-market.png", status: "confirmed", links: { map: mapUrl("大田区産業プラザ PiO"), site: "https://mineralmarket.jp/" } },
-  { id: "d0621", date: "6/21", weekday: "日", region: "tokyo", type: "branch", icon: "市", art: "market", title: "日本橋、上野與回場", detail: "Jewelry Marche 回場、OLD NEW MARKET 日本橋、上野髮型名店支線。晚上收車，隔天 04:20 起床。", image: "assets/activity-0621-nihonbashi-market.png", status: "confirmed", links: { map: mapUrl("OLD NEW MARKET 日本橋"), site: "https://www.oldnewmarket.com/" } },
-  { id: "d0622", date: "6/22", weekday: "一", region: "miyako", type: "transport", icon: "飛", art: "plane", title: "東京、沖繩到宮古島", detail: "上野出發，JAL JL903 HND → OKA 07:20-10:00，ANA NH1727 OKA → MMY 14:10-15:05，入住 Hotel Santa Barbara。", image: "assets/activity-0622-miyako-flight.png", status: "confirmed", links: { map: mapUrl("Hotel Santa Barbara Miyakojima Resort"), site: "https://santabarbara-miyakojima.com/" } },
-  { id: "d0623", date: "6/23", weekday: "二", region: "miyako", type: "main", icon: "潛", art: "snorkel", title: "東南線順路日", detail: "KKDay 潛水建議上午場，午餐サマー太陽或 A&W，下午宮古神社、市區小店、Blue Seal、MAXVALU，15:30-17:00 Ningin Coffee。", image: "assets/activity-0623-snorkel-town.png", status: "pending", links: { map: mapUrl("Ningin Coffee Miyakojima"), site: "https://www.kkday.com/zh-tw/product/551971" } },
-  { id: "d0624", date: "6/24", weekday: "三", region: "miyako", type: "main", icon: "海", art: "sea", title: "北海岸一日", detail: "Kujira Diner 早餐、海中公園、西平安名崎、雪鹽工廠、池間大橋、Gelato Cafe Ninufa、HARRY'S Shrimp Truck、砂山海灘。", image: "assets/activity-0624-north-coast.png", status: "flexible", links: { map: mapUrl("Sunayama Beach Miyakojima"), sns: "https://www.instagram.com/gelato_cafe_ninufa/" } },
-  { id: "d0625", date: "6/25", weekday: "四", region: "miyako", type: "main", icon: "橋", art: "bridge", title: "伊良部與 17END 拍照日", detail: "牧山展望台、伊良部大橋、海之驛、Blue Turtle 午餐、1 LAB Hello VACAY、國仲商店、なかゆくい商店、Shinbiji、17END，晚上 HULAR。", image: "assets/activity-0625-irabu-17end.png", status: "flexible", links: { map: mapUrl("17END Miyakojima") } },
-  { id: "d0626", date: "6/26", weekday: "五", region: "miyako", type: "branch", icon: "補", art: "shopping", title: "自由日、補貨與伴手禮", detail: "Kujira Diner 早餐，白天自由安排與補貨，PAINAGAMA BLUE BOOTH、Niima Soba、久松製麵所、SUNDAYS、小さな幸せ Sakuri、MAXVALU、藥妝與店吉商港。", image: "assets/activity-0626-miyako-shopping.png", status: "flexible", links: { map: mapUrl("MAXVALU Miyako Minami"), sns: "https://www.instagram.com/painagama_bluebooth/" } },
-  { id: "d0627", date: "6/27", weekday: "六", region: "miyako", type: "transport", icon: "返", art: "luggage", title: "宮古島返回台北", detail: "11:00 前往下地島機場，星宇 JX891 SHI → TPE 14:00-14:10，整理行李、保護易碎購物、分裝伴手禮。", image: "assets/activity-0627-shimojishima-departure.png", status: "confirmed", links: { map: mapUrl("Shimojishima Airport") } },
+  { id: "d0610", date: "6/10", weekday: "三", region: "hokkaido", type: "main", icon: "飛", art: "plane", title: "台北到札幌", detail: "新千歲機場國際線 84 號巴士站搭札幌都心行空港連絡巴士，南3条すすきの下車後步行或短程計程車入住札幌格蘭貝爾飯店狸小路。晚上視體力慢逛 YOSAKOI 索朗祭。", image: "assets/activity-airport-bus.jpg", status: "confirmed", links: { map: mapUrl("Granbell Hotel Tanuki Sapporo"), site: "https://www.yosakoi-soran.jp/" } },
+  { id: "d0611", date: "6/11", weekday: "四", region: "hokkaido", type: "main", icon: "倉", art: "canal", title: "小樽運河慢散步", detail: "北運河、舊倉庫群、城市散步，重點放在節奏與照片。", image: "assets/activity-0611-otaru.jpg", status: "confirmed", links: { map: mapUrl("Otaru Canal") } },
+  { id: "d0612", date: "6/12", weekday: "五", region: "hokkaido", type: "main", icon: "公", art: "park", title: "莫埃來沼公園、札幌啤酒博物館", detail: "上午在莫埃來沼公園留白，午後從公園西口搭ビ61丘珠線前往札幌啤酒博物館，再於 Sapporo Beer Garden 或 Ario 札幌一帶休息。", images: ["assets/activity-moerenuma.jpg", "assets/activity-sapporo-beer-museum.jpg"], status: "confirmed", links: { map: mapUrl("Moerenuma Park"), site: "https://moerenumapark.jp/" } },
+  { id: "d0613", date: "6/13", weekday: "六", region: "hokkaido", type: "shop", icon: "咖", art: "coffee", title: "狸小路補給與咖啡散步", detail: "さっぽろ石ころマーケット、札幌咖啡散步與市區補給。", image: "assets/activity-0613-sapporo-market-coffee.jpg", status: "confirmed", links: { map: mapUrl("Sapporo TV Tower"), site: "https://www.1456m.com/" } },
+  { id: "d0614", date: "6/14", weekday: "日", region: "hokkaido", type: "transport", icon: "車", art: "car", title: "札幌前往洞爺湖", detail: "退房後直接帶行李前往 ORIX 札幌站前店，11:00 取 KSS 小型車後離開市中心，前往 Cocoa Resort 洞爺湖住宿與婚禮主線。", image: "assets/activity-0614-toya-drive.jpg", status: "pending", links: { map: mapUrl("ORIX Rent a Car Sapporo Station"), site: "https://cocoaresort.jp/" } },
+  { id: "d0615", date: "6/15", weekday: "一", region: "hokkaido", type: "main", icon: "湖", art: "lake", title: "洞爺湖婚禮主線", detail: "Cocoa Resort 與婚禮主線，湖邊留白，不排過密，保留拍照與休息。", image: "assets/activity-0615-toya-wedding.jpg", status: "confirmed", links: { map: mapUrl("Cocoa Resort Toyako"), site: "https://cocoaresort.jp/" } },
+  { id: "d0616", date: "6/16", weekday: "二", region: "hokkaido", type: "transport", icon: "還", art: "car", title: "洞爺湖回札幌", detail: "18:00 還車，入住船舶花園薄野飯店，可接札幌祭或中島公園屋台。", image: "assets/activity-0616-return-sapporo.jpg", status: "confirmed", links: { map: mapUrl("Ship Garden Susukino Hotel Sapporo") } },
+  { id: "d0617", date: "6/17", weekday: "三", region: "tokyo", type: "transport", icon: "飛", art: "plane", title: "札幌到東京", detail: "ANA NH62 CTS → HND，入住上野寶石飯店，阿美橫丁輕量散步。", image: "assets/activity-0617-ueno-arrival.jpg", status: "confirmed", links: { map: mapUrl("Hotel Sardonyx Ueno"), site: "https://hotel-sardonyx.jp/ueno/" } },
+  { id: "d0618", date: "6/18", weekday: "四", region: "tokyo", type: "main", icon: "城", art: "castle", title: "皇居、神保町、東京站", detail: "皇居東御苑解謎、三省堂活動、東京車站與京橋支線，原宿或表參道視體力決定。", image: "assets/activity-0618-tokyo-culture.jpg", status: "confirmed", links: { map: mapUrl("皇居東御苑"), site: "https://www.kunaicho.go.jp/jp/visit/event/nazotoki/" } },
+  { id: "d0619", date: "6/19", weekday: "五", region: "tokyo", type: "shop", icon: "晶", art: "mineral", title: "御徒町礦物巡禮", detail: "Jewelry Marche 巡禮、クリスタル・ワールド、ニルヴァーナストーン。", image: "assets/activity-0619-okachimachi-minerals.jpg", status: "confirmed", links: { map: mapUrl("御徒町 ジュエリーマルシェ"), site: "https://www.jewelry-marche.com/" } },
+  { id: "d0620", date: "6/20", weekday: "六", region: "tokyo", type: "shop", icon: "展", art: "mineral", title: "ミネラルマーケット2026", detail: "大田區產業プラザ PiO 固定主線，優先度最高。", image: "assets/activity-0620-mineral-market.jpg", status: "confirmed", links: { map: mapUrl("大田区産業プラザ PiO"), site: "https://mineralmarket.jp/" } },
+  { id: "d0621", date: "6/21", weekday: "日", region: "tokyo", type: "branch", icon: "市", art: "market", title: "日本橋、上野與回場", detail: "Jewelry Marche 回場、OLD NEW MARKET 日本橋、上野髮型名店支線。晚上收車，隔天 04:20 起床。", image: "assets/activity-0621-nihonbashi-market.jpg", status: "confirmed", links: { map: mapUrl("OLD NEW MARKET 日本橋"), site: "https://www.oldnewmarket.com/" } },
+  { id: "d0622", date: "6/22", weekday: "一", region: "miyako", type: "transport", icon: "飛", art: "plane", title: "東京、沖繩到宮古島", detail: "上野出發，JAL JL903 HND → OKA 07:20-10:00，ANA NH1727 OKA → MMY 14:10-15:05，入住 Hotel Santa Barbara。", image: "assets/activity-0622-miyako-flight.jpg", status: "confirmed", links: { map: mapUrl("Hotel Santa Barbara Miyakojima Resort"), site: "https://santabarbara-miyakojima.com/" } },
+  { id: "d0623", date: "6/23", weekday: "二", region: "miyako", type: "main", icon: "潛", art: "snorkel", title: "東南線順路日", detail: "KKDay 潛水建議上午場，午餐サマー太陽或 A&W，下午宮古神社、市區小店、Blue Seal、MAXVALU，15:30-17:00 Ningin Coffee。", image: "assets/activity-0623-snorkel-town.jpg", status: "pending", links: { map: mapUrl("Ningin Coffee Miyakojima"), site: "https://www.kkday.com/zh-tw/product/551971" } },
+  { id: "d0624", date: "6/24", weekday: "三", region: "miyako", type: "main", icon: "海", art: "sea", title: "北海岸一日", detail: "Kujira Diner 早餐、海中公園、西平安名崎、雪鹽工廠、池間大橋、Gelato Cafe Ninufa、HARRY'S Shrimp Truck、砂山海灘。", image: "assets/activity-0624-north-coast.jpg", status: "flexible", links: { map: mapUrl("Sunayama Beach Miyakojima"), sns: "https://www.instagram.com/gelato_cafe_ninufa/" } },
+  { id: "d0625", date: "6/25", weekday: "四", region: "miyako", type: "main", icon: "橋", art: "bridge", title: "伊良部與 17END 拍照日", detail: "牧山展望台、伊良部大橋、海之驛、Blue Turtle 午餐、1 LAB Hello VACAY、國仲商店、なかゆくい商店、Shinbiji、17END，晚上 HULAR。", image: "assets/activity-0625-irabu-17end.jpg", status: "flexible", links: { map: mapUrl("17END Miyakojima") } },
+  { id: "d0626", date: "6/26", weekday: "五", region: "miyako", type: "branch", icon: "補", art: "shopping", title: "自由日、補貨與伴手禮", detail: "Kujira Diner 早餐，白天自由安排與補貨，PAINAGAMA BLUE BOOTH、Niima Soba、久松製麵所、SUNDAYS、小さな幸せ Sakuri、MAXVALU、藥妝與店吉商港。", image: "assets/activity-0626-miyako-shopping.jpg", status: "flexible", links: { map: mapUrl("MAXVALU Miyako Minami"), sns: "https://www.instagram.com/painagama_bluebooth/" } },
+  { id: "d0627", date: "6/27", weekday: "六", region: "miyako", type: "transport", icon: "返", art: "luggage", title: "宮古島返回台北", detail: "11:00 前往下地島機場，星宇 JX891 SHI → TPE 14:00-14:10，整理行李、保護易碎購物、分裝伴手禮。", image: "assets/activity-0627-shimojishima-departure.jpg", status: "confirmed", links: { map: mapUrl("Shimojishima Airport") } },
 ];
 
 const bookings = [
@@ -58,9 +58,9 @@ const bookings = [
 const places = [
   { id: "p01", region: "hokkaido", type: "activity", title: "大通公園 YOSAKOI 索朗祭", detail: "6/10 晚上主線，札幌抵達後暖身。", tags: ["祭典", "札幌"], links: { map: mapUrl("Odori Park Sapporo"), site: "https://www.yosakoi-soran.jp/" } },
   { id: "p02", region: "hokkaido", type: "activity", title: "小樽運河", detail: "6/11 小樽慢散步主線。", tags: ["散步", "小樽"], links: { map: mapUrl("Otaru Canal") } },
-  { id: "p03", region: "hokkaido", type: "activity", title: "莫埃來沼公園", detail: "6/12 上午主線，雕塑、地景與城市留白。", image: "assets/activity-moerenuma.png", tags: ["公園", "札幌"], links: { map: mapUrl("Moerenuma Park"), site: "https://moerenumapark.jp/" } },
-  { id: "p03b", region: "hokkaido", type: "activity", title: "札幌啤酒博物館", detail: "6/12 下午主線，14:40-16:15 參觀紅磚館舍與啤酒文化展示。", image: "assets/activity-sapporo-beer-museum.png", tags: ["博物館", "札幌"], links: { map: mapUrl("Sapporo Beer Museum"), site: "https://www.sapporobeer.jp/brewery/s_museum/" } },
-  { id: "p03c", region: "hokkaido", type: "shop", title: "Sapporo Beer Garden", detail: "6/12 下午休息或成吉思汗晚餐備案，可與 Ario 札幌一起安排。", image: "assets/activity-sapporo-beer-museum.png", tags: ["餐廳", "札幌"], links: { map: mapUrl("Sapporo Beer Garden"), site: "https://www.sapporo-bier-garten.jp/" } },
+  { id: "p03", region: "hokkaido", type: "activity", title: "莫埃來沼公園", detail: "6/12 上午主線，雕塑、地景與城市留白。", image: "assets/activity-moerenuma.jpg", tags: ["公園", "札幌"], links: { map: mapUrl("Moerenuma Park"), site: "https://moerenumapark.jp/" } },
+  { id: "p03b", region: "hokkaido", type: "activity", title: "札幌啤酒博物館", detail: "6/12 下午主線，14:40-16:15 參觀紅磚館舍與啤酒文化展示。", image: "assets/activity-sapporo-beer-museum.jpg", tags: ["博物館", "札幌"], links: { map: mapUrl("Sapporo Beer Museum"), site: "https://www.sapporobeer.jp/brewery/s_museum/" } },
+  { id: "p03c", region: "hokkaido", type: "shop", title: "Sapporo Beer Garden", detail: "6/12 下午休息或成吉思汗晚餐備案，可與 Ario 札幌一起安排。", image: "assets/activity-sapporo-beer-museum.jpg", tags: ["餐廳", "札幌"], links: { map: mapUrl("Sapporo Beer Garden"), site: "https://www.sapporo-bier-garten.jp/" } },
   { id: "p04", region: "hokkaido", type: "activity", title: "さっぽろ石ころマーケット", detail: "6/13 礦物活動，札幌電視塔 2F。", tags: ["礦物", "活動"], links: { map: mapUrl("Sapporo TV Tower"), site: "https://www.1456m.com/" } },
   { id: "p04b", region: "hokkaido", type: "shop", title: "Cocoa Resort 洞爺湖", detail: "6/14-6/16 洞爺湖住宿，婚禮主線與湖邊留白的基地。", tags: ["住宿", "洞爺湖"], links: { map: mapUrl("Cocoa Resort Toyako"), site: "https://cocoaresort.jp/" } },
   { id: "p05", region: "hokkaido", type: "shop", title: "Brew it by NODE", detail: "札幌市中心精品咖啡，取代不在北海道的 PHILOCOFFEA 札幌項目。", tags: ["咖啡", "札幌"], links: { map: mapUrl("Brew it by NODE Sapporo"), site: "https://typica.coffee/ja/locations/brew-it-by-node/", sns: "https://www.instagram.com/node_brewit/" } },
@@ -109,18 +109,18 @@ const places = [
 ];
 
 const placeImageGroups = [
-  ["assets/activity-0613-sapporo-market-coffee.png", ["p01", "p04", "p05", "p06", "p07", "p08"]],
-  ["assets/activity-0611-otaru.png", ["p02"]],
-  ["assets/activity-0615-toya-wedding.png", ["p04b"]],
-  ["assets/activity-0618-tokyo-culture.png", ["p09", "p10", "p16"]],
-  ["assets/activity-0619-okachimachi-minerals.png", ["p11", "p12", "p13", "p17", "p18"]],
-  ["assets/activity-0620-mineral-market.png", ["p14"]],
-  ["assets/activity-0621-nihonbashi-market.png", ["p15"]],
-  ["assets/activity-0622-miyako-flight.png", ["m01", "m02", "m03"]],
-  ["assets/activity-0623-snorkel-town.png", ["m04", "m05", "m06", "m07", "m08"]],
-  ["assets/activity-0624-north-coast.png", ["m09", "m10", "m11", "m12", "m13", "m14", "m15"]],
-  ["assets/activity-0625-irabu-17end.png", ["m16", "m17", "m18", "m19", "m20"]],
-  ["assets/activity-0626-miyako-shopping.png", ["m21", "m22", "m23", "m24", "m25", "m26", "m27", "m28", "m29"]],
+  ["assets/activity-0613-sapporo-market-coffee.jpg", ["p01", "p04", "p05", "p06", "p07", "p08"]],
+  ["assets/activity-0611-otaru.jpg", ["p02"]],
+  ["assets/activity-0615-toya-wedding.jpg", ["p04b"]],
+  ["assets/activity-0618-tokyo-culture.jpg", ["p09", "p10", "p16"]],
+  ["assets/activity-0619-okachimachi-minerals.jpg", ["p11", "p12", "p13", "p17", "p18"]],
+  ["assets/activity-0620-mineral-market.jpg", ["p14"]],
+  ["assets/activity-0621-nihonbashi-market.jpg", ["p15"]],
+  ["assets/activity-0622-miyako-flight.jpg", ["m01", "m02", "m03"]],
+  ["assets/activity-0623-snorkel-town.jpg", ["m04", "m05", "m06", "m07", "m08"]],
+  ["assets/activity-0624-north-coast.jpg", ["m09", "m10", "m11", "m12", "m13", "m14", "m15"]],
+  ["assets/activity-0625-irabu-17end.jpg", ["m16", "m17", "m18", "m19", "m20"]],
+  ["assets/activity-0626-miyako-shopping.jpg", ["m21", "m22", "m23", "m24", "m25", "m26", "m27", "m28", "m29"]],
 ];
 
 const placeImages = Object.fromEntries(
@@ -976,4 +976,313 @@ function applyTripUpdates(updates = window.TRIP_UPDATES) {
   });
 
   Object.entries(updates.dayModeNotes || {}).forEach(([id, patch]) => {
-    dayModeNotes[id] = 
+    dayModeNotes[id] = { ...(dayModeNotes[id] || {}), ...patch };
+  });
+
+  (updates.expenses || []).forEach((expense) => {
+    const existing = plannedExpenses.find((item) => item.id === expense.id);
+    if (existing) Object.assign(existing, expense);
+    else plannedExpenses.push(expense);
+  });
+
+  Object.assign(visualAssets, updates.visualAssets || {});
+}
+
+function renderTodayPanel() {
+  if (!els.todayPanel) return;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const firstDay = tripDate(itinerary[0]);
+  const lastDay = tripDate(itinerary[itinerary.length - 1]);
+  let mode = "before";
+  let selected = itinerary[0];
+
+  if (today > lastDay) {
+    mode = "after";
+    selected = itinerary[itinerary.length - 1];
+  } else if (today >= firstDay) {
+    mode = "during";
+    selected = itinerary.find((day) => tripDate(day).getTime() === today.getTime()) || itinerary[0];
+  }
+
+  const selectedMap = dayMaps[selected.id];
+  const daysDiff = Math.round((tripDate(selected) - today) / 86400000);
+  const title =
+    mode === "before"
+      ? `距離出發還有 ${Math.max(daysDiff, 0)} 天`
+      : mode === "after"
+        ? "旅程已完成，現在適合整理回憶"
+        : "今天的行程焦點";
+
+  els.todayPanel.innerHTML = `
+    <div class="today-card">
+      ${renderIllustration(selected.art)}
+      <div class="today-copy">
+        <p class="panel-kicker">${title}</p>
+        <h3>${selected.date} 星期${selected.weekday} · ${selected.title}</h3>
+        <p>${selected.detail}</p>
+        <div class="tag-row">
+          <span class="tag">${regionLabels[selected.region]}</span>
+          <span class="tag">${typeLabels[selected.type]}</span>
+          <span class="tag status-tag ${currentStatus(selected)}">${statusLabels[currentStatus(selected)]}</span>
+          ${selectedMap ? `<span class="tag">${selectedMap.area}</span>` : ""}
+        </div>
+        ${renderDayModeBox(selected)}
+        <div class="shop-actions">
+          ${renderLinkButtons(selected.links, selected.title)}
+          ${selectedMap ? `<a class="small-link map" href="${directionsUrl(selectedMap.points)}" target="_blank" rel="noreferrer">當日動線</a>` : ""}
+          <button class="small-link button-link" type="button" data-jump="itinerary">看完整每日行程</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderDesignNotes() {
+  if (!els.designNotes) return;
+  const notes = [
+    ["先總覽", "像金融 dashboard 一樣，先看天數、費用、完成率與待辦，降低資訊壓力。"],
+    ["再行動", "今日模式只放下一步與當日地圖，避免旅途中被完整資料淹沒。"],
+    ["分清狀態", "已確認、待訂、備案、當天視體力分開標示，讓鐵軌與彈性選項一眼可分。"],
+    ["最後查明細", "每日行程、住宿交通、地點連結分區，是把資料庫變成可操作工具。"],
+  ];
+  els.designNotes.innerHTML = `
+    <div class="lesson-list">
+      ${notes.map(([title, text], index) => `
+        <article class="lesson-card">
+          <span class="lesson-number">${index + 1}</span>
+          <strong>${title}</strong>
+          <p>${text}</p>
+        </article>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderAll() {
+  renderTabs();
+  renderItinerary();
+  renderBookings();
+  renderTasks();
+  renderExpenses();
+  renderPlaces();
+  renderLinks();
+  renderMetrics();
+  renderTodayPanel();
+  renderDesignNotes();
+  markEmptyPanels();
+}
+
+function markEmptyPanels() {
+  ["itineraryList", "bookingList", "taskList", "expenseList", "shopGrid", "linkList"].forEach((key) => {
+    const el = els[key];
+    if (!el) return;
+    const existingEmpty = el.querySelector(".empty-state");
+    if (existingEmpty) existingEmpty.remove();
+    const visible = Array.from(el.children).some((child) => !child.classList.contains("hidden"));
+    if (!visible) {
+      el.insertAdjacentHTML("beforeend", emptyState());
+    }
+  });
+}
+
+function emptyState() {
+  return `<div class="empty-state">目前篩選沒有符合項目。</div>`;
+}
+
+function cycleStatus(id) {
+  const order = ["confirmed", "pending", "backup", "flexible", "todo", "done"];
+  const source = [...itinerary, ...bookings].find((item) => item.id === id);
+  const now = currentStatus(source);
+  const next = order[(order.indexOf(now) + 1) % order.length];
+  state.statuses[id] = next;
+  saveState();
+  renderAll();
+}
+
+function openDetail(kind, id) {
+  const pools = { itinerary, booking: bookings };
+  const item = pools[kind]?.find((entry) => entry.id === id);
+  if (!item) return;
+  els.dialogContent.innerHTML = `
+    <div class="dialog-body">
+      <p class="panel-kicker">${regionLabels[item.region]} · ${item.date || ""}</p>
+      <h2>${item.title}</h2>
+      ${renderIllustration(item.art || item.icon)}
+      <p>${item.detail || item.meta || ""}</p>
+      <div class="tag-row">
+        <span class="tag">${statusLabels[currentStatus(item)]}</span>
+        ${item.category ? `<span class="tag">${typeLabels[item.category]}</span>` : ""}
+      </div>
+      <div class="shop-actions">${renderLinkButtons(item.links, item.title)}</div>
+    </div>
+  `;
+  els.dialog.showModal();
+}
+
+function openManual(index) {
+  const manual = manuals[index];
+  els.dialogContent.innerHTML = `
+    <div class="dialog-body">
+      <p class="panel-kicker">原始手冊</p>
+      <h2>${manual.title}</h2>
+      <img src="${manual.src}" alt="${manual.title}" />
+    </div>
+  `;
+  els.dialog.showModal();
+}
+
+function updateExpenseLivePreview() {
+  if (!els.expenseLive) return;
+  const amount = Number(els.expenseAmount?.value) || 0;
+  const currency = els.expenseCurrency?.value || "JPY";
+  if (!amount) {
+    els.expenseLive.textContent = "輸入金額後自動換算";
+    return;
+  }
+  const converted = convertExpenseAmount(amount, currency);
+  els.expenseLive.textContent = `${jpyMoney(converted.jpyAmount)} / ${twdMoney(converted.twdAmount)}（固定以日幣除 5 估算）`;
+}
+
+function addExpenseFromForm() {
+  const amount = Number(els.expenseAmount?.value) || 0;
+  const title = (els.expenseTitle?.value || "").trim();
+  if (!amount || !title) {
+    if (els.expenseLive) els.expenseLive.textContent = "請先輸入項目與金額。";
+    return;
+  }
+  const currency = els.expenseCurrency?.value || "JPY";
+  const converted = convertExpenseAmount(amount, currency);
+  state.expenses.unshift({
+    id: `expense-${Date.now()}`,
+    date: (els.expenseDate?.value || "").trim(),
+    title,
+    category: expenseCategories.includes(els.expenseCategory?.value) ? els.expenseCategory.value : "其他",
+    payer: els.expensePayer?.value || "pending",
+    note: (els.expenseNote?.value || "").trim(),
+    amount: converted.amount,
+    currency: converted.currency,
+  });
+  saveState();
+  els.expenseForm.reset();
+  if (els.expenseCurrency) els.expenseCurrency.value = "JPY";
+  if (els.expensePayer) els.expensePayer.value = "husband";
+  updateExpenseLivePreview();
+  renderAll();
+}
+
+function setExpensePayer(id, payer, source) {
+  if (!payerLabels[payer]) return;
+  if (source === "planned") {
+    state.expensePayers[id] = payer;
+  } else {
+    const expense = state.expenses.find((entry) => entry.id === id);
+    if (expense) expense.payer = payer;
+  }
+  saveState();
+  renderAll();
+}
+
+function deleteExpense(id) {
+  state.expenses = state.expenses.filter((expense) => expense.id !== id);
+  saveState();
+  renderAll();
+}
+
+function bindEvents() {
+  els.expenseForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    addExpenseFromForm();
+  });
+
+  [els.expenseAmount, els.expenseCurrency].forEach((input) => {
+    input?.addEventListener("input", updateExpenseLivePreview);
+    input?.addEventListener("change", updateExpenseLivePreview);
+  });
+
+  els.searchInput.addEventListener("input", (event) => {
+    filters.query = normalize(event.target.value);
+    renderAll();
+  });
+
+  els.categoryFilter.addEventListener("change", (event) => {
+    filters.category = event.target.value;
+    renderAll();
+  });
+
+  document.addEventListener("click", (event) => {
+    const regionButton = event.target.closest("[data-region]");
+    if (regionButton) {
+      filters.region = regionButton.dataset.region;
+      renderAll();
+      return;
+    }
+
+    const viewButton = event.target.closest("[data-view]");
+    if (viewButton) {
+      filters.view = viewButton.dataset.view;
+      document.querySelectorAll("[data-view]").forEach((button) => button.classList.toggle("active", button === viewButton));
+      renderItinerary();
+      markEmptyPanels();
+      return;
+    }
+
+    const statusButton = event.target.closest("[data-status-for]");
+    if (statusButton) {
+      event.stopPropagation();
+      cycleStatus(statusButton.dataset.statusFor);
+      return;
+    }
+
+    const detail = event.target.closest("[data-detail-kind]");
+    if (detail && !event.target.closest("button, a")) {
+      openDetail(detail.dataset.detailKind, detail.dataset.id);
+      return;
+    }
+
+    const manual = event.target.closest("[data-manual]");
+    if (manual) {
+      openManual(Number(manual.dataset.manual));
+      return;
+    }
+
+    const jump = event.target.closest("[data-jump]");
+    if (jump) {
+      document.querySelector(`#${jump.dataset.jump}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    const expensePayer = event.target.closest("[data-expense-payer]");
+    if (expensePayer) {
+      setExpensePayer(expensePayer.dataset.expensePayer, expensePayer.dataset.payer, expensePayer.dataset.source);
+      return;
+    }
+
+    const deleteExpenseButton = event.target.closest("[data-delete-expense]");
+    if (deleteExpenseButton) {
+      deleteExpense(deleteExpenseButton.dataset.deleteExpense);
+    }
+  });
+
+  document.addEventListener("change", (event) => {
+    const task = event.target.closest("[data-task]");
+    if (!task) return;
+    state.tasks[task.dataset.task] = task.checked;
+    saveState();
+    renderAll();
+  });
+
+  document.querySelector(".dialog-close").addEventListener("click", () => els.dialog.close());
+  document.querySelector("#printBtn").addEventListener("click", () => window.print());
+  document.querySelector("#resetBtn").addEventListener("click", () => {
+    state = normalizeState(null);
+    saveState();
+    renderAll();
+  });
+}
+
+applyTripUpdates();
+renderRoute();
+renderManuals();
+bindEvents();
+renderAll();
