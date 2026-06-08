@@ -59,10 +59,11 @@ window.TRIP_UPDATES = {
 
   itinerary: {
     d0614: {
-      detail: "退房後直接帶行李前往 ORIX 札幌站前店，11:30 取 SA CLASS 小型車。離開札幌後走國道 230，定山溪甜點與二見吊橋短停，再經郷の駅ホッときもべつ、道の駅とうや湖展望台，最後抵達 Cocoa Resort 洞爺湖。",
+      title: "札幌、秘密咖哩、定山溪到洞爺湖",
+      detail: "退房後直接帶行李前往 ORIX 札幌站前店，11:30 取 SA CLASS 小型車。離開札幌後走國道 230，13:00 秘密のカレー部屋預約，之後視時間短走二見吊橋，再經郷の駅ホッときもべつ、道の駅とうや湖展望台，最後抵達 Cocoa Resort 洞爺湖。",
       status: "confirmed",
       links: {
-        map: "https://www.google.com/maps/dir/?api=1&origin=ORIX%20Rent%20a%20Car%20Sapporo%20Station&destination=Cocoa%20Resort%20Toyako&waypoints=%E5%AE%9A%E5%9B%A3%E6%B8%93%20%E5%AE%9A%E5%B1%B1%E6%B8%93%7C%E4%BA%8C%E8%A6%8B%E5%90%8A%E6%A9%8B%7C%E9%83%B7%E3%81%AE%E9%A7%85%E3%83%9B%E3%83%83%E3%81%A8%E3%81%8D%E3%82%82%E3%81%B9%E3%81%A4%7C%E9%81%93%E3%81%AE%E9%A7%85%E3%81%A8%E3%81%86%E3%82%84%E6%B9%96%20%E5%B1%95%E6%9C%9B%E5%8F%B0",
+        map: "https://www.google.com/maps/dir/?api=1&origin=ORIX%20Rent%20a%20Car%20Sapporo%20Station&destination=Cocoa%20Resort%20Toyako&waypoints=%E3%82%AB%E3%82%BC%E3%83%9E%E3%83%81%E3%83%9E%E3%83%BC%E3%83%88%E3%81%A8%E7%87%BB%E8%A3%BD%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E7%A0%94%E7%A9%B6%E6%89%80%7C%E4%BA%8C%E8%A6%8B%E5%90%8A%E6%A9%8B%7C%E9%83%B7%E3%81%AE%E9%A7%85%E3%83%9B%E3%83%83%E3%81%A8%E3%81%8D%E3%82%82%E3%81%B9%E3%81%A4%7C%E9%81%93%E3%81%AE%E9%A7%85%E3%81%A8%E3%81%86%E3%82%84%E6%B9%96%20%E5%B1%95%E6%9C%9B%E5%8F%B0",
         site: "https://cocoaresort.jp/",
       },
     },
@@ -102,12 +103,25 @@ window.TRIP_UPDATES = {
       id: "hkd0614-jodankei-dango",
       region: "hokkaido",
       type: "shop",
-      title: "定団渓 糰子短停",
-      detail: "6/14 札幌到洞爺湖路上甜點點。Google Maps 截圖顯示週五 10:00 開始營業，主打烤糰子；停車與排隊狀況現場確認。",
+      title: "定団渓 糰子備案",
+      detail: "6/14 已有 13:00 秘密咖哩預約，定団渓改為附近甜點備案。若咖哩後仍想吃、時間與胃容量都允許，再短停。",
       image: "assets/place-jodankei-dango.png",
-      tags: ["糰子", "定山溪", "短停"],
+      tags: ["糰子", "定山溪", "備案"],
       links: {
         map: "https://www.google.com/maps/search/?api=1&query=%E5%AE%9A%E5%9B%A3%E6%B8%93%20%E5%AE%9A%E5%B1%B1%E6%B8%93",
+      },
+    },
+    {
+      id: "hkd0614-secret-curry",
+      region: "hokkaido",
+      type: "shop",
+      title: "秘密のカレー部屋",
+      detail: "6/14 13:00，2 人，秘密のカレーセット全 5 品，合計 ¥5,720。預約時間 5 分鐘前到カゼマチマートと燻製デザイン研究所，先在櫃台結帳；現金與信用卡可用。停車使用風マチビルヂング旁免費停車場。不要在 SNS 公開秘密入口或精確入口資訊。",
+      visualIcon: "カ",
+      tags: ["預約", "定山溪", "午餐", "隱私提醒"],
+      links: {
+        map: "https://www.google.com/maps/search/?api=1&query=%E3%82%AB%E3%82%BC%E3%83%9E%E3%83%81%E3%83%9E%E3%83%BC%E3%83%88%E3%81%A8%E7%87%BB%E8%A3%BD%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E7%A0%94%E7%A9%B6%E6%89%80%20%E5%AE%9A%E5%B1%B1%E6%B8%93",
+        web: "https://www.google.com/search?q=%E7%A7%98%E5%AF%86%E3%81%AE%E3%82%AB%E3%83%AC%E3%83%BC%E9%83%A8%E5%B1%8B%20SelectType",
       },
     },
     {
@@ -183,8 +197,8 @@ window.TRIP_UPDATES = {
       points: [
         { label: "Granbell Hotel", query: "Granbell Hotel Tanuki Sapporo", x: 12, y: 28, kind: "hotel" },
         { label: "ORIX 札幌", query: "ORIX Rent a Car Sapporo Station", x: 22, y: 38, kind: "transport" },
-        { label: "定団渓", query: "定団渓 定山渓", x: 36, y: 52, kind: "food" },
-        { label: "二見吊橋", query: "二見吊橋 定山渓", x: 42, y: 58, kind: "activity" },
+        { label: "秘密咖哩集合點", query: "カゼマチマートと燻製デザイン研究所 定山渓", x: 36, y: 52, kind: "food" },
+        { label: "二見吊橋", query: "二見吊橋 定山渓", x: 43, y: 58, kind: "activity" },
         { label: "ホッときもべつ", query: "郷の駅ホッときもべつ", x: 56, y: 66, kind: "shop" },
         { label: "とうや湖 展望台", query: "道の駅とうや湖 展望台", x: 74, y: 54, kind: "activity" },
         { label: "Cocoa Resort", query: "Cocoa Resort Toyako", x: 84, y: 68, kind: "hotel" },
@@ -215,20 +229,21 @@ window.TRIP_UPDATES = {
 
   dayModeNotes: {
     d0614: {
-      title: "ORIX 取車與洞爺湖路上小旅行",
+      title: "ORIX 取車、秘密咖哩與洞爺湖路上小旅行",
       items: [
         "09:30-10:00 飯店退房、整理行李",
         "10:00-10:25 帶行李直接從飯店前往 ORIX 札幌站前店",
         "10:25-11:20 抵達 ORIX，確認證件、ETC 卡、CDW 與 RAP",
         "11:30 取 SA CLASS 小型車",
         "11:45 後離開札幌市中心，往定山溪",
-        "12:45-13:15 定団渓糰子短停",
-        "13:15-13:45 二見公園、二見吊橋散步休息",
-        "14:30-15:00 郷の駅ホッときもべつ短停補給",
-        "15:40-16:10 道の駅とうや湖展望台短停看景",
-        "16:30-17:15 抵達 Cocoa Resort 洞爺湖",
+        "12:55 前抵達カゼマチマートと燻製デザイン研究所，先結帳",
+        "13:00-13:45 秘密のカレー部屋，2 人合計 ¥5,720",
+        "13:55-14:20 二見公園、二見吊橋散步休息",
+        "15:00-15:20 郷の駅ホッときもべつ短停補給",
+        "16:00-16:20 道の駅とうや湖展望台短停看景",
+        "16:45-17:30 抵達 Cocoa Resort 洞爺湖",
       ],
-      warning: "這天每站都抓短停。若定団渓排隊太久或售完，直接改二見吊橋散步，不要為甜點拉長停留。",
+      warning: "秘密咖哩不要公開入口或精確位置；若取車或道路延誤，優先保留 13:00 預約，二見吊橋與展望台可縮短。",
     },
     d0616: {
       title: "洞爺湖回札幌還車",
@@ -264,19 +279,18 @@ window.TRIP_UPDATES = {
     },
   },
 
+  expenses: [
+    {
+      id: "exp-0614-secret-curry",
+      date: "6/14",
+      title: "秘密のカレー部屋 2 人午餐",
+      category: "餐飲",
+      amount: 5720,
+      currency: "JPY",
+      payer: "pending",
+      note: "秘密咖哩套餐全 5 品，現場先結帳；付款人待現場確認。",
+    },
+  ],
+
   visualAssets: {
-    "hkd0614-jodankei-dango": { image: "assets/place-jodankei-dango.png", sourceNote: "AI 手繪代表圖，依使用者 Google Maps 截圖與定山溪糰子短停情境生成。" },
-    "hkd0614-futami": { image: "assets/place-futami-bridge.png", sourceNote: "AI 手繪代表圖，參考定山溪二見吊橋地標特徵生成。" },
-    "hkd0614-kimobetsu": { image: "assets/place-hot-kimobetsu.png", sourceNote: "AI 手繪代表圖，依喜茂別補給站與羊蹄山路線印象生成。" },
-    "hkd0614-toyako-view": { image: "assets/place-toyako-viewpoint.png", sourceNote: "AI 手繪代表圖，依洞爺湖展望台與道之驛情境生成。" },
-    p14b: { image: "assets/place-shirokane-clinic.png", sourceNote: "AI 手繪代表圖，依官方診所資訊與預約情境生成。" },
-    p11: { image: "assets/place-jewelry-marche.png", sourceNote: "AI 手繪代表圖，依 Jewelry Marche 寶石市集情境生成。" },
-    p14: { image: "assets/place-mineral-market.png", sourceNote: "AI 手繪代表圖，依 Mineral Market 展場情境生成。" },
-    p15: { image: "assets/place-old-new-market.png", sourceNote: "AI 手繪代表圖，依 OLD NEW MARKET 日本橋市集情境生成。" },
-    p19: { image: "assets/place-zoshigaya-market.png", sourceNote: "AI 手繪代表圖，依雑司ヶ谷手創り市戶外手作市集情境生成。" },
-    m20: { image: "assets/place-17end.png", sourceNote: "AI 手繪代表圖，依 17END 海景與拍照路線生成。" },
-    m17: { image: "assets/place-blue-turtle.png", sourceNote: "AI 手繪代表圖，依 Blue Turtle 海景午餐情境生成。" },
-    m06: { image: "assets/place-ningin-coffee.png", sourceNote: "AI 手繪代表圖，依 Ningin Coffee 宮古島咖啡情境生成。" },
-    m09: { image: "assets/place-kujira-diner.png", sourceNote: "AI 手繪代表圖，依 Kujira Diner 早餐情境生成。" },
-  },
-};
+    p03: { image: "https://moerenumapark.jp/control-panel/wp-content/uploads/2014/05/img037_11.jpg", sourceType: "officialSite", sourceName: "Moerenuma Park 官網", sourceUrl: "https://moerenumapark.jp/english/" 

@@ -1,4 +1,5 @@
 const STORAGE_KEY = "jp-island-trip-2026-v2-state";
+const JPY_TO_TWD_DIVISOR = 5;
 
 const mapUrl = (query) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 const searchUrl = (query) => `https://www.google.com/search?q=${encodeURIComponent(query)}`;
@@ -345,8 +346,19 @@ const typeLabels = {
   transport: "交通",
   shop: "地點餐廳",
   activity: "活動",
+  expense: "記帳",
   task: "待辦",
 };
+
+const payerLabels = {
+  husband: "老公",
+  wife: "老婆",
+  pending: "待補",
+};
+
+const expenseCategories = ["餐飲", "交通", "住宿", "活動", "購物", "咖啡", "其他"];
+
+const plannedExpenses = [];
 
 let state = loadState();
 let filters = { query: "", region: "all", category: "all", view: "timeline" };
@@ -368,18 +380,40 @@ const els = {
   progressPercent: document.querySelector("#progressPercent"),
   progressText: document.querySelector("#progressText"),
   openTasks: document.querySelector("#openTasks"),
+  expenseTotal: document.querySelector("#expenseTotal"),
+  expenseBalance: document.querySelector("#expenseBalance"),
   todayPanel: document.querySelector("#todayPanel"),
   designNotes: document.querySelector("#designNotes"),
+  expenseForm: document.querySelector("#expenseForm"),
+  expenseDate: document.querySelector("#expenseDate"),
+  expenseTitle: document.querySelector("#expenseTitle"),
+  expenseCategory: document.querySelector("#expenseCategory"),
+  expenseAmount: document.querySelector("#expenseAmount"),
+  expenseCurrency: document.querySelector("#expenseCurrency"),
+  expensePayer: document.querySelector("#expensePayer"),
+  expenseNote: document.querySelector("#expenseNote"),
+  expenseLive: document.querySelector("#expenseLive"),
+  expenseSummary: document.querySelector("#expenseSummary"),
+  expenseList: document.querySelector("#expenseList"),
   dialog: document.querySelector("#detailDialog"),
   dialogContent: document.querySelector("#dialogContent"),
 };
 
 function loadState() {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { statuses: {}, tasks: {} };
+    return normalizeState(JSON.parse(localStorage.getItem(STORAGE_KEY)));
   } catch {
-    return { statuses: {}, tasks: {} };
+    return normalizeState(null);
   }
+}
+
+function normalizeState(saved) {
+  return {
+    statuses: saved?.statuses || {},
+    tasks: saved?.tasks || {},
+    expenses: Array.isArray(saved?.expenses) ? saved.expenses : [],
+    expensePayers: saved?.expensePayers || {},
+  };
 }
 
 function saveState() {
@@ -408,6 +442,72 @@ function matches(item, category = item.type || item.category) {
 
 function money(value) {
   return new Intl.NumberFormat("zh-TW", { style: "currency", currency: "TWD", maximumFractionDigits: 0 }).format(value);
+}
+
+function jpyMoney(value) {
+  return `¥${Math.round(Number(value) || 0).toLocaleString("ja-JP")}`;
+}
+
+function twdMoney(value) {
+  return `NT$${Math.round(Number(value) || 0).toLocaleString("zh-TW")}`;
+}
+
+function convertExpenseAmount(amount, currency) {
+  const cleanAmount = Math.max(0, Number(amount) || 0);
+  if (currency === "TWD") {
+    return {
+      amount: cleanAmount,
+      currency,
+      jpyAmount: Math.round(cleanAmount * JPY_TO_TWD_DIVISOR),
+      twdAmount: Math.round(cleanAmount),
+    };
+  }
+  return {
+    amount: cleanAmount,
+    currency: "JPY",
+    jpyAmount: Math.round(cleanAmount),
+    twdAmount: Math.round(cleanAmount / JPY_TO_TWD_DIVISOR),
+  };
+}
+
+function normalizeExpense(entry, source = "user") {
+  const converted = convertExpenseAmount(entry.amount ?? entry.jpyAmount ?? 0, entry.currency || "JPY");
+  const payer = source === "planned" ? state.expensePayers[entry.id] || entry.payer || "pending" : entry.payer || "pending";
+  return {
+    id: entry.id,
+    date: entry.date || "",
+    title: entry.title || "未命名支出",
+    category: entry.category || "其他",
+    note: entry.note || "",
+    source,
+    payer,
+    ...converted,
+  };
+}
+
+function allExpenses() {
+  return [
+    ...plannedExpenses.map((expense) => normalizeExpense(expense, "planned")),
+    ...state.expenses.map((expense) => normalizeExpense(expense, "user")),
+  ];
+}
+
+function expenseStats() {
+  const entries = allExpenses();
+  const totalJpy = entries.reduce((sum, entry) => sum + entry.jpyAmount, 0);
+  const pendingJpy = entries.filter((entry) => entry.payer === "pending").reduce((sum, entry) => sum + entry.jpyAmount, 0);
+  const husbandJpy = entries.filter((entry) => entry.payer === "husband").reduce((sum, entry) => sum + entry.jpyAmount, 0);
+  const wifeJpy = entries.filter((entry) => entry.payer === "wife").reduce((sum, entry) => sum + entry.jpyAmount, 0);
+  const settlement = Math.round((husbandJpy - wifeJpy) / 2);
+  return { entries, totalJpy, pendingJpy, husbandJpy, wifeJpy, settlement };
+}
+
+function settlementText(settlement) {
+  if (!settlement) return "目前兩邊已付金額剛好平衡";
+  const amount = Math.abs(settlement);
+  return settlement > 0
+    ? `老婆需補老公 ${jpyMoney(amount)} / ${twdMoney(amount / JPY_TO_TWD_DIVISOR)}`
+    : `老公需補老婆 ${jpyMoney(amount)} / ${twdMoney(amount / JPY_TO_TWD_DIVISOR)}`;
 }
 
 function renderLinkButtons(links = {}, title = "") {
@@ -558,20 +658,34 @@ function renderActivityMedia(item) {
       </div>
     `;
   }
+  const source = item.visualSourceName || item.sourceName || "";
+  const sourceType = item.sourceType || "";
+  const sourceLabel = {
+    officialSite: "官網照片",
+    officialSNS: "官方 SNS",
+    maps: "Maps 參考",
+    generated: "手繪代表圖",
+    icon: "圖示",
+  }[sourceType] || "";
   return `
     <div class="activity-media ${images.length > 1 ? "split" : ""}">
-      ${images.map((src) => `<img src="${src}" alt="${item.title} 手繪活動插圖" loading="lazy" />`).join("")}
+      ${images.map((src) => `<img src="${src}" alt="${item.title} ${sourceLabel || "代表照片"}" loading="lazy" />`).join("")}
+      ${sourceLabel ? `<span class="media-source">${sourceLabel}${source ? ` · ${source}` : ""}</span>` : ""}
     </div>
   `;
 }
 
 function resolveVisualMedia(item) {
   const asset = visualAssets[item.id] || {};
+  const assetIsReal = ["officialSite", "officialSNS", "maps"].includes(asset.sourceType);
   return {
     ...item,
-    images: item.images || asset.images,
-    image: item.image || asset.image || (asset.icon ? "" : placeImages[item.id]),
+    images: assetIsReal ? asset.images || (asset.image ? [asset.image] : undefined) : item.images || asset.images,
+    image: assetIsReal ? asset.image || item.image || (asset.icon ? "" : placeImages[item.id]) : item.image || asset.image || (asset.icon ? "" : placeImages[item.id]),
     visualIcon: asset.icon,
+    sourceType: item.sourceType || asset.sourceType,
+    visualSourceName: item.sourceName || asset.sourceName,
+    visualSourceUrl: item.sourceUrl || asset.sourceUrl,
   };
 }
 
@@ -713,6 +827,74 @@ function renderLinks() {
   }).join("");
 }
 
+function renderExpenses() {
+  if (!els.expenseSummary || !els.expenseList) return;
+  const { entries, totalJpy, pendingJpy, husbandJpy, wifeJpy, settlement } = expenseStats();
+  const visibleEntries = entries.filter((entry) => {
+    const queryMatch = !filters.query || itemText({
+      ...entry,
+      region: "all",
+      type: "expense",
+      detail: entry.note,
+      tags: [entry.category, payerLabels[entry.payer]],
+    }).includes(filters.query);
+    const categoryMatch = filters.category === "all" || filters.category === "expense";
+    return queryMatch && categoryMatch;
+  });
+
+  els.expenseSummary.innerHTML = `
+    <article class="expense-total-card">
+      <span>總支出</span>
+      <strong>${jpyMoney(totalJpy)}</strong>
+      <em>${twdMoney(totalJpy / JPY_TO_TWD_DIVISOR)}</em>
+    </article>
+    <article>
+      <span>老公已付</span>
+      <strong>${jpyMoney(husbandJpy)}</strong>
+      <em>${twdMoney(husbandJpy / JPY_TO_TWD_DIVISOR)}</em>
+    </article>
+    <article>
+      <span>老婆已付</span>
+      <strong>${jpyMoney(wifeJpy)}</strong>
+      <em>${twdMoney(wifeJpy / JPY_TO_TWD_DIVISOR)}</em>
+    </article>
+    <article>
+      <span>待補</span>
+      <strong>${jpyMoney(pendingJpy)}</strong>
+      <em>${twdMoney(pendingJpy / JPY_TO_TWD_DIVISOR)}</em>
+    </article>
+    <article class="expense-balance-card">
+      <span>平分結算</span>
+      <strong>${settlementText(settlement)}</strong>
+      <em>日幣除 5 估台幣</em>
+    </article>
+  `;
+
+  els.expenseList.innerHTML = visibleEntries.map((entry) => `
+    <article class="expense-item ${entry.source === "planned" ? "planned" : ""}">
+      <div>
+        <p class="booking-meta">${entry.date} · ${entry.category} · ${entry.currency} 原始輸入</p>
+        <h3>${entry.title}</h3>
+        ${entry.note ? `<p>${entry.note}</p>` : ""}
+        <div class="tag-row">
+          <span class="tag">${entry.source === "planned" ? "預定支出" : "已記帳"}</span>
+          <span class="tag">${payerLabels[entry.payer]}</span>
+        </div>
+      </div>
+      <div class="expense-amount">
+        <strong>${jpyMoney(entry.jpyAmount)}</strong>
+        <span>${twdMoney(entry.twdAmount)}</span>
+      </div>
+      <div class="expense-actions">
+        ${Object.entries(payerLabels).map(([key, label]) => `
+          <button class="chip ${entry.payer === key ? "active" : ""}" type="button" data-expense-payer="${entry.id}" data-payer="${key}" data-source="${entry.source}">${label}</button>
+        `).join("")}
+        ${entry.source === "user" ? `<button class="small-link button-link danger" type="button" data-delete-expense="${entry.id}">刪除</button>` : ""}
+      </div>
+    </article>
+  `).join("") || emptyState();
+}
+
 function renderManuals() {
   els.manualGallery.innerHTML = manuals.map((manual, index) => `
     <button class="manual-thumb" type="button" data-manual="${index}">
@@ -729,12 +911,15 @@ function renderMetrics() {
   const totalTasks = tasks.length;
   const doneTasks = tasks.filter((task) => state.tasks[task.id]).length;
   const percent = Math.round(((finished + doneTasks) / (tracked.length + totalTasks)) * 100);
+  const { totalJpy, settlement } = expenseStats();
 
   els.daysCount.textContent = itinerary.length;
   els.knownHotelCost.textContent = money(knownHotelCost);
   els.progressPercent.textContent = `${percent}%`;
   els.progressText.textContent = `${finished + doneTasks} / ${tracked.length + totalTasks} 項`;
   els.openTasks.textContent = totalTasks - doneTasks;
+  if (els.expenseTotal) els.expenseTotal.textContent = jpyMoney(totalJpy);
+  if (els.expenseBalance) els.expenseBalance.textContent = settlementText(settlement);
 }
 
 function tripDate(day) {
@@ -791,227 +976,4 @@ function applyTripUpdates(updates = window.TRIP_UPDATES) {
   });
 
   Object.entries(updates.dayModeNotes || {}).forEach(([id, patch]) => {
-    dayModeNotes[id] = { ...(dayModeNotes[id] || {}), ...patch };
-  });
-
-  Object.assign(visualAssets, updates.visualAssets || {});
-}
-
-function renderTodayPanel() {
-  if (!els.todayPanel) return;
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const firstDay = tripDate(itinerary[0]);
-  const lastDay = tripDate(itinerary[itinerary.length - 1]);
-  let mode = "before";
-  let selected = itinerary[0];
-
-  if (today > lastDay) {
-    mode = "after";
-    selected = itinerary[itinerary.length - 1];
-  } else if (today >= firstDay) {
-    mode = "during";
-    selected = itinerary.find((day) => tripDate(day).getTime() === today.getTime()) || itinerary[0];
-  }
-
-  const selectedMap = dayMaps[selected.id];
-  const daysDiff = Math.round((tripDate(selected) - today) / 86400000);
-  const title =
-    mode === "before"
-      ? `距離出發還有 ${Math.max(daysDiff, 0)} 天`
-      : mode === "after"
-        ? "旅程已完成，現在適合整理回憶"
-        : "今天的行程焦點";
-
-  els.todayPanel.innerHTML = `
-    <div class="today-card">
-      ${renderIllustration(selected.art)}
-      <div class="today-copy">
-        <p class="panel-kicker">${title}</p>
-        <h3>${selected.date} 星期${selected.weekday} · ${selected.title}</h3>
-        <p>${selected.detail}</p>
-        <div class="tag-row">
-          <span class="tag">${regionLabels[selected.region]}</span>
-          <span class="tag">${typeLabels[selected.type]}</span>
-          <span class="tag status-tag ${currentStatus(selected)}">${statusLabels[currentStatus(selected)]}</span>
-          ${selectedMap ? `<span class="tag">${selectedMap.area}</span>` : ""}
-        </div>
-        ${renderDayModeBox(selected)}
-        <div class="shop-actions">
-          ${renderLinkButtons(selected.links, selected.title)}
-          ${selectedMap ? `<a class="small-link map" href="${directionsUrl(selectedMap.points)}" target="_blank" rel="noreferrer">當日動線</a>` : ""}
-          <button class="small-link button-link" type="button" data-jump="itinerary">看完整每日行程</button>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function renderDesignNotes() {
-  if (!els.designNotes) return;
-  const notes = [
-    ["先總覽", "像金融 dashboard 一樣，先看天數、費用、完成率與待辦，降低資訊壓力。"],
-    ["再行動", "今日模式只放下一步與當日地圖，避免旅途中被完整資料淹沒。"],
-    ["分清狀態", "已確認、待訂、備案、當天視體力分開標示，讓鐵軌與彈性選項一眼可分。"],
-    ["最後查明細", "每日行程、住宿交通、地點連結分區，是把資料庫變成可操作工具。"],
-  ];
-  els.designNotes.innerHTML = `
-    <div class="lesson-list">
-      ${notes.map(([title, text], index) => `
-        <article class="lesson-card">
-          <span class="lesson-number">${index + 1}</span>
-          <strong>${title}</strong>
-          <p>${text}</p>
-        </article>
-      `).join("")}
-    </div>
-  `;
-}
-
-function renderAll() {
-  renderTabs();
-  renderItinerary();
-  renderBookings();
-  renderTasks();
-  renderPlaces();
-  renderLinks();
-  renderMetrics();
-  renderTodayPanel();
-  renderDesignNotes();
-  markEmptyPanels();
-}
-
-function markEmptyPanels() {
-  ["itineraryList", "bookingList", "taskList", "shopGrid", "linkList"].forEach((key) => {
-    const el = els[key];
-    if (!el) return;
-    const existingEmpty = el.querySelector(".empty-state");
-    if (existingEmpty) existingEmpty.remove();
-    const visible = Array.from(el.children).some((child) => !child.classList.contains("hidden"));
-    if (!visible) {
-      el.insertAdjacentHTML("beforeend", emptyState());
-    }
-  });
-}
-
-function emptyState() {
-  return `<div class="empty-state">目前篩選沒有符合項目。</div>`;
-}
-
-function cycleStatus(id) {
-  const order = ["confirmed", "pending", "backup", "flexible", "todo", "done"];
-  const source = [...itinerary, ...bookings].find((item) => item.id === id);
-  const now = currentStatus(source);
-  const next = order[(order.indexOf(now) + 1) % order.length];
-  state.statuses[id] = next;
-  saveState();
-  renderAll();
-}
-
-function openDetail(kind, id) {
-  const pools = { itinerary, booking: bookings };
-  const item = pools[kind]?.find((entry) => entry.id === id);
-  if (!item) return;
-  els.dialogContent.innerHTML = `
-    <div class="dialog-body">
-      <p class="panel-kicker">${regionLabels[item.region]} · ${item.date || ""}</p>
-      <h2>${item.title}</h2>
-      ${renderIllustration(item.art || item.icon)}
-      <p>${item.detail || item.meta || ""}</p>
-      <div class="tag-row">
-        <span class="tag">${statusLabels[currentStatus(item)]}</span>
-        ${item.category ? `<span class="tag">${typeLabels[item.category]}</span>` : ""}
-      </div>
-      <div class="shop-actions">${renderLinkButtons(item.links, item.title)}</div>
-    </div>
-  `;
-  els.dialog.showModal();
-}
-
-function openManual(index) {
-  const manual = manuals[index];
-  els.dialogContent.innerHTML = `
-    <div class="dialog-body">
-      <p class="panel-kicker">原始手冊</p>
-      <h2>${manual.title}</h2>
-      <img src="${manual.src}" alt="${manual.title}" />
-    </div>
-  `;
-  els.dialog.showModal();
-}
-
-function bindEvents() {
-  els.searchInput.addEventListener("input", (event) => {
-    filters.query = normalize(event.target.value);
-    renderAll();
-  });
-
-  els.categoryFilter.addEventListener("change", (event) => {
-    filters.category = event.target.value;
-    renderAll();
-  });
-
-  document.addEventListener("click", (event) => {
-    const regionButton = event.target.closest("[data-region]");
-    if (regionButton) {
-      filters.region = regionButton.dataset.region;
-      renderAll();
-      return;
-    }
-
-    const viewButton = event.target.closest("[data-view]");
-    if (viewButton) {
-      filters.view = viewButton.dataset.view;
-      document.querySelectorAll("[data-view]").forEach((button) => button.classList.toggle("active", button === viewButton));
-      renderItinerary();
-      markEmptyPanels();
-      return;
-    }
-
-    const statusButton = event.target.closest("[data-status-for]");
-    if (statusButton) {
-      event.stopPropagation();
-      cycleStatus(statusButton.dataset.statusFor);
-      return;
-    }
-
-    const detail = event.target.closest("[data-detail-kind]");
-    if (detail && !event.target.closest("button, a")) {
-      openDetail(detail.dataset.detailKind, detail.dataset.id);
-      return;
-    }
-
-    const manual = event.target.closest("[data-manual]");
-    if (manual) {
-      openManual(Number(manual.dataset.manual));
-      return;
-    }
-
-    const jump = event.target.closest("[data-jump]");
-    if (jump) {
-      document.querySelector(`#${jump.dataset.jump}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  });
-
-  document.addEventListener("change", (event) => {
-    const task = event.target.closest("[data-task]");
-    if (!task) return;
-    state.tasks[task.dataset.task] = task.checked;
-    saveState();
-    renderAll();
-  });
-
-  document.querySelector(".dialog-close").addEventListener("click", () => els.dialog.close());
-  document.querySelector("#printBtn").addEventListener("click", () => window.print());
-  document.querySelector("#resetBtn").addEventListener("click", () => {
-    state = { statuses: {}, tasks: {} };
-    saveState();
-    renderAll();
-  });
-}
-
-applyTripUpdates();
-renderRoute();
-renderManuals();
-bindEvents();
-renderAll();
+    dayModeNotes[id] = 
